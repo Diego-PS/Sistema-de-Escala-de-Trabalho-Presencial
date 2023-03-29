@@ -22,10 +22,10 @@ Facilitar a determinação de escalas de trabalho presencial de uma empresa, sat
 - Frontend: HTML, CSS, JS com uso de Bootstrap.
 
 ## Backlog do produto
-1 - Como usuário, eu gostaria de... <br/>
-2 - Como administrador, eu gostaria de... <br/>
-3 - <br/>
-4 - <br/>
+1 - Como membro de alguma equipe, eu gostaria de informar minha preferência de escala. <br/>
+2 - Como membro de alguma equipe, eu gostaria de consultar a escala atual da equipe. <br/>
+3 - Como membro de alguma equipe, eu gostaria de solicitar a troca de escala com outro membro de equipe. <br/>
+4 - Como membro de alguma equipe, eu gostaria de aceitar ou recusar uma solicitação de troca de escala. <br/>
 ...
 
 ## Backlog do sprint
