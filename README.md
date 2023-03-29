@@ -34,7 +34,7 @@ Facilitar a determinação de escalas de trabalho presencial de uma empresa, sat
 10 - Como chefe de alguma equipe, eu gostaria de atorizar solicitações de troca entre os membros. <br/>
 11 - Como dono da organização, eu gostaria de criar equipes e adicionar os chefes de cada equipe. <br/>
 12 - Como dono da organização, eu gostaria de criar regras gerais para todas as equipes. <br/>
-11 - Como dono da organização, eu gostaria de consultar a regra de cada equipe. <br/>
+13 - Como dono da organização, eu gostaria de consultar a regra de cada equipe. <br/>
 
 ## Backlog do sprint
 ###### História 1: 
