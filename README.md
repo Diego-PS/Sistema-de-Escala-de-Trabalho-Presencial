@@ -20,3 +20,20 @@ Facilitar a determinação de escalas de trabalho presencial de uma empresa, sat
 - Banco de Dados: MongoDB.
 - Backend: Express.js (Node.js).
 - Frontend: HTML, CSS, JS com uso de Bootstrap.
+
+## Backlog do produto
+1 - Como usuário, eu gostaria de...
+2 - Como administrador, eu gostaria de...
+3 - 
+4 - 
+...
+
+## Backlog do sprint
+# História 1: 
+# Tarefas e responsáveis:
+-
+-
+-
+-
+
+...
