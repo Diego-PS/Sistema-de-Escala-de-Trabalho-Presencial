@@ -1,27 +1,38 @@
-import { Boss } from "./Boss"
+import { teamLeaderRepository } from "../repositories"
 import { Member } from "./Member"
-import { Rules } from "./Rules"
 import { IUser, User } from "./User"
 
 export interface ITeamLeader extends IUser
 {
     boss_id: string,
     team_name: string,
-    team_rules: Rules
+    moa: number
+    mpw: number
 } 
 
 export class TeamLeader extends User implements ITeamLeader
 {
+    static create = async (team_leader: TeamLeader) => await teamLeaderRepository.create(team_leader)
+    static get = async (filter?: Partial<TeamLeader>) => await teamLeaderRepository.get(filter)
+    
     public readonly boss_id: string
 
     public team_name: string
-    public team_rules: Rules
+    public moa: number
+    public mpw: number
 
     createMember = (props: Omit<User, 'id'>) => new Member(props, this.id)
 
-    constructor(props: Omit<TeamLeader, 'id' | 'boss_id' | 'team_rules'>, boss: Boss) {
-        super(props)
-        this.team_rules = boss.organization_rules
-        this.boss_id = boss.id
+    update = async (team_leader: Partial<Pick<TeamLeader, 'name' | 'moa' | 'mpw'>>) => {
+        const updated = await teamLeaderRepository.update(this.id, team_leader)
+        Object.assign(this, updated)
+    }
+    delete = async () => teamLeaderRepository.delete({ id: this.id })
+
+    constructor(props: Omit<ITeamLeader, 'id' | 'role'>, id?: string) {
+        super({ ...props, role: 'team_leader' }, id)
+        this.team_name = props.team_name
+        this.moa = props.moa
+        this.mpw = props.mpw
     }
 }

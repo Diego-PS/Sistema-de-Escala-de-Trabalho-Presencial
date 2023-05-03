@@ -5,11 +5,131 @@ import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import { UserDB, userSchema } from "./database/models/UserDB";
 import { User } from "./entities/User";
+import { Boss, IBoss } from "./entities/Boss";
+import { IRoute } from "express";
+import { TeamLeader } from "./entities/TeamLeader";
 
 dotenv.config()
 
 app.get('/', (req, res) => {
     res.status(200).json({ msg: 'Bem-vindo à nossa API!' })
+})
+
+app.post('/team/register/:id', async(req, res) => {
+    const { name, username, password, confirmpassword, team_name } = req.body
+
+    const id = req.params.id
+
+    const salt = await bcrypt.genSalt(12)
+    const passwordHash = await bcrypt.hash(password, salt)
+    
+    const boss = (await Boss.get({ id }))[0]
+
+    try {
+        const team_leader = await boss.createTeamLeader({ name, username, password: passwordHash, team_name })
+        res.status(201).json({msg: 'Equipe cadastrada com sucesso'})
+    } catch (err) {
+        console.log(err)
+    }
+})
+
+app.get('/team', async(req, res) => {
+    try {
+        const teams = await TeamLeader.get()
+        res.status(201).json(teams)
+    } catch (err) {
+        console.log(err)
+    }
+})
+
+app.patch('/team/:id', async (req, res) => {
+    const id = req.params.id
+
+    let { name, moa, mpw } = req.body
+
+    const team_leader = (await TeamLeader.get({ id }))[0] 
+    console.log(team_leader.id)
+
+    try {
+        team_leader.update({ name, moa, mpw })
+        res.status(201).json('Atualizado com sucesso!')
+    } catch(err) {
+        console.log(err)
+    }
+})
+
+app.delete('/team/:id', async (req, res) => {
+    const id = req.params.id
+
+    const team_leader = (await TeamLeader.get({ id }))[0] 
+    console.log(team_leader.id)
+
+    try {
+        team_leader.delete()
+        res.status(201).json('Atualizado com sucesso!')
+    } catch(err) {
+        console.log(err)
+    }
+
+
+})
+
+app.post('/boss/register', async(req, res) => {
+    const { name, username, password, confirmpassword, organization_name, moa, mpw } = req.body
+
+    const salt = await bcrypt.genSalt(12)
+    const passwordHash = await bcrypt.hash(password, salt)
+    
+    try {
+        const boss = Boss.create({ name, username, password: passwordHash, organization_name, moa, mpw })
+        res.status(201).json({msg: 'Usuársio cadastrado com sucesso'})
+    } catch (err) {
+        console.log(err)
+    }
+
+})
+
+app.get('/boss', async(req, res) => {
+    try {
+        const bosses = await Boss.get()
+        res.status(201).json(bosses)
+    } catch (err) {
+        console.log(err)
+    }
+})
+
+app.patch('/boss/:id', async (req, res) => {
+    const id = req.params.id
+
+    let { name, moa, mpw } = req.body
+
+    const boss = (await Boss.get({ id }))[0] 
+    console.log(boss.id)
+
+    try {
+        boss.update({ name, moa, mpw })
+        res.status(201).json('Atualizado com sucesso!')
+    } catch(err) {
+        console.log(err)
+    }
+
+
+})
+
+app.delete('/boss/:id', async (req, res) => {
+    const id = req.params.id
+
+    const boss = (await Boss.get({ id }))[0] 
+    console.log(boss.id)
+
+    try {
+        boss.delete()
+        res.status(201).json('Atualizado com sucesso!')
+    } catch(err) {
+        console.log(err)
+    }
+
+
 })
 
 // Register User
@@ -67,7 +187,7 @@ const dbPass = process.env.DB_PASS
 mongoose
     .connect(`mongodb+srv://${dbUser}:${dbPass}@smartshiftdb.aixb2uu.mongodb.net/?retryWrites=true&w=majority`)
     .then(() => {
-        app.listen(3333, () => console.log("Rodando na porta 3333"))
+        app.listen(3333, () => console.log("Rodando na porta 3333..."))
         console.log('Conectou ao banco!')
     })
     .catch((err) => console.log(err))

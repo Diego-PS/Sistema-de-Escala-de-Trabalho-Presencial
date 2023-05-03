@@ -18,8 +18,12 @@ export class User implements IUser
     public password: string
     public role: string
 
-    constructor(props: Omit<User, 'id'>) {
+    constructor(props: Omit<IUser, 'id'>, id?: string) {
         Object.assign(this, props)
-        this.id = uuid()
+        if (!id) {
+            this.id = uuid()
+        } else {
+            this.id = id
+        }
     }
 }
