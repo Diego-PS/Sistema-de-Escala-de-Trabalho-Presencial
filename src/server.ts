@@ -10,7 +10,7 @@ import { IRoute } from "express";
 import { TeamLeader } from "./entities/TeamLeader";
 
 dotenv.config()
-
+// teste
 app.get('/', (req, res) => {
     res.status(200).json({ msg: 'Bem-vindo à nossa API!' })
 })
