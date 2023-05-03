@@ -1,4 +1,4 @@
-import mongoose, { Schema, model } from 'mongoose'
+import { Schema, model } from 'mongoose'
 import { userSchema } from './UserDB'
 import { IBoss } from '../../entities/Boss'
 
@@ -9,4 +9,4 @@ export const bossSchema = new Schema<IBoss>({
     organization_rules: { type: Object, required: true }
 })
 
-export const BossDB = mongoose.model('Boss', bossSchema)
+export const BossDB = model<IBoss>('Boss', bossSchema)

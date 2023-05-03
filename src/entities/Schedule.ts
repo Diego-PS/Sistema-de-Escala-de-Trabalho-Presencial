@@ -1,5 +1,14 @@
 import { Rules } from "./Rules"
 
+export interface ISchedule
+{
+    mon: boolean
+    tue: boolean
+    wed: boolean
+    thu: boolean
+    fri: boolean
+}
+
 export class Schedule 
 {
     public mon: boolean
@@ -12,7 +21,7 @@ export class Schedule
 
     satisfies = (rules: Rules) => this.getAttendance() <= rules.getMOA()
 
-    constructor(props: Pick<Schedule, 'mon' | 'tue' | 'wed' | 'thu' | 'fri'>) {
+    constructor(props: ISchedule) {
         Object.assign(props)
     }
 }

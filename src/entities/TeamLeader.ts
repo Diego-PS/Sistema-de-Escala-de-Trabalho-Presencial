@@ -1,5 +1,5 @@
 import { teamLeaderRepository } from "../repositories"
-import { Member } from "./Member"
+import { IMember, Member } from "./Member"
 import { IRules, Rules } from "./Rules"
 import { IUser, User } from "./User"
 
@@ -43,7 +43,7 @@ export class TeamLeader extends User
         }
     }) as ITeamLeader
 
-    createMember = (props: Omit<User, 'id'>) => new Member(props, this.id)
+    createMember = async (props: Omit<IMember, 'id' | 'team_leader_id' | 'desired_schedule' | 'actual_schedule' | 'role'>) => await Member.create({ ...props, team_leader_id: this.id, desired_schedule: { mon: true, tue: true, wed: true, thu: true, fri: true}, actual_schedule: { mon: true, tue: true, wed: true, thu: true, fri: true} })
     
     update = async (team_leader: { name?: string, team_rules?: IRules }) => {
         const updated = await teamLeaderRepository.update(this.id, team_leader)

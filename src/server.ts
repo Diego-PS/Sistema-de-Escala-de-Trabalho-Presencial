@@ -8,6 +8,7 @@ import { User } from "./entities/User";
 import { Boss, IBoss } from "./entities/Boss";
 import { IRoute } from "express";
 import { TeamLeader } from "./entities/TeamLeader";
+import { Member } from "./entities/Member";
 
 dotenv.config()
 // teste
@@ -141,6 +142,67 @@ app.delete('/boss/:id', async (req, res) => {
 
 
 })
+
+// RotasMember
+app.post('/member/register/:id', async(req, res) => {
+    const { name, username, password } = req.body
+
+    const id = req.params.id
+
+    const salt = await bcrypt.genSalt(12)
+    const passwordHash = await bcrypt.hash(password, salt)
+    
+    const team_leader = (await TeamLeader.get({ id }))[0]
+
+    try {
+        const member = await team_leader.createMember({ name, username, password: passwordHash })
+        res.status(201).json({msg: 'Membro cadastrado com sucesso'})
+    } catch (err) {
+        console.log(err)
+    }
+})
+
+app.get('/member', async(req, res) => {
+    try {
+        const members = await Member.get()
+        res.status(201).json(members)
+    } catch (err) {
+        console.log(err)
+    }
+})
+
+// app.patch('/team/:id', async (req, res) => {
+//     const id = req.params.id
+
+//     let { name, moa, mpw } = req.body
+
+//     const team_leader = (await TeamLeader.get({ id }))[0] 
+//     console.log(team_leader.id)
+
+//     try {
+//         team_leader.update({ name, team_rules: { moa, mpw } })
+//         res.status(201).json('Atualizado com sucesso!')
+//     } catch(err) {
+//         console.log(err)
+//     }
+// })
+
+// app.delete('/team/:id', async (req, res) => {
+//     const id = req.params.id
+
+//     const team_leader = (await TeamLeader.get({ id }))[0] 
+//     console.log(team_leader.id)
+
+//     try {
+//         team_leader.delete()
+//         res.status(201).json('Atualizado com sucesso!')
+//     } catch(err) {
+//         console.log(err)
+//     }
+
+
+// })
+
 
 // Register User
 app.post('/auth/register', async(req, res) => {
