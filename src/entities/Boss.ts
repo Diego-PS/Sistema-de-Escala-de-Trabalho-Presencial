@@ -1,28 +1,46 @@
 import { bossRepository } from "../repositories"
+import { IRules, Rules } from "./Rules"
 import { ITeamLeader, TeamLeader } from "./TeamLeader"
 import { IUser, User } from "./User"
 
 export interface IBoss extends IUser
 {
     organization_name: string
-    moa: number
-    mpw: number
+    organization_rules: IRules
 }
 
-export class Boss extends User implements IBoss
+export class Boss extends User
 {
-    static create = async (props: Omit<IBoss, 'id' | 'role'>) => await bossRepository.create(new Boss(props))
-    static get = async (filter?: Partial<Boss>) => await bossRepository.get(filter)
-    static delete = async (filter?: Partial<Boss>) => await bossRepository.delete(filter)
+    static fromInterface = (boss_interface: IBoss) => new Boss({
+        name: boss_interface.name,
+        username: boss_interface.username,
+        password: boss_interface.password,
+        organization_name: boss_interface.organization_name,
+        organization_rules: boss_interface.organization_rules
+    }, boss_interface.id)
+    static create = async (props: Omit<IBoss, 'id' | 'role'>) => await bossRepository.create((new Boss(props)).toInterface())
+    static get = async (filter?: Partial<IBoss>) => await bossRepository.get(filter)
+    static delete = async (filter?: Partial<IBoss>) => await bossRepository.delete(filter)
 
     public organization_name: string
-    public moa: number //minimum_office_attendance
-    public mpw: number // minimum_percentage_of_workers_in_the_office
+    public organization_rules: Rules
 
-    // getOrganizationRules = () => new Rules(this.organization_rules.minimum_office_attendance, this.organization_rules.minimum_percentage_of_workers_in_the_office)
-    createTeamLeader = async (props: Omit<ITeamLeader, 'id' | 'boss_id' | 'moa' | 'mpw' | 'role'>) => await TeamLeader.create(new TeamLeader({ ...props, boss_id: this.id, moa: this.moa, mpw: this.mpw }))
+    toInterface = () => ({
+        id: this.id,
+        name: this.name,
+        username: this.username,
+        password: this.password,
+        role: this.role,
+        organization_name: this.organization_name,
+        organization_rules: {
+            moa: this.organization_rules.getMOA(),
+            mpw: this.organization_rules.getMPW()
+        }
+    }) as IBoss
     
-    update = async (boss: Partial<Pick<Boss, 'name' | 'moa' | 'mpw'>>) => {
+    createTeamLeader = async (props: Omit<ITeamLeader, 'id' | 'boss_id' | 'team_rules' | 'role'>) => await TeamLeader.create({ ...props, boss_id: this.id, team_rules: { moa: this.organization_rules.getMOA(), mpw: this.organization_rules.getMPW() } })
+    
+    update = async (boss: { name?: string, organization_rules?: IRules }) => {
         const updated = await bossRepository.update(this.id, boss)
         Object.assign(this, updated)
     }
@@ -30,6 +48,7 @@ export class Boss extends User implements IBoss
 
     constructor(props?: Omit<IBoss, 'id' | 'role'>, id?: string) {
         super({ ...props, role: 'boss' }, id)
-        Object.assign(this, props)
+        this.organization_name = props.organization_name
+        this.organization_rules = new Rules(props.organization_rules.moa, props.organization_rules.mpw)
     }
 }

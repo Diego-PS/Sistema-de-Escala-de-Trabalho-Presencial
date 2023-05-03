@@ -1,38 +1,34 @@
 import { BossDB } from "../database/models/BossDB"
 import { Boss, IBoss } from "../entities/Boss"
+import { IRules, Rules } from "../entities/Rules"
 
 export class BossRepository 
 {
-    async create(boss: Boss) {
+    async create(boss: IBoss) {
         const bossDB = new BossDB()
         Object.assign(bossDB, boss)
-        const created_boss = await bossDB.save()
-        return created_boss as IBoss as Boss
+        const created_bossDB = await bossDB.save()
+        const created_boss_interface = created_bossDB as IBoss
+        const created_boss = Boss.fromInterface(created_boss_interface)
+        return created_boss
     }
     
-    async get(filter?: Partial<Boss>) {
+    async get(filter?: Partial<IBoss>) {
         const bossesDB = await BossDB.find(filter)
         const bosses = bossesDB.map(bossDB => {
             const boss_interface = bossDB as IBoss
-            const boss = new Boss({
-                name: boss_interface.name,
-                username: boss_interface.username,
-                password: boss_interface.password,
-                organization_name: boss_interface.organization_name,
-                moa: boss_interface.moa,
-                mpw: boss_interface.mpw
-            }, boss_interface.id)
+            const boss = Boss.fromInterface(boss_interface)
             return boss
         })
         return bosses
     }
 
-    async update(id: string, boss: Partial<Pick<Boss, 'name' | 'moa' | 'mpw'>>) {
+    async update(id: string, boss: { name?: string, organization_rules?: IRules }) {
         await BossDB.updateOne({ id }, boss)
         return this.get({ id })
     }
 
-    async delete(filter?: Partial<Boss>) {
+    async delete(filter?: Partial<IBoss>) {
         await BossDB.deleteMany(filter)
         return true
     }

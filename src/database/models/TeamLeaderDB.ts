@@ -7,8 +7,7 @@ export const teamLeaderSchema = new Schema<ITeamLeader>({
     ...userSchema.obj,
     boss_id: { type: String, required: true },
     team_name: { type: String, required: true },
-    moa: { type: Number, required: true },
-    mpw: { type: Number, required: true }
+    team_rules: { type: Object, required: true }
 })
 
 export const TeamLeaderDB = model<ITeamLeader>('TeamLeader', teamLeaderSchema)

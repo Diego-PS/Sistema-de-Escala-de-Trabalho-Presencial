@@ -1,37 +1,37 @@
-// export interface IRules
-// {
-//     minimum_office_attendance: number
-//     minimum_percentage_of_workers_in_the_office: number
-// }
+export interface IRules
+{
+    moa: number // minimum office attendance
+    mpw: number // minimum percentage of workers in the office
+}
 
-// export class Rules
-// {
-//     public minimum_office_attendance: number
-//     public minimum_percentage_of_workers_in_the_office: number
+export class Rules
+{
+    private moa: number
+    private mpw: number
 
-//     getMOA = () => this.minimum_office_attendance
-//     getMPW = () => this.minimum_percentage_of_workers_in_the_office
+    getMOA = () => this.moa
+    getMPW = () => this.mpw
 
-//     changeMOA = (new_number: number) => {
-//         if (0 <= new_number && new_number <= 5) {
-//             this.minimum_office_attendance = new_number
-//         } else {
-//             throw new Error("The minimum office attendence cannot be smaller than 0 or greater than 5.")
-//         }
-//     }
+    setMOA = (new_number: number) => {
+        if (0 <= new_number && new_number <= 5) {
+            this.moa = new_number
+        } else {
+            throw new Error("The minimum office attendence cannot be smaller than 0 or greater than 5.")
+        }
+    }
 
-//     changeMPW = (new_number: number) => {
-//         if (0 <= new_number && new_number <= 100) {
-//             this.minimum_percentage_of_workers_in_the_office = new_number
-//         } else {
-//             throw new Error("The minimum percentage of workers in the office cannot be smaller than 0 or greater than 100, it must be a valid percentace.")
-//         }
-//     }
+    setMPW = (new_number: number) => {
+        if (0 <= new_number && new_number <= 100) {
+            this.mpw = new_number
+        } else {
+            throw new Error("The minimum percentage of workers in the office cannot be smaller than 0 or greater than 100, it must be a valid percentace.")
+        }
+    }
 
-//     satisfies = (rules: Rules) => this.getMOA() >= rules.getMOA() && this.getMPW() >= rules.getMPW()
+    satisfies = (rules: Rules) => this.getMOA() >= rules.getMOA() && this.getMPW() >= rules.getMPW()
 
-//     constructor(moa: number, mpw: number) {
-//         this.changeMOA(moa)
-//         this.changeMPW(mpw)
-//     }
-// }
+    constructor(moa: number, mpw: number) {
+        this.setMOA(moa)
+        this.setMPW(mpw)
+    }
+}

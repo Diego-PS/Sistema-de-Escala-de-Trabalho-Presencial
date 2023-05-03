@@ -1,39 +1,34 @@
 import { TeamLeaderDB } from "../database/models/TeamLeaderDB"
+import { IRules } from "../entities/Rules"
 import { ITeamLeader, TeamLeader } from "../entities/TeamLeader"
 
 export class TeamLeaderRepository 
 {
-    async create(team_leader: TeamLeader) {
+    async create(team_leader: ITeamLeader) {
         const team_leaderDB = new TeamLeaderDB()
         Object.assign(team_leaderDB, team_leader)
-        await team_leaderDB.save()
-        return team_leader
+        const created_team_leaderDB = await team_leaderDB.save()
+        const created_team_leader_interface = created_team_leaderDB as ITeamLeader
+        const created_team_leader = TeamLeader.fromInterface(created_team_leader_interface)
+        return created_team_leader
     }
     
-    async get(filter?: Partial<TeamLeader>) {
+    async get(filter?: Partial<ITeamLeader>) {
         const team_leaderesDB = await TeamLeaderDB.find(filter)
         const team_leaderes = team_leaderesDB.map(team_leaderDB => {
             const team_leader_interface = team_leaderDB as ITeamLeader
-            const team_leader = new TeamLeader({
-                name: team_leader_interface.name,
-                username: team_leader_interface.username,
-                password: team_leader_interface.password,
-                team_name: team_leader_interface.team_name,
-                boss_id: team_leader_interface.boss_id,
-                moa: team_leader_interface.moa,
-                mpw: team_leader_interface.mpw
-            }, team_leader_interface.id)
+            const team_leader = TeamLeader.fromInterface(team_leader_interface)
             return team_leader
         })
         return team_leaderes
     }
 
-    async update(id: string, team_leader: Partial<Pick<TeamLeader, 'name' | 'moa' | 'mpw'>>) {
+    async update(id: string, team_leader: { name?: string, team_rules?: IRules }) {
         await TeamLeaderDB.updateOne({ id }, team_leader)
         return this.get({ id })
     }
 
-    async delete(filter?: Partial<TeamLeader>) {
+    async delete(filter?: Partial<ITeamLeader>) {
         await TeamLeaderDB.deleteMany(filter)
         return true
     }

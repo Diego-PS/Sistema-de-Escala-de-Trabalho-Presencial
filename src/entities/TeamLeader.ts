@@ -1,29 +1,51 @@
 import { teamLeaderRepository } from "../repositories"
 import { Member } from "./Member"
+import { IRules, Rules } from "./Rules"
 import { IUser, User } from "./User"
 
 export interface ITeamLeader extends IUser
 {
     boss_id: string,
     team_name: string,
-    moa: number
-    mpw: number
+    team_rules: IRules
 } 
 
-export class TeamLeader extends User implements ITeamLeader
+export class TeamLeader extends User
 {
-    static create = async (team_leader: TeamLeader) => await teamLeaderRepository.create(team_leader)
-    static get = async (filter?: Partial<TeamLeader>) => await teamLeaderRepository.get(filter)
+    static fromInterface = (team_leader_interface: ITeamLeader) => new TeamLeader({
+        boss_id: team_leader_interface.boss_id,
+        name: team_leader_interface.name,
+        username: team_leader_interface.username,
+        password: team_leader_interface.password,
+        team_name: team_leader_interface.team_name,
+        team_rules: team_leader_interface.team_rules
+    }, team_leader_interface.id)
+    static create = async (props: Omit<ITeamLeader, 'id' | 'role'>) => await teamLeaderRepository.create((new TeamLeader(props)).toInterface())
+    static get = async (filter?: Partial<ITeamLeader>) => await teamLeaderRepository.get(filter)
+    static delete = async (filter?: Partial<ITeamLeader>) => await teamLeaderRepository.delete(filter)
     
     public readonly boss_id: string
 
     public team_name: string
-    public moa: number
-    public mpw: number
+    public team_rules: Rules
+
+    toInterface = () => ({
+        boss_id: this.boss_id,
+        id: this.id,
+        name: this.name,
+        username: this.username,
+        password: this.password,
+        role: this.role,
+        team_name: this.team_name,
+        team_rules: {
+            moa: this.team_rules.getMOA(),
+            mpw: this.team_rules.getMPW()
+        }
+    }) as ITeamLeader
 
     createMember = (props: Omit<User, 'id'>) => new Member(props, this.id)
-
-    update = async (team_leader: Partial<Pick<TeamLeader, 'name' | 'moa' | 'mpw'>>) => {
+    
+    update = async (team_leader: { name?: string, team_rules?: IRules }) => {
         const updated = await teamLeaderRepository.update(this.id, team_leader)
         Object.assign(this, updated)
     }
@@ -32,7 +54,6 @@ export class TeamLeader extends User implements ITeamLeader
     constructor(props: Omit<ITeamLeader, 'id' | 'role'>, id?: string) {
         super({ ...props, role: 'team_leader' }, id)
         this.team_name = props.team_name
-        this.moa = props.moa
-        this.mpw = props.mpw
+        this.team_rules = new Rules(props.team_rules.moa, props.team_rules.mpw)
     }
 }

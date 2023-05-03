@@ -51,7 +51,7 @@ app.patch('/team/:id', async (req, res) => {
     console.log(team_leader.id)
 
     try {
-        team_leader.update({ name, moa, mpw })
+        team_leader.update({ name, team_rules: { moa, mpw } })
         res.status(201).json('Atualizado com sucesso!')
     } catch(err) {
         console.log(err)
@@ -77,11 +77,14 @@ app.delete('/team/:id', async (req, res) => {
 app.post('/boss/register', async(req, res) => {
     const { name, username, password, confirmpassword, organization_name, moa, mpw } = req.body
 
-    const salt = await bcrypt.genSalt(12)
+    console.log('Entrei na rota')
+    const salt = await bcrypt.genSalt(5)
+    console.log(`salt: ${salt}`)
     const passwordHash = await bcrypt.hash(password, salt)
-    
+    console.log(`passHash: ${passwordHash}`)
+
     try {
-        const boss = Boss.create({ name, username, password: passwordHash, organization_name, moa, mpw })
+        const boss = Boss.create({ name, username, password: passwordHash, organization_name, organization_rules: { moa, mpw } })
         res.status(201).json({msg: 'Usuársio cadastrado com sucesso'})
     } catch (err) {
         console.log(err)
@@ -106,8 +109,15 @@ app.patch('/boss/:id', async (req, res) => {
     const boss = (await Boss.get({ id }))[0] 
     console.log(boss.id)
 
+    if (!moa) {
+        moa = boss.organization_rules.getMOA()
+    }
+    if (!mpw) {
+        mpw = boss.organization_rules.getMPW()
+    }
+
     try {
-        boss.update({ name, moa, mpw })
+        boss.update({ name, organization_rules: { moa, mpw } })
         res.status(201).json('Atualizado com sucesso!')
     } catch(err) {
         console.log(err)
@@ -185,9 +195,9 @@ const dbUser = process.env.DB_USER
 const dbPass = process.env.DB_PASS
 
 mongoose
-    .connect(`mongodb+srv://${dbUser}:${dbPass}@smartshiftdb.aixb2uu.mongodb.net/?retryWrites=true&w=majority`)
+    .connect(`mongodb+srv://${dbUser}:${dbPass}@smartshiftdb.0ulhk4x.mongodb.net/?retryWrites=true&w=majority`)
     .then(() => {
-        app.listen(3333, () => console.log("Rodando na porta 3333..."))
+        app.listen(4000, () => console.log("Rodando na porta 4000..."))
         console.log('Conectou ao banco!')
     })
     .catch((err) => console.log(err))
