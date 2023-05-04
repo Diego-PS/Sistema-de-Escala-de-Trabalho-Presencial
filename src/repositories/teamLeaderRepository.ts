@@ -1,21 +1,28 @@
 import { TeamLeaderDB } from "../database/models/TeamLeaderDB"
-import { ITeamLeader, TeamLeader } from "../entities/TeamLeader"
+import { IExParamsTeamLeader, ITeamLeader, TeamLeader } from "../entities/TeamLeader"
 import { IRepository } from "./IRepository"
 
-export class TeamLeaderRepository implements IRepository<ITeamLeader>
+export class TeamLeaderRepository implements IRepository<ITeamLeader, IExParamsTeamLeader>
 {
     async create(team_leader: ITeamLeader) {
         const team_leaderDB = new TeamLeaderDB()
         Object.assign(team_leaderDB, team_leader)
-        const created_team_leaderDB = await team_leaderDB.save()
-        const created_team_leader_interface = created_team_leaderDB as ITeamLeader
-        return created_team_leader_interface
+        await team_leaderDB.save()
+        return team_leader
     }
     
     async get(filter?: Partial<ITeamLeader>) {
-        const team_leaderesDB = await TeamLeaderDB.find(filter)
-        const team_leaderes_interface = team_leaderesDB as ITeamLeader[]
-        return team_leaderes_interface
+        const team_leadersDB = await TeamLeaderDB.find(filter)
+        const team_leaders_interface = team_leadersDB as IExParamsTeamLeader[]
+        return team_leaders_interface
+    }
+
+    async getByIds(ids: string[]) {
+        const team_leaders_DB = await TeamLeaderDB.find({
+            id: { $in: ids }
+        })
+        const team_leaders_interface = team_leaders_DB as IExParamsTeamLeader[]
+        return team_leaders_interface
     }
 
     async update(id: string, team_leader: Partial<ITeamLeader>) {

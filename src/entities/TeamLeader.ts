@@ -9,7 +9,15 @@ export interface ITeamLeader extends IUser
     boss_id: string,
     team_name: string,
     team_rules: IRules
-} 
+}
+
+export interface IExParamsTeamLeader
+{
+    id: string
+    boss_id: string,
+    team_name: string,
+    team_rules: IRules
+}
 
 export class TeamLeader extends User
 {
@@ -21,9 +29,9 @@ export class TeamLeader extends User
         team_name: team_leader_interface.team_name,
         team_rules: team_leader_interface.team_rules
     }, team_leader_interface.id)
-    static create = async (props: Omit<ITeamLeader, 'id' | 'role'>) => TeamLeader.fromInterface(await teamLeaderRepository.create((new TeamLeader(props)).toInterface()))
-    static get = async (filter?: Partial<ITeamLeader>) => (await teamLeaderRepository.get(filter)).map(team_leader_interface => TeamLeader.fromInterface(team_leader_interface))
-    static delete = async (filter?: Partial<ITeamLeader>) => await teamLeaderRepository.delete(filter)
+    // static create = async (props: Omit<ITeamLeader, 'id' | 'role'>) => TeamLeader.fromInterface(await teamLeaderRepository.create((new TeamLeader(props)).toInterface()))
+    // static get = async (filter?: Partial<ITeamLeader>) => (await teamLeaderRepository.get(filter)).map(team_leader_interface => TeamLeader.fromInterface(team_leader_interface))
+    // static delete = async (filter?: Partial<ITeamLeader>) => await teamLeaderRepository.delete(filter)
     
     public readonly boss_id: string
 
@@ -43,14 +51,21 @@ export class TeamLeader extends User
             mpw: this.team_rules.getMPW()
         }
     }) as ITeamLeader
+    toUserInterface = () => ({
+        id: this.id,
+        name: this.name,
+        username: this.username,
+        password: this.password,
+        role: this.role
+    }) as IUser
 
-    createMember = async (props: Pick<IMember, 'name' | 'username' | 'password'>) => await Member.create({ ...props, team_leader_id: this.id, desired_schedule: { mon: true, tue: true, wed: true, thu: true, fri: true }, actual_schedule: { mon: true, tue: true, wed: true, thu: true, fri: true } })
+    // createMember = async (props: Pick<IMember, 'name' | 'username' | 'password'>) => await Member.create({ ...props, team_leader_id: this.id, desired_schedule: { mon: true, tue: true, wed: true, thu: true, fri: true }, actual_schedule: { mon: true, tue: true, wed: true, thu: true, fri: true } })
     
-    update = async (team_leader: { name?: string, team_rules?: IRules }) => {
-        const updated = await teamLeaderRepository.update(this.id, team_leader)
-        Object.assign(this, updated)
-    }
-    delete = async () => teamLeaderRepository.delete({ id: this.id })
+    // update = async (team_leader: { name?: string, team_rules?: IRules }) => {
+    //     const updated = await teamLeaderRepository.update(this.id, team_leader)
+    //     Object.assign(this, updated)
+    // }
+    // delete = async () => teamLeaderRepository.delete({ id: this.id })
 
     constructor(props: Omit<ITeamLeader, 'id' | 'role'>, id?: string) {
         super({ ...props, role: 'team_leader' }, id)

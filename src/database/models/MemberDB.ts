@@ -4,7 +4,7 @@ import { IMember } from '../../entities/Member'
 
 
 export const memberSchema = new Schema<IMember>({
-    ...userSchema.obj,
+    id: { type: String, unique: true, required: true },
     team_leader_id: { type: String, required: true },
     desired_schedule: { type: Object, required: true },
     actual_schedule: { type: Object, required: true }

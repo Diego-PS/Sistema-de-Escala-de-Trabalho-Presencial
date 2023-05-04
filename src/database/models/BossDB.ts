@@ -4,7 +4,7 @@ import { IBoss } from '../../entities/Boss'
 
 
 export const bossSchema = new Schema<IBoss>({
-    ...userSchema.obj,
+    id: { type: String, unique: true, required: true },
     organization_name: { type: String, unique: true, required: true },
     organization_rules: { type: Object, required: true }
 })

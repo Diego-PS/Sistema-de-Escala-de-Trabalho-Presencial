@@ -1,21 +1,27 @@
 import { MemberDB } from "../database/models/MemberDB"
-import { IMember } from "../entities/Member"
+import { IExParamsMember, IMember, Member } from "../entities/Member"
 import { IRepository } from "./IRepository"
 
-export class MemberRepository implements IRepository<IMember>
+export class MemberRepository implements IRepository<IMember, IExParamsMember>
 {
     async create(member: IMember) {
         const memberDB = new MemberDB()
         Object.assign(memberDB, member)
-        const created_memberDB = await memberDB.save()
-        const created_member_interface = created_memberDB as IMember
-        console.log(created_member_interface)
-        return created_member_interface
+        await memberDB.save()
+        return member
     }
     
     async get(filter?: Partial<IMember>) {
         const membersDB = await MemberDB.find(filter)
-        const members_interface = membersDB as IMember[]
+        const members_interface = membersDB as IExParamsMember[]
+        return members_interface
+    }
+
+    async getByIds(ids: string[]) {
+        const membersDB = await MemberDB.find({
+            id: { $in: ids }
+        })
+        const members_interface = membersDB as IExParamsMember[]
         return members_interface
     }
 

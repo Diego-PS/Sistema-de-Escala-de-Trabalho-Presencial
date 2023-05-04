@@ -4,7 +4,7 @@ import { ITeamLeader } from '../../entities/TeamLeader'
 
 
 export const teamLeaderSchema = new Schema<ITeamLeader>({
-    ...userSchema.obj,
+    id: { type: String, unique: true, required: true },
     boss_id: { type: String, required: true },
     team_name: { type: String, required: true },
     team_rules: { type: Object, required: true }
