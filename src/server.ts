@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
 })
 
 app.post('/team/register/:id', async(req, res) => {
-    const { name, username, password, confirmpassword, team_name } = req.body
+    const { name, username, password, team_name } = req.body
 
     const id = req.params.id
 
@@ -76,7 +76,7 @@ app.delete('/team/:id', async (req, res) => {
 })
 
 app.post('/boss/register', async(req, res) => {
-    const { name, username, password, confirmpassword, organization_name, moa, mpw } = req.body
+    const { name, username, password, organization_name, moa, mpw } = req.body
 
     console.log('Entrei na rota')
     const salt = await bcrypt.genSalt(5)
@@ -171,37 +171,36 @@ app.get('/member', async(req, res) => {
     }
 })
 
-// app.patch('/team/:id', async (req, res) => {
-//     const id = req.params.id
+app.patch('/member/:id', async (req, res) => {
+    const id = req.params.id
 
-//     let { name, moa, mpw } = req.body
+    const { name, mon, tue, wed, thu, fri } = req.body
+    
+    const member = (await Member.get({ id }))[0] 
 
-//     const team_leader = (await TeamLeader.get({ id }))[0] 
-//     console.log(team_leader.id)
+    try {
+        member.update({ name, desired_schedule: { mon, tue, wed, thu, fri } })
+        res.status(201).json('Atualizado com sucesso!')
+    } catch(err) {
+        console.log(err)
+    }
+})
 
-//     try {
-//         team_leader.update({ name, team_rules: { moa, mpw } })
-//         res.status(201).json('Atualizado com sucesso!')
-//     } catch(err) {
-//         console.log(err)
-//     }
-// })
+app.delete('/member/:id', async (req, res) => {
+    const id = req.params.id
 
-// app.delete('/team/:id', async (req, res) => {
-//     const id = req.params.id
+    const member = (await Member.get({ id }))[0] 
+    console.log(member.id)
 
-//     const team_leader = (await TeamLeader.get({ id }))[0] 
-//     console.log(team_leader.id)
-
-//     try {
-//         team_leader.delete()
-//         res.status(201).json('Atualizado com sucesso!')
-//     } catch(err) {
-//         console.log(err)
-//     }
+    try {
+        member.delete()
+        res.status(201).json('Atualizado com sucesso!')
+    } catch(err) {
+        console.log(err)
+    }
 
 
-// })
+})
 
 
 // Register User
@@ -257,7 +256,7 @@ const dbUser = process.env.DB_USER
 const dbPass = process.env.DB_PASS
 
 mongoose
-    .connect(`mongodb+srv://${dbUser}:${dbPass}@smartshiftdb.0ulhk4x.mongodb.net/?retryWrites=true&w=majority`)
+    .connect(`mongodb+srv://${dbUser}:${dbPass}@smartshiftdb.aixb2uu.mongodb.net/?retryWrites=true&w=majority`)
     .then(() => {
         app.listen(4000, () => console.log("Rodando na porta 4000..."))
         console.log('Conectou ao banco!')

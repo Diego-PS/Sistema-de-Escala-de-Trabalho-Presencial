@@ -1,4 +1,4 @@
-import { uuid } from "uuidv4"
+import { v4 } from "uuid"
 
 export interface IUser 
 {
@@ -21,7 +21,7 @@ export class User implements IUser
     constructor(props: Omit<IUser, 'id'>, id?: string) {
         Object.assign(this, props)
         if (!id) {
-            this.id = uuid()
+            this.id = v4()
         } else {
             this.id = id
         }

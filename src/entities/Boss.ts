@@ -18,8 +18,8 @@ export class Boss extends User
         organization_name: boss_interface.organization_name,
         organization_rules: boss_interface.organization_rules
     }, boss_interface.id)
-    static create = async (props: Omit<IBoss, 'id' | 'role'>) => await bossRepository.create((new Boss(props)).toInterface())
-    static get = async (filter?: Partial<IBoss>) => await bossRepository.get(filter)
+    static create = async (props: Omit<IBoss, 'id' | 'role'>) => Boss.fromInterface(await bossRepository.create((new Boss(props)).toInterface()))
+    static get = async (filter?: Partial<IBoss>) => (await bossRepository.get(filter)).map(boss_interface => Boss.fromInterface(boss_interface))
     static delete = async (filter?: Partial<IBoss>) => await bossRepository.delete(filter)
 
     public organization_name: string

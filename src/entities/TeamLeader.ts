@@ -1,6 +1,7 @@
 import { teamLeaderRepository } from "../repositories"
 import { IMember, Member } from "./Member"
 import { IRules, Rules } from "./Rules"
+import { ISchedule } from "./Schedule"
 import { IUser, User } from "./User"
 
 export interface ITeamLeader extends IUser
@@ -20,8 +21,8 @@ export class TeamLeader extends User
         team_name: team_leader_interface.team_name,
         team_rules: team_leader_interface.team_rules
     }, team_leader_interface.id)
-    static create = async (props: Omit<ITeamLeader, 'id' | 'role'>) => await teamLeaderRepository.create((new TeamLeader(props)).toInterface())
-    static get = async (filter?: Partial<ITeamLeader>) => await teamLeaderRepository.get(filter)
+    static create = async (props: Omit<ITeamLeader, 'id' | 'role'>) => TeamLeader.fromInterface(await teamLeaderRepository.create((new TeamLeader(props)).toInterface()))
+    static get = async (filter?: Partial<ITeamLeader>) => (await teamLeaderRepository.get(filter)).map(team_leader_interface => TeamLeader.fromInterface(team_leader_interface))
     static delete = async (filter?: Partial<ITeamLeader>) => await teamLeaderRepository.delete(filter)
     
     public readonly boss_id: string
@@ -43,7 +44,7 @@ export class TeamLeader extends User
         }
     }) as ITeamLeader
 
-    createMember = async (props: Omit<IMember, 'id' | 'team_leader_id' | 'desired_schedule' | 'actual_schedule' | 'role'>) => await Member.create({ ...props, team_leader_id: this.id, desired_schedule: { mon: true, tue: true, wed: true, thu: true, fri: true}, actual_schedule: { mon: true, tue: true, wed: true, thu: true, fri: true} })
+    createMember = async (props: Pick<IMember, 'name' | 'username' | 'password'>) => await Member.create({ ...props, team_leader_id: this.id, desired_schedule: { mon: true, tue: true, wed: true, thu: true, fri: true }, actual_schedule: { mon: true, tue: true, wed: true, thu: true, fri: true } })
     
     update = async (team_leader: { name?: string, team_rules?: IRules }) => {
         const updated = await teamLeaderRepository.update(this.id, team_leader)

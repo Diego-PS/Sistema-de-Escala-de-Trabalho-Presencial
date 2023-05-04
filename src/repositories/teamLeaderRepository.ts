@@ -1,31 +1,26 @@
 import { TeamLeaderDB } from "../database/models/TeamLeaderDB"
-import { IRules } from "../entities/Rules"
 import { ITeamLeader, TeamLeader } from "../entities/TeamLeader"
+import { IRepository } from "./IRepository"
 
-export class TeamLeaderRepository 
+export class TeamLeaderRepository implements IRepository<ITeamLeader>
 {
     async create(team_leader: ITeamLeader) {
         const team_leaderDB = new TeamLeaderDB()
         Object.assign(team_leaderDB, team_leader)
         const created_team_leaderDB = await team_leaderDB.save()
         const created_team_leader_interface = created_team_leaderDB as ITeamLeader
-        const created_team_leader = TeamLeader.fromInterface(created_team_leader_interface)
-        return created_team_leader
+        return created_team_leader_interface
     }
     
     async get(filter?: Partial<ITeamLeader>) {
         const team_leaderesDB = await TeamLeaderDB.find(filter)
-        const team_leaderes = team_leaderesDB.map(team_leaderDB => {
-            const team_leader_interface = team_leaderDB as ITeamLeader
-            const team_leader = TeamLeader.fromInterface(team_leader_interface)
-            return team_leader
-        })
-        return team_leaderes
+        const team_leaderes_interface = team_leaderesDB as ITeamLeader[]
+        return team_leaderes_interface
     }
 
-    async update(id: string, team_leader: { name?: string, team_rules?: IRules }) {
+    async update(id: string, team_leader: Partial<ITeamLeader>) {
         await TeamLeaderDB.updateOne({ id }, team_leader)
-        return this.get({ id })
+        return this.get({ id })[0]
     }
 
     async delete(filter?: Partial<ITeamLeader>) {

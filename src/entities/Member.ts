@@ -19,8 +19,8 @@ export class Member extends User
         desired_schedule: member_interface.desired_schedule,
         actual_schedule: member_interface.actual_schedule
     }, member_interface.id)
-    static create = async (props: Omit<IMember, 'id' | 'role'>) => await memberRepository.create((new Member(props)).toInterface())
-    static get = async (filter?: Partial<IMember>) => await memberRepository.get(filter)
+    static create = async (props: Omit<IMember, 'id' | 'role'>) => Member.fromInterface(await memberRepository.create((new Member(props)).toInterface()))
+    static get = async (filter?: Partial<IMember>) => (await memberRepository.get(filter)).map(member_interface => Member.fromInterface(member_interface))
     static delete = async (filter: Partial<IMember>) => await memberRepository.delete(filter)
 
     public readonly team_leader_id: string

@@ -22,6 +22,6 @@ export class Schedule
     satisfies = (rules: Rules) => this.getAttendance() <= rules.getMOA()
 
     constructor(props: ISchedule) {
-        Object.assign(props)
+        Object.assign(this, props)
     }
 }
