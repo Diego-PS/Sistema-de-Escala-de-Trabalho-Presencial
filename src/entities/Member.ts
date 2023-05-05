@@ -30,6 +30,7 @@ export class Member extends User
     static create = async (props: Omit<IMember, 'id' | 'role'>) => await memberServices.create(new Member(props))
     static getAll = async () => await memberServices.getAll()
     static getById = async (id: string) => await memberServices.getById(id)
+    static getByUsername = async (username: string) => await memberServices.getByUsername(username)
 
     public readonly team_leader_id: string
 

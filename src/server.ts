@@ -12,6 +12,7 @@ import { Member } from "./entities/Member";
 import { BossServices } from "./services/bossServices";
 import { bossServices, memberServices, teamLeaderServices } from "./services";
 import { bossController } from "./controllers/bossController";
+import { bossValidators } from "./validators/bossValidators";
 
 dotenv.config()
 // teste
@@ -74,13 +75,13 @@ app.delete('/team/:id', async (req, res) => {
 
 })
 
-app.post('/boss/register', bossController.register)
+app.post('/boss/register', bossValidators.register, bossController.register)
 
-app.get('/boss', bossController.get)
+app.get('/boss', bossValidators.get, bossController.get)
 
-app.get('/boss/teamleaders/:id', bossController.getTeamLeaders)
+app.get('/boss/teamleaders/:id', bossValidators.getTeamLeaders, bossController.getTeamLeaders)
 
-app.get('/boss/changerules/:id', bossController.changeOrganizationRules)
+app.get('/boss/changerules/:id', bossValidators.changeOrganizationRules, bossController.changeOrganizationRules)
 
 app.patch('/boss/:id', async (req, res) => {
     const id = req.params.id

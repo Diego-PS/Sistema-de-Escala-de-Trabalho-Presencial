@@ -30,8 +30,8 @@ export class Rules
 
     satisfies = (rules: Rules) => this.getMOA() >= rules.getMOA() && this.getMPW() >= rules.getMPW()
 
-    constructor(moa: number, mpw: number) {
-        this.setMOA(moa)
-        this.setMPW(mpw)
+    constructor(rules: IRules) {
+        this.setMOA(rules.moa)
+        this.setMPW(rules.mpw)
     }
 }

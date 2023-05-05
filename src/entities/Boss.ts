@@ -28,6 +28,7 @@ export class Boss extends User
     static create = async (props: Omit<IBoss, 'id' | 'role'>) => await bossServices.create(new Boss(props))
     static getAll = async (filter?: Partial<IBoss>) => await bossServices.getAll()
     static getById = async (id: string) => await bossServices.getById(id)
+    static getByUsername = async (username: string) => await bossServices.getByUsername(username)
 
     public organization_name: string
     public organization_rules: Rules
@@ -55,6 +56,7 @@ export class Boss extends User
     createTeamLeader = async (props: Omit<ITeamLeader, 'id' | 'boss_id' | 'team_rules' | 'role'>) => await TeamLeader.create({ ...props, boss_id: this.id, team_rules: { moa: this.organization_rules.getMOA(), mpw: this.organization_rules.getMPW() } })
     getTeamLeaders = async () => await bossServices.getTeamLeaders(this.id)
     
+    changeOrganizationRules = async (new_rules: IRules) => bossServices.changeOrganizationRules(this.id, new_rules)
     update = async (boss: { name?: string, organization_rules?: IRules, organization_name?: string }) => {
         const updated = await bossServices.update(this.id, boss)
         Object.assign(this, updated)
@@ -64,6 +66,6 @@ export class Boss extends User
     constructor(props?: Omit<IBoss, 'id' | 'role'>, id?: string) {
         super({ ...props, role: 'boss' }, id)
         this.organization_name = props.organization_name
-        this.organization_rules = new Rules(props.organization_rules.moa, props.organization_rules.mpw)
+        this.organization_rules = new Rules(props.organization_rules)
     }
 }

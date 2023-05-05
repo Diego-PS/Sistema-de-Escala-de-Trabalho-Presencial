@@ -1,4 +1,6 @@
-import { memberServices } from "."
+import { bossServices, memberServices } from "."
+import { IRules, Rules } from "../abstractions/Rules"
+import { Boss } from "../entities/Boss"
 import { Member } from "../entities/Member"
 import { IExParamsTeamLeader, ITeamLeader, TeamLeader } from "../entities/TeamLeader"
 import { User } from "../entities/User"
@@ -9,6 +11,8 @@ import { userServices } from "./userServices"
 export interface ITeamLeaderServices extends IServices<ITeamLeader, IExParamsTeamLeader, TeamLeader>
 {
     getTeamMembers: (id: string) => Promise<Member[]>
+    getBoss: (id: string) => Promise<Boss>
+    changeTeamRules: (id: string, new_rules: IRules) => Promise<void>
 }
 
 export class TeamLeaderServices implements ITeamLeaderServices
@@ -80,5 +84,20 @@ export class TeamLeaderServices implements ITeamLeaderServices
     async getTeamMembers(id: string) {
         const members = await memberServices.get({ team_leader_id: id })
         return members
+    }
+
+    async getBoss(id: string) {
+        const team_leader = await this.getById(id)
+        const boss = await bossServices.getById(team_leader.boss_id)
+        return boss
+    }
+
+    async changeTeamRules(id: string, new_rules: IRules) {
+        const new_rules_object = new Rules(new_rules)
+        const boss = await this.getBoss(id)
+        if (!new_rules_object.satisfies(boss.organization_rules)) {
+            throw new Error('Team rules must satisfy organization rules')
+        }
+        await this.update(id, { team_rules: new_rules })
     }
 }

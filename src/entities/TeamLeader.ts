@@ -31,6 +31,7 @@ export class TeamLeader extends User
     static create = async (props: Omit<ITeamLeader, 'id' | 'role'>) => await teamLeaderServices.create(new TeamLeader(props))
     static getAll = async () => await teamLeaderServices.getAll()
     static getById = async (id: string) => await teamLeaderServices.getById(id)
+    static getByUsername = async (username: string) => await teamLeaderServices.getByUsername(username)
     
     public readonly boss_id: string
 
@@ -60,7 +61,9 @@ export class TeamLeader extends User
 
     createMember = async (props: Pick<IMember, 'name' | 'username' | 'password'>) => await Member.create({ ...props, team_leader_id: this.id, desired_schedule: { mon: true, tue: true, wed: true, thu: true, fri: true }, actual_schedule: { mon: true, tue: true, wed: true, thu: true, fri: true } })
     getMembers = async () => await teamLeaderServices.getTeamMembers(this.id)
+    getBoss = async () => await teamLeaderServices.getBoss(this.id)
 
+    changeTeamRules = async (new_rules: IRules) => await teamLeaderServices.changeTeamRules(this.id, new_rules)
     update = async (team_leader: { name?: string, team_rules?: IRules }) => {
         const updated = await teamLeaderServices.update(this.id, team_leader)
         Object.assign(this, updated)
@@ -70,6 +73,6 @@ export class TeamLeader extends User
     constructor(props: Omit<ITeamLeader, 'id' | 'role'>, id?: string) {
         super({ ...props, role: 'team_leader' }, id)
         this.team_name = props.team_name
-        this.team_rules = new Rules(props.team_rules.moa, props.team_rules.mpw)
+        this.team_rules = new Rules(props.team_rules)
     }
 }

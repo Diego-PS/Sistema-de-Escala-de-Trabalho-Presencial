@@ -1,4 +1,5 @@
 import { v4 } from "uuid"
+import { userServices } from "../services/userServices"
 
 export interface IUser 
 {
@@ -17,6 +18,9 @@ export class User implements IUser
         password: user_interface.password,
         role: user_interface.role
     }, user_interface.id)
+    static getAll = async () => await userServices.getAll()
+    static getById = async (id: string) => await userServices.getById(id)
+    static getByUsername = async (username: string) => await userServices.getByUsername(username)
 
     public readonly id: string
 
