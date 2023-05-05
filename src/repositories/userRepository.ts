@@ -19,9 +19,7 @@ export class UserRepository implements IRepository<IUser, IUser>
     }
 
     async getByIds(ids: string[]) {
-        const usersDB = await UserDB.find({
-            id: { $in: ids }
-        })
+        const usersDB = await UserDB.find({ id: { $in: ids } })
         const users_interface = usersDB as IUser[]
         return users_interface
     }
@@ -33,6 +31,9 @@ export class UserRepository implements IRepository<IUser, IUser>
 
     async delete(filter?: Partial<IUser>) {
         await UserDB.deleteMany(filter)
-        return true
+    }
+
+    async deleteByIds(ids: string[]) {
+        await UserDB.deleteMany({ id: { $in: ids } })
     }
 }

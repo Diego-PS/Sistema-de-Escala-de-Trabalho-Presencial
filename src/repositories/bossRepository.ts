@@ -18,9 +18,7 @@ export class BossRepository implements IRepository<IBoss, IExParamsBoss>
     }
 
     async getByIds(ids: string[]) {
-        const bossDB = await BossDB.find({
-            id: { $in: ids }
-        })
+        const bossDB = await BossDB.find({ id: { $in: ids } })
         const boss_interface = bossDB as IExParamsBoss[]
         return boss_interface
     }
@@ -32,6 +30,9 @@ export class BossRepository implements IRepository<IBoss, IExParamsBoss>
 
     async delete(filter?: Partial<IBoss>) {
         await BossDB.deleteMany(filter)
-        return true
+    }
+
+    async deleteByIds(ids: string[]) {
+        await BossDB.deleteMany({ id: { $in: ids } })
     }
 }

@@ -52,6 +52,13 @@ export class MemberServices implements IServices<IMember, IExParamsMember, Membe
         return updated_member
     }
 
+    async delete(filter?: Partial<IMember>) {
+        const get_members = await this.repository.get(filter)
+        const ids = get_members.map(team => team.id)
+        await this.repository.deleteByIds(ids)
+        await userServices.deleteByIds(ids)
+    }
+
     async deleteById(id: string) {
         await this.repository.delete({ id })
         await userServices.deleteById(id)

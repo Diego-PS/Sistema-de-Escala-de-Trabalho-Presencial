@@ -18,9 +18,7 @@ export class MemberRepository implements IRepository<IMember, IExParamsMember>
     }
 
     async getByIds(ids: string[]) {
-        const membersDB = await MemberDB.find({
-            id: { $in: ids }
-        })
+        const membersDB = await MemberDB.find({ id: { $in: ids } })
         const members_interface = membersDB as IExParamsMember[]
         return members_interface
     }
@@ -32,6 +30,9 @@ export class MemberRepository implements IRepository<IMember, IExParamsMember>
 
     async delete(filter?: Partial<IMember>) {
         await MemberDB.deleteMany(filter)
-        return true
+    }
+
+    async deleteByIds(ids: string[]) {
+        await MemberDB.deleteMany({ id: { $in: ids } })
     }
 }

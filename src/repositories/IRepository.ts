@@ -4,5 +4,6 @@ export interface IRepository<IEntity, IExParamsEntity>
     get: (filter?: Partial<IEntity>) => Promise<IExParamsEntity[]>
     getByIds: (ids: string[]) => Promise<IExParamsEntity[]>
     update: (id: string, payload: Partial<IEntity>) => Promise<IExParamsEntity>
-    delete: (filter?: Partial<IEntity>) => Promise<boolean>
+    delete: (filter?: Partial<IEntity>) => Promise<void>
+    deleteByIds: (ids: string[]) => Promise<void>
 }

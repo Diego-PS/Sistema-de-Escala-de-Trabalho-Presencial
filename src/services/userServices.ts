@@ -36,7 +36,12 @@ export class UserServices implements IServices<IUser, IUser, User>
     }
 
     async getByUsername(username: string) {
-        const user = (await this.get({ username }))[0]
+        const user_list = await this.get({ username })
+        if (user_list.length === 0) {
+            console.log('Lista vazia')
+            return null
+        }
+        const user = user_list[0]
         return user
     }
 
@@ -45,8 +50,16 @@ export class UserServices implements IServices<IUser, IUser, User>
         return this.getById(id)
     }
 
+    async delete(filter?: Partial<IUser>) {
+        await this.repository.delete(filter)
+    }
+
     async deleteById(id: string) {
         await this.repository.delete({ id })
+    }
+
+    async deleteByIds(ids: string[]) {
+        await this.repository.deleteByIds(ids)
     }
 
     async deleteByUsername(username: string) {

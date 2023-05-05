@@ -59,12 +59,20 @@ export class TeamLeaderServices implements ITeamLeaderServices
         return updated_team_member
     }
 
+    async delete(filter?: Partial<ITeamLeader>) {
+        const get_teams = await this.repository.get(filter)
+        const ids = get_teams.map(team => team.id)
+        ids.forEach(async id => await this.deleteById(id))
+    }
+
     async deleteById(id: string) {
+        await memberServices.delete({ team_leader_id: id })
         await this.repository.delete({ id })
         await userServices.deleteById(id)
     }
-
+    
     async deleteByUsername(username: string) {
+        await memberServices.delete({ team_leader_id: username })
         await this.repository.delete({ username })
         await userServices.deleteByUsername(username)
     }

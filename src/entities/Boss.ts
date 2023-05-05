@@ -1,7 +1,7 @@
-import { bossRepository } from "../repositories"
-import { IRules, Rules } from "./Rules"
+import { IRules, Rules } from "../abstractions/Rules"
 import { ITeamLeader, TeamLeader } from "./TeamLeader"
 import { IUser, User } from "./User"
+import { bossServices } from "../services"
 
 export interface IBoss extends IUser
 {
@@ -25,9 +25,9 @@ export class Boss extends User
         organization_name: boss_interface.organization_name,
         organization_rules: boss_interface.organization_rules
     }, boss_interface.id)
-    // static create = async (props: Omit<IBoss, 'id' | 'role'>) => Boss.fromInterface(await bossRepository.create((new Boss(props)).toInterface()))
-    // static get = async (filter?: Partial<IBoss>) => (await bossRepository.get(filter)).map(boss_interface => Boss.fromInterface(boss_interface))
-    // static delete = async (filter?: Partial<IBoss>) => await bossRepository.delete(filter)
+    static create = async (props: Omit<IBoss, 'id' | 'role'>) => await bossServices.create(new Boss(props))
+    static getAll = async (filter?: Partial<IBoss>) => await bossServices.getAll()
+    static getById = async (id: string) => await bossServices.getById(id)
 
     public organization_name: string
     public organization_rules: Rules
@@ -52,13 +52,14 @@ export class Boss extends User
         role: this.role
     }) as IUser
     
-    // createTeamLeader = async (props: Omit<ITeamLeader, 'id' | 'boss_id' | 'team_rules' | 'role'>) => await TeamLeader.create({ ...props, boss_id: this.id, team_rules: { moa: this.organization_rules.getMOA(), mpw: this.organization_rules.getMPW() } })
+    createTeamLeader = async (props: Omit<ITeamLeader, 'id' | 'boss_id' | 'team_rules' | 'role'>) => await TeamLeader.create({ ...props, boss_id: this.id, team_rules: { moa: this.organization_rules.getMOA(), mpw: this.organization_rules.getMPW() } })
+    getTeamLeaders = async () => await bossServices.getTeamLeaders(this.id)
     
-    // update = async (boss: { name?: string, organization_rules?: IRules }) => {
-    //     const updated = await bossRepository.update(this.id, boss)
-    //     Object.assign(this, updated)
-    // }
-    // delete = async () => bossRepository.delete({ id: this.id })
+    update = async (boss: { name?: string, organization_rules?: IRules, organization_name?: string }) => {
+        const updated = await bossServices.update(this.id, boss)
+        Object.assign(this, updated)
+    }
+    delete = async () => bossServices.deleteById(this.id)
 
     constructor(props?: Omit<IBoss, 'id' | 'role'>, id?: string) {
         super({ ...props, role: 'boss' }, id)

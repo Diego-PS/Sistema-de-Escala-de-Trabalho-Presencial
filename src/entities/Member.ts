@@ -1,6 +1,6 @@
-import { memberRepository } from "../repositories"
-import { ISchedule, Schedule } from "./Schedule"
+import { ISchedule, Schedule } from "../abstractions/Schedule"
 import { IUser, User } from "./User"
+import { memberServices } from "../services"
 
 export interface IMember extends IUser
 {
@@ -27,9 +27,9 @@ export class Member extends User
         desired_schedule: member_interface.desired_schedule,
         actual_schedule: member_interface.actual_schedule
     }, member_interface.id)
-    // static create = async (props: Omit<IMember, 'id' | 'role'>) => Member.fromInterface(await memberRepository.create((new Member(props)).toInterface()))
-    // static get = async (filter?: Partial<IMember>) => (await memberRepository.get(filter)).map(member_interface => Member.fromInterface(member_interface))
-    // static delete = async (filter: Partial<IMember>) => await memberRepository.delete(filter)
+    static create = async (props: Omit<IMember, 'id' | 'role'>) => await memberServices.create(new Member(props))
+    static getAll = async () => await memberServices.getAll()
+    static getById = async (id: string) => await memberServices.getById(id)
 
     public readonly team_leader_id: string
 
@@ -54,11 +54,11 @@ export class Member extends User
         role: this.role
     }) as IUser
 
-    // update = async (member: { name?: string, desired_schedule?: ISchedule, actual_schedule?: ISchedule }) => {
-    //     const updated = await memberRepository.update(this.id, member)
-    //     Object.assign(this, updated)
-    // }
-    // delete = async () => memberRepository.delete({ id: this.id })
+    update = async (member: { name?: string, desired_schedule?: ISchedule, actual_schedule?: ISchedule }) => {
+        const updated = await memberServices.update(this.id, member)
+        Object.assign(this, updated)
+    }
+    delete = async () => await memberServices.deleteById(this.id)
 
     constructor(props: Omit<IMember, 'id' | 'role'>, id?: string) {
         super({ ...props, role: 'member' }, id)

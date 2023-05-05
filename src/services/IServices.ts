@@ -9,6 +9,7 @@ export interface IServices<IEntity, IExParamsEntity, Entity>
     getById: (id: string) => Promise<Entity>
     getByUsername: (username: string) => Promise<Entity>
     update: (id: string, entity: Partial<IEntity>) => Promise<Entity>
+    delete: (filter?: Partial<IEntity>) => Promise<void>
     deleteById: (id: string) => Promise<void>
     deleteByUsername: (username: string) => Promise<void>
 }

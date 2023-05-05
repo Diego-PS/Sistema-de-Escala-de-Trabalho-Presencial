@@ -1,5 +1,5 @@
 import { TeamLeaderDB } from "../database/models/TeamLeaderDB"
-import { IExParamsTeamLeader, ITeamLeader, TeamLeader } from "../entities/TeamLeader"
+import { IExParamsTeamLeader, ITeamLeader } from "../entities/TeamLeader"
 import { IRepository } from "./IRepository"
 
 export class TeamLeaderRepository implements IRepository<ITeamLeader, IExParamsTeamLeader>
@@ -18,9 +18,7 @@ export class TeamLeaderRepository implements IRepository<ITeamLeader, IExParamsT
     }
 
     async getByIds(ids: string[]) {
-        const team_leaders_DB = await TeamLeaderDB.find({
-            id: { $in: ids }
-        })
+        const team_leaders_DB = await TeamLeaderDB.find({ id: { $in: ids } })
         const team_leaders_interface = team_leaders_DB as IExParamsTeamLeader[]
         return team_leaders_interface
     }
@@ -32,6 +30,9 @@ export class TeamLeaderRepository implements IRepository<ITeamLeader, IExParamsT
 
     async delete(filter?: Partial<ITeamLeader>) {
         await TeamLeaderDB.deleteMany(filter)
-        return true
+    }
+
+    async deleteByIds(ids: string[]) {
+        await TeamLeaderDB.deleteMany({ id: { $in: ids } })
     }
 }

@@ -58,7 +58,14 @@ export class BossServices implements IBossServices
         return updated_boss
     }
 
+    async delete(filter?: Partial<IBoss>) {
+        const get_bosses = await this.repository.get(filter)
+        const ids = get_bosses.map(boss => boss.id)
+        ids.forEach(async id => await this.deleteById(id))
+    }
+
     async deleteById(id: string) {
+        await teamLeaderServices.delete({ boss_id: id })
         await this.repository.delete({ id })
         await userServices.deleteById(id)
     }
