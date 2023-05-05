@@ -27,7 +27,7 @@ export class BossValidators
     }
 
     async get(req: Request, res: Response, next: NextFunction)  {
-        if (req.body !== undefined) {
+        if (Object.keys(req.body).length !== 0) {
             return res.status(400).json({ msg: 'There should not be any parameters' })
         }
 
@@ -40,7 +40,7 @@ export class BossValidators
             return res.status(400).json({ msg: 'The id parameter is not in the correct form' })
         }
         
-        if (req.body !== undefined) {
+        if (Object.keys(req.body).length !== 0) {
             return res.status(400).json({ msg: 'There should not be any parameters' })
         }
 
@@ -61,6 +61,19 @@ export class BossValidators
         delete req.body.moa
         delete req.body.mpw
         req.body.organization_rules = { moa, mpw }
+
+        next()
+    }
+
+    async delete(req: Request, res: Response, next: NextFunction) {
+        const id = req.params.id
+        if (typeof id !== 'string') {
+            return res.status(400).json({ msg: 'The id parameter is not in the correct form' })
+        }
+        
+        if (Object.keys(req.body).length !== 0) {
+            return res.status(400).json({ msg: 'There should not be any parameters' })
+        }
 
         next()
     }

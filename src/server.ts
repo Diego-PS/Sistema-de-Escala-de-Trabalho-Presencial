@@ -2,19 +2,13 @@ import { app } from "./app";
 import dotenv from 'dotenv'
 import mongoose from 'mongoose'
 import bcrypt from 'bcrypt'
-import jwt from 'jsonwebtoken'
 import { UserDB, userSchema } from "./database/models/UserDB";
 import { User } from "./entities/User";
-import { Boss, IBoss } from "./entities/Boss";
-import { IRoute } from "express";
 import { TeamLeader } from "./entities/TeamLeader";
 import { Member } from "./entities/Member";
-import { BossServices } from "./services/bossServices";
 import { bossServices, memberServices, teamLeaderServices } from "./services";
-import { bossController } from "./controllers/bossController";
-import { bossValidators } from "./validators/bossValidators";
-
 dotenv.config()
+
 // teste
 app.get('/', (req, res) => {
     res.status(200).json({ msg: 'Bem-vindo à nossa API!' })
@@ -67,52 +61,6 @@ app.delete('/team/:id', async (req, res) => {
 
     try {
         await teamLeaderServices.deleteById(id)
-        res.status(201).json('Atualizado com sucesso!')
-    } catch(err) {
-        console.log(err)
-    }
-
-
-})
-
-app.post('/boss/register', bossValidators.register, bossController.register)
-
-app.get('/boss', bossValidators.get, bossController.get)
-
-app.get('/boss/teamleaders/:id', bossValidators.getTeamLeaders, bossController.getTeamLeaders)
-
-app.get('/boss/changerules/:id', bossValidators.changeOrganizationRules, bossController.changeOrganizationRules)
-
-app.patch('/boss/:id', async (req, res) => {
-    const id = req.params.id
-
-    let { name, moa, mpw } = req.body
-
-    const boss = await bossServices.getById(id)
-    console.log(boss.id)
-
-    if (!moa) {
-        moa = boss.organization_rules.getMOA()
-    }
-    if (!mpw) {
-        mpw = boss.organization_rules.getMPW()
-    }
-
-    try {
-        bossServices.update(boss.id, { name, organization_rules: { moa, mpw } })
-        res.status(201).json('Atualizado com sucesso!')
-    } catch(err) {
-        console.log(err)
-    }
-
-
-})
-
-app.delete('/boss/:id', async (req, res) => {
-    const id = req.params.id
-
-    try {
-        bossServices.deleteById(id)
         res.status(201).json('Atualizado com sucesso!')
     } catch(err) {
         console.log(err)

@@ -15,9 +15,9 @@ export class BossController
     async register(req: Request, res: Response) {
         try {
             const boss = await Boss.create(req.body)
-            res.status(201).json({ msg: 'Organization succesufully registered' })
+            return res.status(201).json({ msg: 'Organization succesufully registered' })
         } catch (err) {
-            res.status(500).json({ msg: err?.message ?? 'Something went wrong' })
+            return res.status(500).json({ msg: err?.message ?? 'Something went wrong' })
         }
     }
 
@@ -26,7 +26,7 @@ export class BossController
             const bosses = await Boss.getAll()
             return res.status(201).json(bosses)
         } catch (err) {
-            res.status(500).json({ msg: err?.message ?? 'Something went wrong' })
+            return res.status(500).json({ msg: err?.message ?? 'Something went wrong' })
         }
     }
 
@@ -37,20 +37,30 @@ export class BossController
             const teamLeaders = await boss.getTeamLeaders() 
             return res.status(201).json(teamLeaders)
         } catch (err) {
-            res.status(500).json({ msg: err?.message ?? 'Something went wrong' })
+            return res.status(500).json({ msg: err?.message ?? 'Something went wrong' })
         }
     }
 
     async changeOrganizationRules(req: Request, res: Response) {
         const id = req.params.id
         try {
-            const boss = Boss.getById(id)
-            await (await boss).changeOrganizationRules(req.body.organization_rules)
-            res.status(201).json({ msg: 'Atualizado com sucesso'})
+            const boss = await Boss.getById(id)
+            await boss.changeOrganizationRules(req.body.organization_rules)
+            res.status(201).json({ msg: 'Organization rules successfully updated'})
         } catch(err) {
-            res.status(500).json({ msg: err?.message ?? 'Something went wrong' })
+            return res.status(500).json({ msg: err?.message ?? 'Something went wrong' })
         }
         
+    }
+
+    async delete(req: Request, res: Response) {
+        const id = req.params.id
+        try {
+            bossServices.deleteById(id)
+            return res.status(201).json({ msg: 'Organization and its boss account successfully deleted' })
+        } catch(err) {
+            return res.status(500).json({ msg: err?.message ?? 'Something went wrong' })
+        }
     }
 }
 
