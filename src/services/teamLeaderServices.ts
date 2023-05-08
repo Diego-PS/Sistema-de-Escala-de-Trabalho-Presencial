@@ -1,5 +1,6 @@
 import { bossServices, memberServices } from "."
 import { IRules, Rules } from "../abstractions/Rules"
+import { ISchedule, Schedule } from "../abstractions/Schedule"
 import { Boss } from "../entities/Boss"
 import { Member } from "../entities/Member"
 import { IExParamsTeamLeader, ITeamLeader, TeamLeader } from "../entities/TeamLeader"
@@ -7,12 +8,20 @@ import { User } from "../entities/User"
 import { IRepository } from "../repositories/IRepository"
 import { IServices } from "./IServices"
 import { userServices } from "./userServices"
+import bcrypt from "bcrypt"
+
+export interface ITeamSchedule
+{
+    [key: string]: ISchedule
+}
 
 export interface ITeamLeaderServices extends IServices<ITeamLeader, IExParamsTeamLeader, TeamLeader>
 {
     getTeamMembers: (id: string) => Promise<Member[]>
     getBoss: (id: string) => Promise<Boss>
     changeTeamRules: (id: string, new_rules: IRules) => Promise<void>
+    changeScheduleOfMember: (id: string, member_username: string, new_schedule: ISchedule) => Promise<void>
+    changeTeamSchedule: (id: string, new_schedule: ITeamSchedule) => Promise<void>
 }
 
 export class TeamLeaderServices implements ITeamLeaderServices
@@ -20,6 +29,17 @@ export class TeamLeaderServices implements ITeamLeaderServices
     constructor(public repository: IRepository<ITeamLeader, IExParamsTeamLeader>) {}
 
     async create(team_leader: TeamLeader) {
+
+        // generate hashed password
+        const salt = await bcrypt.genSalt(5)
+        const passwordHash = await bcrypt.hash(team_leader.password, salt)
+        team_leader.password = passwordHash
+
+        // check if username is already in use
+        if (await User.getByUsername(team_leader.username)) {
+            throw new Error('This username is already in use')
+        }
+
         const team_leader_user_interface = team_leader.toUserInterface()
         const team_leader_user = User.fromInterface(team_leader_user_interface)
         await userServices.create(team_leader_user)
@@ -99,5 +119,24 @@ export class TeamLeaderServices implements ITeamLeaderServices
             throw new Error('Team rules must satisfy organization rules')
         }
         await this.update(id, { team_rules: new_rules })
+    }
+
+    async changeScheduleOfMember(id: string, member_username: string, new_schedule: ISchedule) {
+        const team_leader = await this.getById(id)
+        const member = await memberServices.getByUsername(member_username)
+        if (member.team_leader_id !== id) {
+            throw new Error(`User ${member_username} is not a member of team ${team_leader.team_name}`)
+        }
+        const new_schedule_obj = new Schedule(new_schedule)
+        if (!new_schedule_obj.satisfies(team_leader.team_rules)) {
+            throw new Error(`The proposed schedule for ${member_username} does not satisfy team rules`)
+        }
+        await memberServices.update(member.id, { actual_schedule: new_schedule_obj })
+    }
+
+    async changeTeamSchedule(id: string, new_schedule: ITeamSchedule) {
+        Object.keys(new_schedule).forEach(async username => {
+            await this.changeScheduleOfMember(id, username, new_schedule[username])
+        })
     }
 }

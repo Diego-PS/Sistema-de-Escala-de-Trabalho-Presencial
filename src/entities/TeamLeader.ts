@@ -2,6 +2,7 @@ import { IMember, Member } from "./Member"
 import { IRules, Rules } from "../abstractions/Rules"
 import { IUser, User } from "./User"
 import { teamLeaderServices } from "../services"
+import { ITeamSchedule } from "../services/teamLeaderServices"
 
 export interface ITeamLeader extends IUser
 {
@@ -64,6 +65,7 @@ export class TeamLeader extends User
     getBoss = async () => await teamLeaderServices.getBoss(this.id)
 
     changeTeamRules = async (new_rules: IRules) => await teamLeaderServices.changeTeamRules(this.id, new_rules)
+    changeTeamSchedule = async (new_schedule: ITeamSchedule) => await teamLeaderServices.changeTeamSchedule(this.id, new_schedule)
     update = async (team_leader: { name?: string, team_rules?: IRules }) => {
         const updated = await teamLeaderServices.update(this.id, team_leader)
         Object.assign(this, updated)

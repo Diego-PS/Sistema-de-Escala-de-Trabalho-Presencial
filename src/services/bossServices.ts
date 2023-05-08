@@ -56,12 +56,16 @@ export class BossServices implements IBossServices
     }
 
     async getById(id: string) {
-        const boss = (await this.get({ id }))[0]
+        const boss_list = await this.get({ id })
+        if (boss_list.length === 0) throw new Error(`Boss with id ${id} not found`)
+        const boss = boss_list[0]
         return boss
     }
 
     async getByUsername(username: string) {
-        const boss = (await this.get({ username }))[0]
+        const boss_list = await this.get({ username })
+        if (boss_list.length === 0) throw new Error(`Boss with username ${username} not found`)
+        const boss = boss_list[0]
         return boss
     }
 

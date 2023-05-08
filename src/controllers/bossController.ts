@@ -16,7 +16,7 @@ export class BossController
         try {
             const boss = await Boss.create(req.body)
             return res.status(201).json({ msg: 'Organization succesufully registered' })
-        } catch (err) {
+        } catch(err) {
             return res.status(500).json({ msg: err?.message ?? 'Something went wrong' })
         }
     }
@@ -25,7 +25,7 @@ export class BossController
         try {
             const bosses = await Boss.getAll()
             return res.status(201).json(bosses)
-        } catch (err) {
+        } catch(err) {
             return res.status(500).json({ msg: err?.message ?? 'Something went wrong' })
         }
     }
@@ -34,9 +34,9 @@ export class BossController
         const id = req.params.id
         try {
             const boss = await Boss.getById(id)
-            const teamLeaders = await boss.getTeamLeaders() 
-            return res.status(201).json(teamLeaders)
-        } catch (err) {
+            const team_leaders = await boss.getTeamLeaders() 
+            return res.status(201).json(team_leaders)
+        } catch(err) {
             return res.status(500).json({ msg: err?.message ?? 'Something went wrong' })
         }
     }
@@ -45,8 +45,8 @@ export class BossController
         const id = req.params.id
         try {
             const boss = await Boss.getById(id)
-            await boss.changeOrganizationRules(req.body.organization_rules)
-            res.status(201).json({ msg: 'Organization rules successfully updated'})
+            await boss.changeOrganizationRules(req.body)
+            return res.status(201).json({ msg: 'Organization rules successfully updated'})
         } catch(err) {
             return res.status(500).json({ msg: err?.message ?? 'Something went wrong' })
         }

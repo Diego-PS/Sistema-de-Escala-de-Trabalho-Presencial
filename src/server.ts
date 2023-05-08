@@ -14,60 +14,60 @@ app.get('/', (req, res) => {
     res.status(200).json({ msg: 'Bem-vindo à nossa API!' })
 })
 
-app.post('/team/register/:id', async(req, res) => {
-    const { name, username, password, team_name } = req.body
+// app.post('/team/register/:id', async(req, res) => {
+//     const { name, username, password, team_name } = req.body
 
-    const id = req.params.id
+//     const id = req.params.id
 
-    const salt = await bcrypt.genSalt(12)
-    const passwordHash = await bcrypt.hash(password, salt)
+//     const salt = await bcrypt.genSalt(12)
+//     const passwordHash = await bcrypt.hash(password, salt)
     
-    const boss = await bossServices.getById(id)
-    console.log(boss)
+//     const boss = await bossServices.getById(id)
+//     console.log(boss)
 
-    try {
-        const team_leader_object = new TeamLeader({ name, username, password, team_name, boss_id: id, team_rules: { moa: boss.organization_rules.getMOA(), mpw: boss.organization_rules.getMPW() }})
-        const team_leader = await teamLeaderServices.create(team_leader_object)
-        res.status(201).json({msg: 'Equipe cadastrada com sucesso'})
-    } catch (err) {
-        console.log(err)
-    }
-})
+//     try {
+//         const team_leader_object = new TeamLeader({ name, username, password, team_name, boss_id: id, team_rules: { moa: boss.organization_rules.getMOA(), mpw: boss.organization_rules.getMPW() }})
+//         const team_leader = await teamLeaderServices.create(team_leader_object)
+//         res.status(201).json({msg: 'Equipe cadastrada com sucesso'})
+//     } catch (err) {
+//         console.log(err)
+//     }
+// })
 
-app.get('/team', async(req, res) => {
-    try {
-        const teams = await teamLeaderServices.getAll()
-        res.status(201).json(teams)
-    } catch (err) {
-        console.log(err)
-    }
-})
+// app.get('/team', async(req, res) => {
+//     try {
+//         const teams = await teamLeaderServices.getAll()
+//         res.status(201).json(teams)
+//     } catch (err) {
+//         console.log(err)
+//     }
+// })
 
-app.patch('/team/:id', async (req, res) => {
-    const id = req.params.id
+// app.patch('/team/:id', async (req, res) => {
+//     const id = req.params.id
 
-    let { name, moa, mpw } = req.body
+//     let { name, moa, mpw } = req.body
 
-    try {
-        await teamLeaderServices.update(id, { name, team_rules: { moa, mpw } })
-        res.status(201).json('Atualizado com sucesso!')
-    } catch(err) {
-        console.log(err)
-    }
-})
+//     try {
+//         await teamLeaderServices.update(id, { name, team_rules: { moa, mpw } })
+//         res.status(201).json('Atualizado com sucesso!')
+//     } catch(err) {
+//         console.log(err)
+//     }
+// })
 
-app.delete('/team/:id', async (req, res) => {
-    const id = req.params.id
+// app.delete('/team/:id', async (req, res) => {
+//     const id = req.params.id
 
-    try {
-        await teamLeaderServices.deleteById(id)
-        res.status(201).json('Atualizado com sucesso!')
-    } catch(err) {
-        console.log(err)
-    }
+//     try {
+//         await teamLeaderServices.deleteById(id)
+//         res.status(201).json('Atualizado com sucesso!')
+//     } catch(err) {
+//         console.log(err)
+//     }
 
 
-})
+// })
 
 // RotasMember
 app.post('/member/register/:id', async(req, res) => {
@@ -179,7 +179,7 @@ const dbUser = process.env.DB_USER
 const dbPass = process.env.DB_PASS
 
 mongoose
-    .connect(`mongodb+srv://${dbUser}:${dbPass}@smartshiftdb.aixb2uu.mongodb.net/?retryWrites=true&w=majority`)
+    .connect(`mongodb+srv://${dbUser}:${dbPass}@smartshiftdb.getm09w.mongodb.net/?retryWrites=true&w=majority`)
     .then(() => {
         app.listen(4000, () => console.log("Rodando na porta 4000..."))
         console.log('Conectou ao banco!')
