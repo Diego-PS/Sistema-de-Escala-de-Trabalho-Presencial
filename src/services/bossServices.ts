@@ -57,14 +57,16 @@ export class BossServices implements IBossServices
 
     async getById(id: string) {
         const boss_list = await this.get({ id })
-        if (boss_list.length === 0) throw new Error(`Boss with id ${id} not found`)
+        if (boss_list.length === 0) throw new Error(`No boss with id ${id} was found`)
         const boss = boss_list[0]
         return boss
     }
 
     async getByUsername(username: string) {
-        const boss_list = await this.get({ username })
-        if (boss_list.length === 0) throw new Error(`Boss with username ${username} not found`)
+        const user = await userServices.getByUsername(username)
+        if (user.role !== 'boss') throw new Error(`No boss with username ${username} was found`)
+        const boss_list = await this.get({ id: user.id })
+        if (boss_list.length === 0) throw new Error(`No boss with id ${user.id} was found`)
         const boss = boss_list[0]
         return boss
     }
@@ -79,7 +81,7 @@ export class BossServices implements IBossServices
     async delete(filter?: Partial<IBoss>) {
         const get_bosses = await this.repository.get(filter)
         const ids = get_bosses.map(boss => boss.id)
-        ids.forEach(async id => await this.deleteById(id))
+        for(const id of ids) await this.deleteById(id)
     }
 
     async deleteById(id: string) {

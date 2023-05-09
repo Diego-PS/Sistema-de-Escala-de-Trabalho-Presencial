@@ -5,6 +5,7 @@ import { Boss } from "../entities/Boss"
 import { Member } from "../entities/Member"
 import { IExParamsTeamLeader, ITeamLeader, TeamLeader } from "../entities/TeamLeader"
 import { User } from "../entities/User"
+import { userRepository } from "../repositories"
 import { IRepository } from "../repositories/IRepository"
 import { IServices } from "./IServices"
 import { userServices } from "./userServices"
@@ -67,12 +68,18 @@ export class TeamLeaderServices implements ITeamLeaderServices
     }
 
     async getById(id: string) {
-        const team_leader = (await this.get({ id }))[0]
+        const team_leader_list = await this.get({ id })
+        if (team_leader_list.length === 0) throw new Error(`No team leader with id ${id} was found`)
+        const team_leader = team_leader_list[0]
         return team_leader
     }
 
     async getByUsername(username: string) {
-        const team_leader = (await this.get({ username }))[0]
+        const user = await userServices.getByUsername(username)
+        if (user.role !== 'teamleader') throw new Error(`No team leader with username ${username} was found`)
+        const team_leader_list = await this.get({ id: user.id })
+        if (team_leader_list.length === 0) throw new Error(`No team leader with id ${user.id} was found`)
+        const team_leader = team_leader_list[0]
         return team_leader
     }
 
@@ -86,7 +93,7 @@ export class TeamLeaderServices implements ITeamLeaderServices
     async delete(filter?: Partial<ITeamLeader>) {
         const get_teams = await this.repository.get(filter)
         const ids = get_teams.map(team => team.id)
-        ids.forEach(async id => await this.deleteById(id))
+        for(const id of ids) await this.deleteById(id)
     }
 
     async deleteById(id: string) {
@@ -135,8 +142,8 @@ export class TeamLeaderServices implements ITeamLeaderServices
     }
 
     async changeTeamSchedule(id: string, new_schedule: ITeamSchedule) {
-        Object.keys(new_schedule).forEach(async username => {
+        for (const username of Object.keys(new_schedule)) {
             await this.changeScheduleOfMember(id, username, new_schedule[username])
-        })
+        }
     }
 }

@@ -36,13 +36,19 @@ export class MemberServices implements IServices<IMember, IExParamsMember, Membe
     }
 
     async getById(id: string) {
-        const user = (await this.get({ id }))[0]
-        return user
+        const member_list = await this.get({ id })
+        if (member_list.length === 0) throw new Error(`No member with id ${id} was found`)
+        const member = member_list[0]
+        return member
     }
 
     async getByUsername(username: string) {
-        const user = (await this.get({ username }))[0]
-        return user
+        const user = await userServices.getByUsername(username)
+        if (user.role !== 'member') throw new Error(`No member with username ${username} was found`)
+        const member_list = await this.get({ id: user.id })
+        if (member_list.length === 0) throw new Error(`No member with id ${user.id} was found`)
+        const member = member_list[0]
+        return member
     }
 
     async update(id: string, member: Partial<IMember>) {

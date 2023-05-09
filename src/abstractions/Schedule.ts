@@ -19,7 +19,7 @@ export class Schedule
 
     getAttendance = () => Number(this.mon) + Number(this.tue) + Number(this.wed) + Number(this.thu) + Number(this.fri)
 
-    satisfies = (rules: Rules) => this.getAttendance() <= rules.getMOA()
+    satisfies = (rules: Rules) => this.getAttendance() >= rules.getMOA()
 
     constructor(props: ISchedule) {
         Object.assign(this, props)
