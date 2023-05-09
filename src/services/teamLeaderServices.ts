@@ -1,6 +1,7 @@
 import { bossServices, memberServices } from "."
 import { IRules, Rules } from "../abstractions/Rules"
 import { ISchedule, Schedule } from "../abstractions/Schedule"
+import { ITeamSchedule, TeamSchedule } from "../abstractions/TeamSchedule"
 import { Boss } from "../entities/Boss"
 import { Member } from "../entities/Member"
 import { IExParamsTeamLeader, ITeamLeader, TeamLeader } from "../entities/TeamLeader"
@@ -10,11 +11,6 @@ import { IRepository } from "../repositories/IRepository"
 import { IServices } from "./IServices"
 import { userServices } from "./userServices"
 import bcrypt from "bcrypt"
-
-export interface ITeamSchedule
-{
-    [key: string]: ISchedule
-}
 
 export interface ITeamLeaderServices extends IServices<ITeamLeader, IExParamsTeamLeader, TeamLeader>
 {
@@ -142,6 +138,11 @@ export class TeamLeaderServices implements ITeamLeaderServices
     }
 
     async changeTeamSchedule(id: string, new_schedule: ITeamSchedule) {
+        const team_leader = await this.getById(id)
+        const new_schedule_object = new TeamSchedule(new_schedule)
+        if (!new_schedule_object.satisfies(team_leader.team_rules)) {
+            throw new Error('The proposed schedule does not satisfy team rules')
+        }
         for (const username of Object.keys(new_schedule)) {
             await this.changeScheduleOfMember(id, username, new_schedule[username])
         }

@@ -2,7 +2,7 @@ import { IMember, Member } from "./Member"
 import { IRules, Rules } from "../abstractions/Rules"
 import { IUser, User } from "./User"
 import { teamLeaderServices } from "../services"
-import { ITeamSchedule } from "../services/teamLeaderServices"
+import { ITeamSchedule } from "../abstractions/TeamSchedule"
 
 export interface ITeamLeader extends IUser
 {
