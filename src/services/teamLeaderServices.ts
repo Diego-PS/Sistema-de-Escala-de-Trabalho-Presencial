@@ -47,13 +47,15 @@ export class TeamLeaderServices implements ITeamLeaderServices
 
     async get(filter?: Partial<ITeamLeader>) {
         const team_leaders_ex_params_interface = await this.repository.get(filter)
+        const map_to_ex_params_interface = team_leaders_ex_params_interface.reduce((acc, ex_params_interface) => { acc[ex_params_interface.id] = ex_params_interface; return acc }, {})
         const team_leader_ids = team_leaders_ex_params_interface.map(team_leader_ex_params_interface => team_leader_ex_params_interface.id)
         const users = await userServices.getByIds(team_leader_ids)
-        const team_leaders = team_leaders_ex_params_interface.map((team_leader_ex_params_interface, index) => TeamLeader.fromInterface({ 
-            ...users[index].toInterface(), 
-            boss_id: team_leader_ex_params_interface.boss_id,
-            team_name: team_leader_ex_params_interface.team_name,
-            team_rules: team_leader_ex_params_interface.team_rules
+        const map_to_users = users.reduce((acc, user) => { acc[user.id] = user; return acc }, {})
+        const team_leaders = team_leader_ids.map((id) => TeamLeader.fromInterface({ 
+            ...map_to_users[id].toInterface(), 
+            boss_id: map_to_ex_params_interface[id].boss_id,
+            team_name: map_to_ex_params_interface[id].team_name,
+            team_rules: map_to_ex_params_interface[id].team_rules
         }))
         return team_leaders
     }

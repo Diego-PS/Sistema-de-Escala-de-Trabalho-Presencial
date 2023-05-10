@@ -19,13 +19,15 @@ export class MemberServices implements IServices<IMember, IExParamsMember, Membe
 
     async get(filter?: Partial<IMember>) {
         const members_ex_params_interface = await this.repository.get(filter)
+        const map_to_ex_params_interface = members_ex_params_interface.reduce((acc, ex_params_interface) => { acc[ex_params_interface.id] = ex_params_interface; return acc }, {})
         const member_ids = members_ex_params_interface.map(member_ex_params_interface => member_ex_params_interface.id)
         const users = await userServices.getByIds(member_ids)
-        const members = members_ex_params_interface.map((member_ex_params_interface, index) => Member.fromInterface({ 
-            ...users[index].toInterface(), 
-            team_leader_id: member_ex_params_interface.team_leader_id,
-            desired_schedule: member_ex_params_interface.desired_schedule,
-            actual_schedule: member_ex_params_interface.actual_schedule 
+        const map_to_users = users.reduce((acc, user) => { acc[user.id] = user; return acc }, {})
+        const members = member_ids.map((id) => Member.fromInterface({ 
+            ...map_to_users[id].toInterface(), 
+            team_leader_id: map_to_ex_params_interface[id].team_leader_id,
+            desired_schedule: map_to_ex_params_interface[id].desired_schedule,
+            actual_schedule: map_to_ex_params_interface[id].actual_schedule
         }))
         return members
     }

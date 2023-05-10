@@ -40,12 +40,14 @@ export class BossServices implements IBossServices
 
     async get(filter?: Partial<IBoss>) {
         const bosses_ex_params_interface = await this.repository.get(filter)
+        const map_to_ex_params_interface = bosses_ex_params_interface.reduce((acc, ex_params_interface) => { acc[ex_params_interface.id] = ex_params_interface; return acc }, {})
         const boss_ids = bosses_ex_params_interface.map(boss_ex_params_interface => boss_ex_params_interface.id)
         const users = await userServices.getByIds(boss_ids)
-        const bosses = bosses_ex_params_interface.map((boss_ex_params_interface, index) => Boss.fromInterface({ 
-            ...users[index].toInterface(), 
-            organization_name: boss_ex_params_interface.organization_name,
-            organization_rules: boss_ex_params_interface.organization_rules
+        const map_to_users = users.reduce((acc, user) => { acc[user.id] = user; return acc }, {})
+        const bosses = boss_ids.map((id) => Boss.fromInterface({ 
+            ...map_to_users[id].toInterface(), 
+            organization_name: map_to_ex_params_interface[id].organization_name,
+            organization_rules: map_to_ex_params_interface[id].organization_rules,
         }))
         return bosses
     }
