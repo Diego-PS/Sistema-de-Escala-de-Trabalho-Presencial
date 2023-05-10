@@ -15,6 +15,6 @@ export class TeamSchedule
     }
 
     satisfies(rules: Rules) {
-        return ['mon', 'tue', 'wed', 'thu', 'fri'].reduce((acc, day) => acc && this.getAttendanceOfDay(day) >= rules.getMPW(), true)
+        return ['mon', 'tue', 'wed', 'thu', 'fri'].reduce((acc, day) => acc && 100*this.getAttendanceOfDay(day) >= rules.getMPW()*Object.keys(this.team_schedule).length, true)
     }
 }

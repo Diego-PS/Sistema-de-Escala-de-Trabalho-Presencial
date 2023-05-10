@@ -37,10 +37,7 @@ export class UserServices implements IServices<IUser, IUser, User>
 
     async getByUsername(username: string) {
         const user_list = await this.get({ username })
-        if (user_list.length === 0) {
-            console.log('Lista vazia')
-            return null
-        }
+        if (user_list.length === 0) return null
         const user = user_list[0]
         return user
     }
