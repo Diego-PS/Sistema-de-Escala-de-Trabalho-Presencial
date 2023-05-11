@@ -63,5 +63,3 @@ export class BossController
         }
     }
 }
-
-export const bossController = new BossController(bossServices)

@@ -90,5 +90,3 @@ export class TeamLeaderValidators
         next()
     }
 }
-
-export const teamLeaderValidators = new TeamLeaderValidators()

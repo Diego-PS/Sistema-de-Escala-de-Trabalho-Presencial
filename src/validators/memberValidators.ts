@@ -1,23 +1,17 @@
-import { NextFunction, Request, Response } from "express";
-import { Rules } from "../abstractions/Rules";
+import { Request, Response, NextFunction } from "express";
 
-export class BossValidators
+export class MemberValidators
 {
     async register(req: Request, res: Response, next: NextFunction) {
-        const { name, username, password, confirm_password, organization_name, moa, mpw } = req.body
+        const { name, username, password, confirm_password } = req.body
 
-        if (!name || !username || !password || !confirm_password || !organization_name || !moa || !mpw) {
+        if (!name || !username || !password || !confirm_password ) {
             return res.status(400).json({ msg: 'All fields are mandatory' })
         }
 
         if (password !== confirm_password) {
             return res.status(400).json({ msg: 'The passwords do not match' })
         }
-
-        delete req.body.confirm_password
-        delete req.body.moa
-        delete req.body.mpw
-        req.body.organization_rules = { moa, mpw }
 
         next()
     }
@@ -30,28 +24,21 @@ export class BossValidators
         next()
     }
 
-    async getTeamLeaders(req: Request, res: Response, next: NextFunction)  {
-        const id = req.params.id
-        if (typeof id !== 'string') {
-            return res.status(400).json({ msg: 'The id parameter is not in the correct form' })
-        }
-        
-        if (Object.keys(req.body).length !== 0) {
-            return res.status(400).json({ msg: 'There should not be any parameters' })
-        }
-
-        next()
-    }
-
-    async changeOrganizationRules(req: Request, res: Response, next: NextFunction) {
+    async changeDesiredSchedule(req: Request, res: Response, next: NextFunction) {
         const id = req.params.id
         if (typeof id !== 'string') {
             return res.status(400).json({ msg: 'The id parameter is not in the correct form' })
         }
 
-        const { moa, mpw } = req.body
-        if (!moa || !mpw) {
-            return res.status(400).json({ msg: 'All fields are mandatory' })
+        const new_schedule = req.body
+        for (const day of ['mon', 'tue', 'wed', 'thu', 'fri']) {
+            if (!Object.keys(new_schedule).includes(day)) {
+                return res.status(400).json({ msg: `The schedule for ${day} must be included`})
+            }
+
+            if (typeof new_schedule[day] !== 'boolean') {
+                return res.status(400).json({ msg: 'The schedule for a day must be a boolean' })
+            }
         }
 
         next()

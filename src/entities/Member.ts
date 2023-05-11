@@ -55,6 +55,7 @@ export class Member extends User
         role: this.role
     }) as IUser
 
+    changeDesiredSchedule = async (new_schedule: ISchedule) => await memberServices.changeDesiredSchedule(this.id, new_schedule)
     update = async (member: { name?: string, desired_schedule?: ISchedule, actual_schedule?: ISchedule }) => {
         const updated = await memberServices.update(this.id, member)
         Object.assign(this, updated)

@@ -1,6 +1,7 @@
 import { Router } from "express";
-import { teamLeaderValidators } from "../validators/teamLeaderValidators";
-import { teamLeaderController } from "../controllers/teamLeaderController";
+import { teamLeaderValidators } from "../validators";
+import { teamLeaderController } from "../controllers";
+
 
 const teamLeaderRoutes = Router()
 

@@ -108,7 +108,7 @@ export class BossServices implements IBossServices
         this.update(id, { organization_rules: new_rules })
 
         const team_leaders = await this.getTeamLeaders(id)
-        team_leaders.forEach(team_leader => {
+        for (const team_leader of team_leaders) {
             if (!team_leader.team_rules.satisfies(boss.organization_rules)) {
                 let moa = team_leader.team_rules.getMOA()
                 let mpw = team_leader.team_rules.getMPW()
@@ -118,8 +118,8 @@ export class BossServices implements IBossServices
                 if (mpw < boss.organization_rules.getMPW()) {
                     mpw = boss.organization_rules.getMPW()
                 }
-                teamLeaderServices.changeTeamRules(team_leader.id, { moa, mpw })
+                await teamLeaderServices.changeTeamRules(team_leader.id, { moa, mpw })
             }
-        })
+        }
     }
 }

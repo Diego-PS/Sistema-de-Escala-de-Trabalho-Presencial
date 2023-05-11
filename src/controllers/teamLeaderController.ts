@@ -13,7 +13,7 @@ export class TeamLeaderController
         try {
             const boss = await Boss.getById(boss_id)
             const team_leader = await boss.createTeamLeader(req.body)
-            return res.status(201).json({ msg: 'Team sucessufully registered' })
+            return res.status(201).json({ msg: 'Team successfully registered' })
         } catch(err) {
             return res.status(500).json({ msg: err?.message ?? 'Something went wrong' })
         }
@@ -51,7 +51,7 @@ export class TeamLeaderController
     }
 
     async changeTeamRules(req: Request, res: Response) {
-        const id = req.params.ids
+        const id = req.params.id
         try {
             const team_leader = await TeamLeader.getById(id)
             await team_leader.changeTeamRules(req.body)
@@ -71,5 +71,3 @@ export class TeamLeaderController
         }
     }
 }
-
-export const teamLeaderController = new TeamLeaderController(teamLeaderServices)

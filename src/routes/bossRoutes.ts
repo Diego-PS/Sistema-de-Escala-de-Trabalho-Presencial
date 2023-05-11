@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { bossController } from "../controllers/bossController";
-import { bossValidators } from "../validators/bossValidators";
+import { bossValidators } from "../validators";
+import { bossController } from "../controllers";
 
 const bossRoutes = Router()
 

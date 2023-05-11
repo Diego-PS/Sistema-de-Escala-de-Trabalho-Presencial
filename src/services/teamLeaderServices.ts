@@ -141,9 +141,15 @@ export class TeamLeaderServices implements ITeamLeaderServices
 
     async changeTeamSchedule(id: string, new_schedule: ITeamSchedule) {
         const team_leader = await this.getById(id)
+        for (const username of Object.keys(new_schedule)) {
+            const schedule = new Schedule(new_schedule[username])
+            if (!schedule.satisfies(team_leader.team_rules)) {
+                throw new Error(`The proposed schedule for member ${username} does not satisfy minimum weekly attendence`)
+            }
+        }
         const new_schedule_object = new TeamSchedule(new_schedule)
         if (!new_schedule_object.satisfies(team_leader.team_rules)) {
-            throw new Error('The proposed schedule does not satisfy team rules')
+            throw new Error('The proposed schedule does not satisfy minimum daily attendence')
         }
         for (const username of Object.keys(new_schedule)) {
             await this.changeScheduleOfMember(id, username, new_schedule[username])

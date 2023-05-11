@@ -1,14 +1,34 @@
+import { teamLeaderServices } from "."
+import { ISchedule, Schedule } from "../abstractions/Schedule"
 import { IExParamsMember, IMember, Member } from "../entities/Member"
 import { User } from "../entities/User"
 import { IRepository } from "../repositories/IRepository"
 import { IServices } from "./IServices"
 import { userServices } from "./userServices"
+import bcrypt from "bcrypt";
 
-export class MemberServices implements IServices<IMember, IExParamsMember, Member>
+export interface IMemberServices extends IServices<IMember, IExParamsMember, Member>
+{
+    changeDesiredSchedule: (id: string, new_schedule: ISchedule) => Promise<void>
+}
+
+
+export class MemberServices implements IMemberServices
 {
     constructor(public repository: IRepository<IMember, IExParamsMember>) {}
 
     async create(member: Member) {
+        
+        // generate hashed password
+        const salt = await bcrypt.genSalt(5)
+        const passwordHash = await bcrypt.hash(member.password, salt)
+        member.password = passwordHash
+
+        // check if username is already in use
+        if (await User.getByUsername(member.username)) {
+            throw new Error('This username is already in use')
+        }
+
         const member_user_interface = member.toUserInterface()
         const member_user = User.fromInterface(member_user_interface)
         await userServices.create(member_user)
@@ -75,5 +95,15 @@ export class MemberServices implements IServices<IMember, IExParamsMember, Membe
     async deleteByUsername(username: string) {
         await this.repository.delete({ username })
         await userServices.deleteByUsername(username)
+    }
+
+    async changeDesiredSchedule(id: string, new_schedule: ISchedule) {
+        const member = await this.getById(id)
+        const team_leader = await teamLeaderServices.getById(member.team_leader_id)
+        const new_schedule_obj = new Schedule(new_schedule)
+        if (!new_schedule_obj.satisfies(team_leader.team_rules)) {
+            throw new Error('The desired schedule does not satisty team rules')
+        }
+        await this.update(id, { desired_schedule: new_schedule })
     }
 }
