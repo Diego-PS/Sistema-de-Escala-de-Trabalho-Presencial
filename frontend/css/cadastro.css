@@ -1,1 +1,45 @@
+body {
+    background-color: #f5f5f5;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    border-radius: 5px;
+}
+.btn-primary:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
+
+.rec{
+    width: 50%;
+    background-color: #b67272;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+.login-form{
+    position: fixed; /* or absolute */
+    top: 200px;
+    left: 1080px;
+}
+
+.moto{
+    color: black;
+    font-size: 28px;
+    width: 260px;
+    position: fixed; /* or absolute */
+    top: 400px;
+    left: 100px;
+}
+
+.form-control{ /*Caixinhas de texto do formulário*/
+    background-color: #0069d9;
+}
+
 
