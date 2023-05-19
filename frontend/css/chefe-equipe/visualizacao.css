@@ -52,3 +52,164 @@ nav a:hover {
     right: 190px;
     top: 35px;
 }
+
+#matrix1 {
+    position: absolute;
+    top: 100px;
+    left: 210px;
+  }
+  
+  #matrix2 {
+    position: absolute;
+    top: 100px;
+    left: 490px;
+  }
+  
+  #matrix3 {
+    position: absolute;
+    top: 100px;
+    left: 770px;
+  }
+  
+  #weekdays1 button, #weekdays2 button, #weekdays3 button, #matrix1 button, #matrix2 button, #matrix3 button, #infoCurrentShift button, #infoNewShift button, #adicionarMembro button{
+    height: 30px;
+    width: 40px;
+    border: none;
+    font-family: helvetica;
+    font-weight: bold;
+  }
+  
+  #b1 {
+    background-color: rgba(255, 153, 51, 0.5);
+  }
+  
+  #b1:hover {
+    background-color: rgb(255, 153, 51);
+  }
+  
+  #b2 {
+    background-color: rgba(15, 138, 15, 0.5);
+    border: 2px solid black;
+  }
+  
+  .rectangle-group {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      left: 0px;
+      top: 100px;
+    }
+  
+  .info-title {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      left: 0px;
+      top: 480px;
+    }
+    
+    .rectangle {
+      width: 200px;
+      height: 30px;
+      background-color: #f0f0f0;
+      border: 1px solid #000000;
+      margin: 2.5px;
+    }
+  
+  .member{
+      width: 200px;
+      height: 80px;
+      background-color: #f0f0f0;
+      border: 1px solid #000000;
+      margin: 2.5px;
+      position: absolute;
+      left: 0px;
+      top: 0px;
+  }
+  
+  #weekdays1{
+    position: absolute;
+    top: 50px;
+    left: 210px;
+  }
+  
+  #weekdays2{
+    position: absolute;
+    top: 50px;
+    left: 490px;
+  }
+  
+  #weekdays3{
+    position: absolute;
+    top: 50px;
+    left: 770px;
+  }
+  
+  .currentshift{
+      width: 257px;
+      height: 40px;
+      background-color: #f0f0f0;
+      border: 1px solid #000000;
+      margin: 2.5px;
+      position: absolute;
+      left: 210px;
+      top: 0px;
+  }
+  
+  .preferences{
+      width: 257px;
+      height: 40px;
+      background-color: #f0f0f0;
+      border: 1px solid #000000;
+      margin: 2.5px;
+      position: absolute;
+      left: 490px;
+      top: 0px;  
+  }
+  
+  .newshift{
+      width: 257px;
+      height: 40px;
+      background-color: #f0f0f0;
+      border: 1px solid #000000;
+      margin: 2.5px;
+      position: absolute;
+      left: 770px;
+      top: 0px;  
+  }
+  
+  #infoCurrentShift{
+    position: absolute;
+    top: 480px;
+    left: 210px;
+  }
+  
+  #infoNewShift{
+    position: absolute;
+    top: 480px;
+    left: 770px;
+  }
+  
+  #adicionarMembro{
+    position: absolute;
+    top: 480px;
+    left: 770px;
+  }
+  
+  .confirmar{
+    position: absolute;
+    top: 480px;
+    left: 770px;
+  }
+  
+  .limpar{
+    position: absolute;
+    top: 480px;
+    left: 770px;
+  }
+
+  .container{
+    position: absolute;
+    top: 100px;
+    left: 300px;
+  }
