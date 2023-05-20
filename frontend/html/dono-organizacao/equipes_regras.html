@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>SmartShift - Equipes e Regras</title>
-    <link rel="stylesheet" href="./equipes_regras.html">
+	<link rel="stylesheet" href="../../css/dono-organizacao/equipes_regras.css">
 </head>
 <body>
 
@@ -25,11 +25,23 @@
 	    </nav>
         <main>
             <h1>Equipes e Regras</h1>
-            <div>
-                <h2>Regras Gerais da Organização</h2>
-                <p>Mínimo de Presenças Semanais: </p><span id="min_sem_atual"></span>
-                <p>% Mínimo do Corpo Efetivo Presente Diariamente: </p><span id="perc_min_atual"></span>
+            <h2>Regras Gerais da Organização</h2>
+
+            <div class = "hgroup_infobox1">
+
+                <div class = "infobox1">
+                    <div class = "infobox1_title"><p>Mínimo de Presenças Semanais: </p></div>
+                    <div class = "infobox1_data"><span id="min_sem_atual"></span></div>
+                </div>
+
+                <div class = "infobox1_filler"></div>
+
+                <div class = "infobox1">
+                    <div class = "infobox1_title"><p>% Mínimo do Corpo Efetivo Presente Diariamente: </p></div>
+                    <div class = "infobox1_data"><span id="perc_min_atual"></span></div>
+                </div>
             </div>
+
             <div>
                 <h2>Dashboard - Equipes da Organização</h2>
                 <div>
@@ -62,21 +74,38 @@
             </div>
             <div>
                 <h2>Criar Nova Equipe</h2>
-                <div>
+                <div class="h_hypergroup">
                     <h3>Cadastrar Equipe</h3>
-                    <p>Nome</p><input type="text">
-                    <p>Mínimo de Presenças Semanais</p><input type="number">
-                    <p>% Mínimo do Corpo Efetivo Presente Diariamente</p><input type="number">
+                    <div class="vgroup_infobox2">
+                        <div class="infobox2">
+                            <div class="infobox2_title"><p>Nome</p></div>
+                            <input type="text" class="infobox2_data"></div>
+                        </div>
+
+                        <div class="infobox2">
+                            <div class="infobox2_title"><p>Nome</p></div>
+                            <input type="text" class="infobox2_data"></div>
+                        </div>
+
+                        <div class="infobox2">
+                            <div class="infobox2_title"><p>Nome</p></div>
+                            <input type="text" class="infobox2_data"></div>
+                        </div>
+                            
+                        <button>Confirmar</button>
+                        <button>Limpar</button>
+                                                
+                    </div>
                 </div>
                 <div>
                     <h3>Cadastrar Chefia</h3>
-                    <p>Nome Completo</p><input type="text">
-                    <p>E-mail</p><input type="text">
-                    <p>Senha</p><input type="password">
-                    <p>Confirmar Senha</p><input type="password">
+                    <div class="vgroup_infobox2">
+                        <p>Nome Completo</p><input type="text">
+                        <p>E-mail</p><input type="text">
+                        <p>Senha</p><input type="password">
+                        <p>Confirmar Senha</p><input type="password">
+                    </div>
                 </div>
-                <button>Confirmar</button>
-                <button>Limpar</button>
             </div>
         </main>    
 </body>

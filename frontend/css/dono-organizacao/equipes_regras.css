@@ -1,1 +1,137 @@
+:root{
+    --border_curve_size: 15px;
+    --outer_margins: 50px;
+    --inner_filler: 30px;
+    --data_w: 150px;
+}
+
+main{
+    position: absolute;
+    top: 150px;
+    left: 270px;
+    right: var(--outer_margins);
+}
+
+.title{
+    position: absolute;
+    top: 70px;
+    left: 372px;
+  }
+
+.h_hypergroup{
+    display: flex;
+    justify-content: space-between;
+}
+
+.h_group{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+.infobox1{
+    display: flex;
+    flex: 1;
+}
+
+.infobox1_title{
+    background-color: #BB86FC;
+    border-radius: var(--border_curve_size) 0px 0px var(--border_curve_size);
+    flex: 1;
+}
+
+.infobox1_data{
+    background-color: #363636;
+    border-radius: 0px var(--border_curve_size) var(--border_curve_size) 0px;
+    width: var(--data_w);
+}
+
+.infobox1_filler{
+    width: var(--inner_filler);
+}
+
+.infobox2{
+    display: flex;
+    flex: 1;
+}
+
+.infobox2_title{
+    background-color: #BB86FC;
+    border-radius: var(--border_curve_size) 0px 0px var(--border_curve_size);
+    border-color: #BB86FC;
+    flex: 1;
+}
+
+.infobox2_data{
+    background-color: #363636;
+    border-radius: 0px var(--border_curve_size) var(--border_curve_size) 0px;
+    border-color: #BB86FC;
+    width: var(--data_w);
+}
+
+.infobox2_filler{
+    width: var(--inner_filler);
+}
+
+.vgroup_infobox2{
+    background-color: #363636;
+    display: block;
+    justify-content: space-between;
+}
+
+nav {
+    width: 200px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 40px;
+}
+
+nav li {
+    padding: 0;
+    margin: 20px;
+}
+
+nav a {
+    padding: 10px;
+    color: #333;
+    text-decoration: none;
+}
+
+nav a:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+.avatar {
+  width: 70px;
+  height: 70px;
+  border: 2px solid black;
+  position: absolute; 
+  top: 20px; 
+  right: 100px;
+}
+
+.username {
+    color: black;
+    position: absolute;
+    right: 190px;
+    top: 15px;
+}
+
+.function {
+    color: black;
+    position: absolute;
+    right: 190px;
+    top: 35px;
+}
 
