@@ -1,33 +1,139 @@
 :root{
     --border_curve_size: 15px;
     --outer_margins: 50px;
-    --inner_filler: 30px;
+    --inner_w_filler: 30px;
+    --inner_h_filler: 5px;
     --data_w: 150px;
+    --padding: 25px;
+
+    --bg_color: #000000;
+
+    --nav_bg_color: #363636;
+    --nav_font_color: #BB86FC;
+
+    --h1_font_color: #EEEEEE;
+    --h2_font_color: #A7A6A6;
+    --h3_font_color: #EEEEEE;
+    
+    --infobox_title_bg_color: #BB86FC;
+    --infobox_data_bg_color: #363636;
+    --infobox_data_border_color: #BB86FC;
+    --infobox_title_font_size: 16px;
+    --infobox_data_font_size: 16px;
+
+    --group_bg_color: #363636;
+
+    --button_font_size: 16px;
+    --button_font_color: #363636;
+    --button_bg_color: #BB86FC;
+
+    --matrix_header_font_color: #363636;
+    --matrix_header_bg_color: #BB86FC;
+    --matrix_data_font_color: #A7A6A6;
+    --matrix_data_bg_color: #363636;
+    --matrix_border_color: #BB86FC;
+
+
+}
+
+@font-face{
+    font-family: "Questrial";
+    src: url("..\fonts\Questrial") format("ttf"),
+}
+
+body{
+    font-family: "Questrial", sans-serif;
+    background-color: var(--bg_color);
 }
 
 main{
     position: absolute;
-    top: 150px;
+    top: 100px;
     left: 270px;
+    bottom: var(--outer_margins);
     right: var(--outer_margins);
 }
 
-.title{
-    position: absolute;
-    top: 70px;
-    left: 372px;
+/*----------------------------------------------------------------------------
+------------------------------------------------------------------------------
+----------------------------------------------------------------------------*/
+h1 {
+    font-size: 35px;
+    color: var(--h1_font_color);
+    position: relative;
   }
 
-.h_hypergroup{
-    display: flex;
-    justify-content: space-between;
+h2 {
+  font-size: 32px;
+  color: var(--h2_font_color);
+  position: relative;
 }
 
-.h_group{
-    display: flex;
-    justify-content: space-between;
+h2 span {
+  background-color: var(--bg_color);
+  padding-right: 10px;
 }
 
+h2:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0.5em;
+  border-top: 1px solid #A7A6A6;
+  z-index: -1;
+}
+
+h3 {
+    font-size: 33px;
+    color: var(--h3_font_color);
+}
+
+/*----------------------------------------------------------------------------
+------------------------------------------------------------------------------
+----------------------------------------------------------------------------*/
+
+.row_group1{
+    display: flex;
+    justify-content: space-between;    
+}
+
+.column_group1{
+    padding: 10px;
+    background-color: var(--group_bg_color);
+    display: block;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: var(--border_curve_size) var(--border_curve_size) var(--border_curve_size) var(--border_curve_size);
+    flex: 1;
+}
+
+.row_hypergroup1{
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+}
+
+.column_hypergroup1{
+    display: block;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    flex: 1;
+}
+
+.row_filler{
+    height: var(--inner_h_filler);
+}
+
+.column_filler{
+    width: var(--inner_w_filler);
+}
+
+/*----------------------------------------------------------------------------
+------------------------------------------------------------------------------
+----------------------------------------------------------------------------*/
 
 
 .infobox1{
@@ -36,20 +142,24 @@ main{
 }
 
 .infobox1_title{
-    background-color: #BB86FC;
+    font-size: var(--infobox_title_font_size);
+    text-align: center;
+    background-color: var(--infobox_title_bg_color);
     border-radius: var(--border_curve_size) 0px 0px var(--border_curve_size);
     flex: 1;
 }
 
 .infobox1_data{
-    background-color: #363636;
+    font-size: var(--infobox_data_font_size);
+    text-align: center;
+    background-color: var(--infobox_data_bg_color);
     border-radius: 0px var(--border_curve_size) var(--border_curve_size) 0px;
     width: var(--data_w);
 }
 
-.infobox1_filler{
-    width: var(--inner_filler);
-}
+/*----------------------------------------------------------------------------
+------------------------------------------------------------------------------
+----------------------------------------------------------------------------*/
 
 .infobox2{
     display: flex;
@@ -57,32 +167,78 @@ main{
 }
 
 .infobox2_title{
-    background-color: #BB86FC;
+    font-size: var(--infobox_title_font_size);
+    text-align: center;
+    background-color: var(--infobox_title_bg_color);
     border-radius: var(--border_curve_size) 0px 0px var(--border_curve_size);
-    border-color: #BB86FC;
+    border-color: var(--infobox_data_border_color);
     flex: 1;
 }
 
 .infobox2_data{
+    font-size: var(--infobox_data_font_size);
+    text-align: center;
     background-color: #363636;
     border-radius: 0px var(--border_curve_size) var(--border_curve_size) 0px;
     border-color: #BB86FC;
     width: var(--data_w);
 }
 
-.infobox2_filler{
-    width: var(--inner_filler);
+/*----------------------------------------------------------------------------
+------------------------------------------------------------------------------
+----------------------------------------------------------------------------*/
+
+.button{
+    display: flex;
+    background-color: var(--button_bg_color);
+    border-radius: var(--border_curve_size) var(--border_curve_size) var(--border_curve_size) var(--border_curve_size);
+    flex: 1;
+    color: var(--button_font_color);
+    font-size: var(--button_font_size);
 }
 
-.vgroup_infobox2{
-    background-color: #363636;
-    display: block;
-    justify-content: space-between;
+/*----------------------------------------------------------------------------
+------------------------------------------------------------------------------
+----------------------------------------------------------------------------*/
+
+.matrix1{
+    color: var(--matrix_data_font_color);
+    border-color: var(--matrix_border_color);
+    text-align: center;
+    align-self: center;
+    flex: 1;
+    table-layout: fixed;
+    width: 100%;    
 }
+
+.matrix1 th {
+    background-color: var(--matrix_header_bg_color);
+    color: var(--matrix_header_font_color);
+    width: auto;
+    padding: 8px;
+    border-radius: var(--border_curve_size) var(--border_curve_size) 0 0;
+    
+}
+
+.matrix1 td {
+    background-color: var(--matrix_data_bg_color);
+    color: var(--matrix_data_font_color);
+    border: 1px solid var(--matrix_border_color);
+    width: auto;
+    padding: 8px;
+}
+
+.matrix1 tr:last-child td{
+    border-radius: 0 0 var(--border_curve_size) var(--border_curve_size);
+}
+
+/*----------------------------------------------------------------------------
+------------------------------------------------------------------------------
+----------------------------------------------------------------------------*/
 
 nav {
     width: 200px;
-    background-color: #f2f2f2;
+    background-color: var(--nav_bg_color);
     padding: 20px;
     position: fixed;
     top: 0;
@@ -103,7 +259,7 @@ nav li {
 
 nav a {
     padding: 10px;
-    color: #333;
+    color: var(--nav_font_color);
     text-decoration: none;
 }
 
@@ -112,24 +268,28 @@ nav a:hover {
     color: #fff;
 }
 
+/*----------------------------------------------------------------------------
+------------------------------------------------------------------------------
+----------------------------------------------------------------------------*/
+
 .avatar {
   width: 70px;
   height: 70px;
-  border: 2px solid black;
+  border: 2px solid white;
   position: absolute; 
   top: 20px; 
   right: 100px;
 }
 
 .username {
-    color: black;
+    color: white;
     position: absolute;
     right: 190px;
     top: 15px;
 }
 
 .function {
-    color: black;
+    color: white;
     position: absolute;
     right: 190px;
     top: 35px;

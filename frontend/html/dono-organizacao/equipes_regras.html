@@ -13,97 +13,181 @@
     <p class="username">José da Silva</p>
     <p class="function">Dono da Organização</p>
 
-    <div class="container">
-	    <nav>
+        <nav>
             <div style="border: 1px solid black; width: 200px; height: 100px;"></div>
-		    <ul>                
-			    <li><a href="#">Dashboard</a></li>
-			    <li><a href="#">Escalas</a></li>
-			    <li><a href="#">Configurações</a></li>
+            <ul>                
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Escalas</a></li>
+                <li><a href="#">Configurações</a></li>
                 <li><a href="#">Log Out</a></li>
-		    </ul>            
-	    </nav>
+            </ul>            
+        </nav>
+
         <main>
             <h1>Equipes e Regras</h1>
-            <h2>Regras Gerais da Organização</h2>
+            <h2><span>Regras Gerais da Organização</span></h2>
 
-            <div class = "hgroup_infobox1">
+            <div class="row_group1">
 
-                <div class = "infobox1">
-                    <div class = "infobox1_title"><p>Mínimo de Presenças Semanais: </p></div>
-                    <div class = "infobox1_data"><span id="min_sem_atual"></span></div>
+                <div class="infobox1">
+                    <div class="infobox1_title"><p>Mínimo de Presenças Semanais: </p></div>
+                    <div class="infobox1_data"><span id="min_sem_atual"></span></div>
                 </div>
 
-                <div class = "infobox1_filler"></div>
+                <div class="column_filler"></div>
 
-                <div class = "infobox1">
-                    <div class = "infobox1_title"><p>% Mínimo do Corpo Efetivo Presente Diariamente: </p></div>
-                    <div class = "infobox1_data"><span id="perc_min_atual"></span></div>
+                <div class="infobox1">
+                    <div class="infobox1_title"><p>% Mínimo do Corpo Efetivo Presente Diariamente: </p></div>
+                    <div class="infobox1_data"><span id="perc_min_atual"></span></div>
                 </div>
             </div>
 
             <div>
-                <h2>Dashboard - Equipes da Organização</h2>
-                <div>
-                    <h3>Informações Gerais</h3>
-                    <table>
-                        <tr>
-                            <th>Equipe</th>
-                            <th>Chefia</th>
-                            <th>Nº de Membros</th>
-                        </tr>
-                        <tbody id="tb_equipes_infos">
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                        </tbody>
-                    </table>    
-                </div>
-                <div>
-                    <table>
-                        <tr>
-                            <th>Mín. Presenças Sem.</th>
-                            <th>% Mín. do Corpo Efetivo Diariamente</th>
-                        </tr>
-                        <tbody id="tb_equipes_regras">
-                            <td>1</td>
-                            <td>1</td>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div>
-                <h2>Criar Nova Equipe</h2>
-                <div class="h_hypergroup">
-                    <h3>Cadastrar Equipe</h3>
-                    <div class="vgroup_infobox2">
-                        <div class="infobox2">
-                            <div class="infobox2_title"><p>Nome</p></div>
-                            <input type="text" class="infobox2_data"></div>
+                <h2><span>Dashboard - Equipes da Organização</span></h2>
+                <div class="row_group1">
+                    <div class="column_group1">
+                        <h3>Informações Gerais</h3>
+                        <div>
+                            <table class="matrix1">
+                                <tr>
+                                    <th>Equipe</th>
+                                    <th>Chefia</th>
+                                    <th>Nº de<br/>Membros</th>
+                                </tr>
+                                <tbody id="tb_equipes_infos">
+                                    <tr>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                    </tr>
+                                </tbody>
+                            </table>    
                         </div>
-
-                        <div class="infobox2">
-                            <div class="infobox2_title"><p>Nome</p></div>
-                            <input type="text" class="infobox2_data"></div>
-                        </div>
-
-                        <div class="infobox2">
-                            <div class="infobox2_title"><p>Nome</p></div>
-                            <input type="text" class="infobox2_data"></div>
-                        </div>
-                            
-                        <button>Confirmar</button>
-                        <button>Limpar</button>
-                                                
                     </div>
+
+                    <div class="column_filler"></div>
+
+                    <div class="column_group1">
+                        <h3>Informações Gerais</h3>
+                        <div>
+                            <table class="matrix1">
+                                <tr>
+                                    <th>Mín. Presenças Sem.</th>
+                                    <th>% Mín. do Corpo Efetivo<br/>Presente Diariamente</th>
+                                </tr>
+                                <tbody id="tb_equipes_regras">
+                                    <tr>
+                                        <td>1</td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>1</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
                 </div>
-                <div>
-                    <h3>Cadastrar Chefia</h3>
-                    <div class="vgroup_infobox2">
-                        <p>Nome Completo</p><input type="text">
-                        <p>E-mail</p><input type="text">
-                        <p>Senha</p><input type="password">
-                        <p>Confirmar Senha</p><input type="password">
+            </div>
+            <h2><span>Criar Nova Equipe</span></h2>
+            <div>
+                <h3>Cadastrar Equipe</h3>
+                <div class="row_hypergroup1">
+                    <div class="column_hypergroup1">
+                        <div class="column_group1">
+                            <div class="infobox2">
+                                <div class="infobox2_title"><p>Nome</p></div>
+                                <input type="text" class="infobox2_data">
+                            </div>
+    
+                            <div class="row_filler"></div>
+    
+                            <div class="infobox2">
+                                <div class="infobox2_title"><p>Mínimo de Presenças Semanais</p></div>
+                                <input type="number" class="infobox2_data">
+                            </div>
+    
+                            <div class="row_filler"></div>
+    
+                            <div class="infobox2">
+                                <div class="infobox2_title"><p>% Mínimo do Corpo Efetivo</p></div>
+                                <input type="number" class="infobox2_data">
+                            </div>
+                        </div>
+
+                        <div class="row_filler"></div>
+                        
+                        <div class="row_group1">
+                            <button class="button">Confirmar</button>
+                            <button class="button">Limpar</button>
+                        </div>
+
+                    </div>
+                    
+                    <div class="column_filler"></div>
+
+                    <div class="column_group1">
+                        
+                        <div class="infobox2">
+                            <div class="infobox2_title"><p>Nome Completo</p></div>
+                            <input type="text" class="infobox2_data">
+                        </div>      
+
+                        <div class="row_filler"></div>
+
+                        <div class="infobox2">
+                            <div class="infobox2_title"><p>E-mail</p></div>
+                            <input type="text" class="infobox2_data">
+                        </div>      
+
+                        <div class="row_filler"></div>
+
+                        <div class="infobox2">
+                            <div class="infobox2_title"><p>Senha</p></div>
+                            <input type="text" class="infobox2_data">
+                        </div>        
+
+                        <div class="row_filler"></div>
+
+                        <div class="infobox2">
+                            <div class="infobox2_title"><p>Confirmar Senha</p></div>
+                            <input type="text" class="infobox2_data">
+                        </div>
+                                                
                     </div>
                 </div>
             </div>
