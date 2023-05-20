@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>SmartShift - Gerenciar Minha Equipe</title>
-    <link rel="stylesheet" href="./gerencia.html">
+	<link rel="stylesheet" href="../../css/dono-organizacao/equipes_regras.css">
 </head>
 <body>
 
@@ -13,59 +13,84 @@
     <p class="username">José da Silva</p>
     <p class="function">Dono da Organização</p>
 
-    <div class="container">
-	    <nav>
-            <div style="border: 1px solid black; width: 200px; height: 100px;"></div>
-		    <ul>                
-			    <li><a href="#">Dashboard</a></li>
-			    <li><a href="#">Escalas</a></li>
-			    <li><a href="#">Configurações</a></li>
-                <li><a href="#">Log Out</a></li>
-		    </ul>            
-	    </nav>
-        <main>
-            <h1>Gerenciar Minha Equipe</h1>
-            <div>
-                <h2>Regras da Escala da Minha Equipe</h2>
-                <div>
+    <nav>
+        <div style="border: 1px solid black; width: 200px; height: 100px;"></div>
+	    <ul>                
+		    <li><a href="#">Dashboard</a></li>
+		    <li><a href="#">Escalas</a></li>
+		    <li><a href="#">Configurações</a></li>
+            <li><a href="#">Log Out</a></li>
+	    </ul>            
+    </nav>
+    <main>
+        <h1>Gerenciar Minha Equipe</h1>
+        <div>
+            <h2><span>Regras da Escala da Minha Equipe</span></h2>
+            <div class="row_hypergroup1">
+                <div class="column_hypergroup1">
                     <h3>Minha Equipe</h3>
-                    <p>Mínimo de Presenças Semanais: </p><span min_sem = "min_sem_atual"></span>
-                    <p>% Mínimo do Corpo Efetivo Presente Diariamente: </p><span id="perc_min_atual"></span>
-                </div>
-                <div>
-                    <h3>Regras Gerais da Escala</h3>
-                    <p>Mínimo de Presenças Semanais: </p><span min_sem = "min_sem_atual"></span>
-                    <p>% Mínimo do Corpo Efetivo Presente Diariamente: </p><span id="perc_min_atual"></span>
-                </div>
-            </div>
-            <div>
-                <h2>Regras da Escala da Minha Equipe</h2>
-                <div>
-                    <h3>Atuais</h3>
-                    <p>Mínimo de Presenças Semanais: </p><span id="min_sem_atual"></span>
-                    <p>% Mínimo do Corpo Efetivo Presente Diariamente: </p><span id="perc_min_atual"></span>
-                </div>
-                <div>
-                    <h3>Novas</h3>
-                    <p>Mínimo de Presenças Semanais</p><input type="number">
-                    <p>% Mínimo do Corpo Efetivo Presente Diariamente</p><input type="number">
-                </div>
-            </div>
-            <div>
-                <h2>Adicionar Membros na Minha Equipe</h2>
-                <div>
-                    <h3>Cadastrar Membro</h3>
-                    <p>Nome Completo</p><input type="text">
-                    <p>E-mail</p><input type="text">
-                    <p>Senha</p><input type="password">
-                    <p>Confirmar Senha</p><input type="password">
-                    <button>Confirmar</button>
-                    <button>Limpar</button>    
-                </div>
-            </div>
-        </main>
+                    <div class="column_group1">
+                        <div class="infobox_upper">
+                            <div class="infobox_upper_title"><p>Mínimo de Presenças Semanais: </p></div>
+                            <div class="infobox_upper_data"><span min_sem = "min_sem_atual"></span></div>
+                        </div>
 
-    
+                        <div class="row_filler"></div>
+
+                        <div class="infobox_lower">
+                            <div class="infobox_lower_title"><p>% Mínimo do Corpo Efetivo Presente Diariamente: </p></div>
+                            <div class="infobox_lower_data"><span id="perc_min_atual"></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column_filler"></div>
+
+                <div class="column_hypergroup1">
+                    <h3>Regras Gerais da Escala</h3>
+                    <div class="column_group1">
+                        <div class="infobox_upper">
+                            <div class="infobox_upper_title"><p>Mínimo de Presenças Semanais: </p></div>
+                            <div class="infobox_upper_data"><span min_sem = "min_sem_atual"></span></div>
+                        </div>
+
+                        <div class="row_filler"></div>
+
+                        <div class="infobox_lower">
+                            <div class="infobox_lower_title"><p>% Mínimo do Corpo Efetivo Presente Diariamente: </p></div>
+                            <div class="infobox_lower_data"><span id="perc_min_atual"></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h2><span>Regras da Escala da Minha Equipe</span></h2>
+        <div class="row_group1">
+            <h3>Atuais</h3>
+            <div class="column_group2">
+                <p>Mínimo de Presenças Semanais: </p><span id="min_sem_atual"></span>
+                <p>% Mínimo do Corpo Efetivo Presente Diariamente: </p><span id="perc_min_atual"></span>
+            </div>
+            <h3>Novas</h3>
+            <div class="column_group2">
+                <p>Mínimo de Presenças Semanais</p><input type="number">
+                <p>% Mínimo do Corpo Efetivo Presente Diariamente</p><input type="number">
+            </div>
+        </div>
+        <div>
+            <h2><span>Adicionar Membros na Minha Equipe</span></h2>
+            <h3>Cadastrar Membro</h3>
+            <div class="row_group1">
+                <p>Nome Completo</p><input type="text">
+                <p>E-mail</p><input type="text">
+                <p>Senha</p><input type="password">
+                <p>Confirmar Senha</p><input type="password">
+                <button>Confirmar</button>
+                <button>Limpar</button>    
+            </div>
+        </div>
+    </main>
+
     
 </body>
 </html>

@@ -16,10 +16,10 @@
     --h3_font_color: #EEEEEE;
     
     --infobox_title_bg_color: #BB86FC;
-    --infobox_data_bg_color: #363636;
-    --infobox_data_border_color: #BB86FC;
     --infobox_title_font_size: 16px;
+    --infobox_data_bg_color: #363636;
     --infobox_data_font_size: 16px;
+    --infobox_data_border_color: #BB86FC;
 
     --group_bg_color: #363636;
 
@@ -109,6 +109,15 @@ h3 {
     flex: 1;
 }
 
+.column_group2{
+    padding: 10px;
+    display: block;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: var(--border_curve_size) var(--border_curve_size) var(--border_curve_size) var(--border_curve_size);
+    flex: 1;
+}
+
 .row_hypergroup1{
     display: flex;
     justify-content: space-between;
@@ -178,9 +187,65 @@ h3 {
 .infobox2_data{
     font-size: var(--infobox_data_font_size);
     text-align: center;
-    background-color: #363636;
+    background-color: var(--infobox_data_bg_color);
     border-radius: 0px var(--border_curve_size) var(--border_curve_size) 0px;
-    border-color: #BB86FC;
+    border-color: var(--infobox_data_border_color);
+    width: var(--data_w);
+}
+
+/*----------------------------------------------------------------------------
+------------------------------------------------------------------------------
+----------------------------------------------------------------------------*/
+
+.infobox_upper{
+    display: flex;
+    flex: 1;
+}
+
+.infobox_upper_title{
+    font-size: var(--infobox_title_font_size);
+    text-align: center;
+    background-color: var(--infobox_title_bg_color);
+    border-radius: var(--border_curve_size) 0px 0px 0px;
+    border-color: var(--infobox_data_border_color);
+    flex: 1;
+}
+
+.infobox_upper_data{
+    font-size: var(--infobox_data_font_size);
+    text-align: center;
+    border: solid 1px;
+    background-color:  var(--infobox_data_bg_color);
+    border-radius: 0px var(--border_curve_size) 0px 0px;
+    border-color: var(--infobox_data_border_color);
+    width: var(--data_w);
+}
+
+/*----------------------------------------------------------------------------
+------------------------------------------------------------------------------
+----------------------------------------------------------------------------*/
+
+.infobox_lower{
+    display: flex;
+    flex: 1;
+}
+
+.infobox_lower_title{
+    font-size: var(--infobox_title_font_size);
+    text-align: center;
+    background-color: var(--infobox_title_bg_color);
+    border-radius: 0px 0px 0px var(--border_curve_size);
+    border-color: var(--infobox_data_border_color);
+    flex: 1;
+}
+
+.infobox_lower_data{
+    font-size: var(--infobox_data_font_size);
+    text-align: center;
+    border: solid 1px;
+    background-color: var(--infobox_data_bg_color);
+    border-radius: 0px 0px var(--border_curve_size) 0px;
+    border-color: var(--infobox_data_border_color);
     width: var(--data_w);
 }
 
@@ -208,7 +273,7 @@ h3 {
     align-self: center;
     flex: 1;
     table-layout: fixed;
-    width: 100%;    
+    width: 100%;
 }
 
 .matrix1 th {
