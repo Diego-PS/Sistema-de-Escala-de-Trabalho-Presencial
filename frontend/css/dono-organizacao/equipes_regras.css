@@ -1,32 +1,59 @@
 :root{
     --border_curve_size: 15px;
     --outer_margins: 50px;
-    --inner_w_filler: 30px;
-    --inner_h_filler: 5px;
-    --data_w: 150px;
-    --padding: 25px;
 
+    --column_filler_regular_w: 30px;
+    --column_filler_small_w: 5px;
+
+    --row_filler_small_h: 5px;
+
+    
+    --group_padding: 10px;
+    
+    --data_width_number: 100px;
+    --data_width_text_regular: 200px;
+    --data_width_text_large: 300px;
+    
+    --border_size: 1px;
+    
     --bg_color: #000000;
-
+    
     --nav_bg_color: #363636;
     --nav_font_color: #BB86FC;
-
+    
     --h1_font_color: #EEEEEE;
     --h2_font_color: #A7A6A6;
     --h3_font_color: #EEEEEE;
     
     --infobox_title_bg_color: #BB86FC;
     --infobox_title_font_size: 16px;
+    --infobox_title_font_color: #363636;
+    
     --infobox_data_bg_color: #363636;
     --infobox_data_font_size: 16px;
+    --infobox_data_font_color: #A7A6A6;
     --infobox_data_border_color: #BB86FC;
+    
+    --inputbox_title_bg_color: #BB86FC;
+    --inputbox_title_font_size: 16px;
+    --inputbox_title_font_color: #363636;
+    
+    --inputbox_data_bg_color: #363636;
+    --inputbox_data_font_size: 16px;
+    --inputbox_data_font_color: #A7A6A6;
+    --inputbox_data_border_color: #BB86FC;
 
+    --titlebox_small_bg_color: #BB86FC;
+    --titlebox_small_font_size: 20px;
+    --titlebox_small_font_color: #363636;
+    --titlebox_small_w: 125px;
+    
     --group_bg_color: #363636;
-
+    
     --button_font_size: 16px;
     --button_font_color: #363636;
     --button_bg_color: #BB86FC;
-
+    
     --matrix_header_font_color: #363636;
     --matrix_header_bg_color: #BB86FC;
     --matrix_data_font_color: #A7A6A6;
@@ -94,13 +121,20 @@ h3 {
 ------------------------------------------------------------------------------
 ----------------------------------------------------------------------------*/
 
-.row_group1{
+.row_group_transparent{
     display: flex;
     justify-content: space-between;    
 }
 
-.column_group1{
-    padding: 10px;
+
+.row_group_filled{
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--group_bg_color);
+}
+
+.column_group_filled{
+    padding: var(--group_padding);
     background-color: var(--group_bg_color);
     display: block;
     flex-direction: column;
@@ -109,88 +143,79 @@ h3 {
     flex: 1;
 }
 
-.column_group2{
-    padding: 10px;
+.column_group_transparent{
     display: block;
     flex-direction: column;
     justify-content: space-between;
-    border-radius: var(--border_curve_size) var(--border_curve_size) var(--border_curve_size) var(--border_curve_size);
     flex: 1;
 }
 
-.row_hypergroup1{
-    display: flex;
-    justify-content: space-between;
-    flex: 1;
+.row_filler_small{
+    height: var(--row_filler_small_h);
 }
 
-.column_hypergroup1{
-    display: block;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: stretch;
-    flex: 1;
+.column_filler_regular{
+    width: var(--column_filler_regular_w);
 }
 
-.row_filler{
-    height: var(--inner_h_filler);
-}
 
-.column_filler{
-    width: var(--inner_w_filler);
+.column_filler_small{
+    width: var(--column_filler_small_w);
 }
 
 /*----------------------------------------------------------------------------
 ------------------------------------------------------------------------------
 ----------------------------------------------------------------------------*/
 
-
-.infobox1{
+.infobox{
     display: flex;
     flex: 1;
 }
 
-.infobox1_title{
+.infobox_title{
+    color: var(--infobox_title_font_color);
     font-size: var(--infobox_title_font_size);
     text-align: center;
+
     background-color: var(--infobox_title_bg_color);
     border-radius: var(--border_curve_size) 0px 0px var(--border_curve_size);
+    
     flex: 1;
 }
 
-.infobox1_data{
+.infobox_data_number{
+    color: var(--infobox_data_font_color);
     font-size: var(--infobox_data_font_size);
     text-align: center;
+
     background-color: var(--infobox_data_bg_color);
     border-radius: 0px var(--border_curve_size) var(--border_curve_size) 0px;
-    width: var(--data_w);
+
+    width: var(--data_width_number);
 }
 
-/*----------------------------------------------------------------------------
-------------------------------------------------------------------------------
-----------------------------------------------------------------------------*/
 
-.infobox2{
-    display: flex;
-    flex: 1;
-}
-
-.infobox2_title{
-    font-size: var(--infobox_title_font_size);
-    text-align: center;
-    background-color: var(--infobox_title_bg_color);
-    border-radius: var(--border_curve_size) 0px 0px var(--border_curve_size);
-    border-color: var(--infobox_data_border_color);
-    flex: 1;
-}
-
-.infobox2_data{
+.infobox_data_text_regular{
+    color: var(--infobox_data_font_color);
     font-size: var(--infobox_data_font_size);
     text-align: center;
+
     background-color: var(--infobox_data_bg_color);
     border-radius: 0px var(--border_curve_size) var(--border_curve_size) 0px;
-    border-color: var(--infobox_data_border_color);
-    width: var(--data_w);
+
+    width: var(--data_width_text_regular);
+}
+
+
+.infobox_data_text_large{
+    color: var(--infobox_data_font_color);
+    font-size: var(--infobox_data_font_size);
+    text-align: center;
+
+    background-color: var(--infobox_data_bg_color);
+    border-radius: 0px var(--border_curve_size) var(--border_curve_size) 0px;
+
+    width: var(--data_width_text_large);
 }
 
 /*----------------------------------------------------------------------------
@@ -203,22 +228,28 @@ h3 {
 }
 
 .infobox_upper_title{
+    color: var(--infobox_title_font_color);
     font-size: var(--infobox_title_font_size);
     text-align: center;
+
     background-color: var(--infobox_title_bg_color);
     border-radius: var(--border_curve_size) 0px 0px 0px;
-    border-color: var(--infobox_data_border_color);
+    
     flex: 1;
 }
 
-.infobox_upper_data{
+.infobox_upper_data_number{
+    color: var(--infobox_data_font_color);
     font-size: var(--infobox_data_font_size);
     text-align: center;
-    border: solid 1px;
+
     background-color:  var(--infobox_data_bg_color);
     border-radius: 0px var(--border_curve_size) 0px 0px;
+
+    border: solid var(--border_size);
     border-color: var(--infobox_data_border_color);
-    width: var(--data_w);
+
+    width: var(--data_width_number);
 }
 
 /*----------------------------------------------------------------------------
@@ -231,22 +262,175 @@ h3 {
 }
 
 .infobox_lower_title{
+    color: var(--infobox_title_font_color);
     font-size: var(--infobox_title_font_size);
     text-align: center;
+
     background-color: var(--infobox_title_bg_color);
     border-radius: 0px 0px 0px var(--border_curve_size);
-    border-color: var(--infobox_data_border_color);
+
     flex: 1;
 }
 
-.infobox_lower_data{
+.infobox_lower_data_number{
+    color: var(--infobox_data_font_color);
     font-size: var(--infobox_data_font_size);
     text-align: center;
-    border: solid 1px;
-    background-color: var(--infobox_data_bg_color);
+
+    background-color:  var(--infobox_data_bg_color);
     border-radius: 0px 0px var(--border_curve_size) 0px;
+
+    border: solid var(--border_size);
     border-color: var(--infobox_data_border_color);
-    width: var(--data_w);
+
+    width: var(--data_width_number);
+}
+
+/*----------------------------------------------------------------------------
+------------------------------------------------------------------------------
+----------------------------------------------------------------------------*/
+
+.inputbox{
+    display: flex;
+    flex: 1;
+}
+
+.inputbox_title{
+    color: var(--inputbox_title_font_color);
+    font-size: var(--infobox_title_font_size);
+    text-align: center;
+
+    background-color: var(--infobox_title_bg_color);
+    border-radius: var(--border_curve_size) 0px 0px var(--border_curve_size);
+
+    flex: 1;
+}
+
+.inputbox_data_number{
+    color: var(--inputbox_data_font_color);
+    font-size: var(--inputbox_data_font_size);
+    text-align: center;
+
+    background-color: var(--infobox_data_bg_color);
+    border-radius: 0px var(--border_curve_size) var(--border_curve_size) 0px;
+
+    border: solid var(--border_size);
+    border-color: var(--infobox_data_border_color);
+    width: var(--data_width_number);
+}
+
+.inputbox_data_text_regular{
+    color: var(--inputbox_data_font_color);
+    font-size: var(--inputbox_data_font_size);
+    text-align: center;
+
+    background-color: var(--infobox_data_bg_color);
+    border-radius: 0px var(--border_curve_size) var(--border_curve_size) 0px;
+
+    border: solid var(--border_size);
+    border-color: var(--infobox_data_border_color);
+    width: var(--data_width_text_regular);
+}
+
+.inputbox_data_text_large{
+    color: var(--inputbox_data_font_color);
+    font-size: var(--inputbox_data_font_size);
+    text-align: center;
+
+    background-color: var(--infobox_data_bg_color);
+    border-radius: 0px var(--border_curve_size) var(--border_curve_size) 0px;
+
+    border: solid var(--border_size);
+    border-color: var(--infobox_data_border_color);
+    width: var(--data_width_text_large);
+}
+
+/*----------------------------------------------------------------------------
+------------------------------------------------------------------------------
+----------------------------------------------------------------------------*/
+
+.inputbox_upper{
+    display: flex;
+    flex: 1;
+}
+
+.inputbox_upper_title{
+    color: var(--inputbox_title_font_color);
+    font-size: var(--inputbox_title_font_size);
+    text-align: center;
+
+    background-color: var(--inputbox_title_bg_color);
+    border-radius: var(--border_curve_size) 0px 0px 0px;
+    
+    flex: 1;
+}
+
+.inputbox_upper_data_number{
+    color: var(--inputbox_data_font_color);
+    font-size: var(--inputbox_data_font_size);
+    text-align: center;
+
+    background-color:  var(--inputbox_data_bg_color);
+    border-radius: 0px var(--border_curve_size) 0px 0px;
+
+    border: solid var(--border_size);
+    border-color: var(--inputbox_data_border_color);
+
+    width: var(--data_width_number);
+}
+
+/*----------------------------------------------------------------------------
+------------------------------------------------------------------------------
+----------------------------------------------------------------------------*/
+
+.inputbox_lower{
+    display: flex;
+    flex: 1;
+}
+
+.inputbox_lower_title{
+    color: var(--inputbox_title_font_color);
+    font-size: var(--inputbox_title_font_size);
+    text-align: center;
+
+    background-color: var(--inputbox_title_bg_color);
+    border-radius: 0px 0px 0px var(--border_curve_size);
+
+    flex: 1;
+}
+
+.inputbox_lower_data_number{
+    color: var(--inputbox_data_font_color);
+    font-size: var(--inputbox_data_font_size);
+    text-align: center;
+
+    background-color:  var(--inputbox_data_bg_color);
+    border-radius: 0px 0px var(--border_curve_size) 0px;
+
+    border: solid var(--border_size);
+    border-color: var(--inputbox_data_border_color);
+
+    width: var(--data_width_number);
+}
+
+/*----------------------------------------------------------------------------
+------------------------------------------------------------------------------
+----------------------------------------------------------------------------*/
+
+.titlebox_small{
+    color: var(--titlebox_small_font_color);
+    font-size: var(--titlebox_small_font_size);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--titlebox_small_bg_color);
+    border-radius: var(--border_curve_size) var(--border_curve_size) var(--border_curve_size) var(--border_curve_size);
+
+    width: var(--titlebox_small_w);
+    
+    
 }
 
 /*----------------------------------------------------------------------------
