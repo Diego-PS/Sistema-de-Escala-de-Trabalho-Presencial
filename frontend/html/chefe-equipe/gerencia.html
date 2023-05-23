@@ -26,55 +26,55 @@
         <h1>Gerenciar Minha Equipe</h1>
         <div>
             <h2><span>Regras da Escala da Minha Equipe</span></h2>
-            <div class="row_group_transparent">
-                <div class="column_group_transparent">
-                    <div class="column_group_filled">
+            <div class="row_transparent">
+                <div class="column_transparent">
+                    <div class="column_filled">
                         <h3>Minha Equipe</h3>
-                        <div class="infobox_upper">
-                            <div class="infobox_upper_title"><p>Mínimo de Presenças Semanais: </p></div>
-                            <div class="infobox_upper_data_number"><span min_sem = "min_sem_atual"></span></div>
+                        <div class="card">
+                            <div class="card_upper_title"><p>Mín. de Presenças Semanais por Pessoa</p></div>
+                            <div class="card_upper_data_number"><span min_sem = "min_sem_atual"></span></div>
                         </div>
 
-                        <div class="infobox_lower">
-                            <div class="infobox_lower_title"><p>% Mínimo do Corpo Efetivo Presente Diariamente: </p></div>
-                            <div class="infobox_lower_data_number"><span id="perc_min_atual"></span></div>
+                        <div class="card">
+                            <div class="card_lower_title"><p>% Mínimo do Corpo Efetivo Presente Diariamente: </p></div>
+                            <div class="card_lower_data_number"><span id="perc_min_atual"></span></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="column_filler_regular"></div>
 
-                <div class="column_group_transparent">
-                    <div class="column_group_filled">
+                <div class="column_transparent">
+                    <div class="column_filled">
                         <h3>Regras Gerais da Escala</h3>
-                        <div class="infobox_upper">
-                            <div class="infobox_upper_title"><p>Mínimo de Presenças Semanais: </p></div>
-                            <div class="infobox_upper_data_number"><span min_sem = "min_sem_atual"></span></div>
+                        <div class="card">
+                            <div class="card_upper_title"><p>Mín. de Presenças Semanais por Pessoa</p></div>
+                            <div class="card_upper_data_number"><span min_sem = "min_sem_atual"></span></div>
                         </div>
 
-                        <div class="infobox_lower">
-                            <div class="infobox_lower_title"><p>% Mínimo do Corpo Efetivo Presente Diariamente: </p></div>
-                            <div class="infobox_lower_data_number"><span id="perc_min_atual"></span></div>
+                        <div class="card">
+                            <div class="card_lower_title"><p>% Mín. do Corpo Efetivo Presente por Dia</p></div>
+                            <div class="card_lower_data_number"><span id="perc_min_atual"></span></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <h2><span>Regras da Escala da Minha Equipe</span></h2>
-        <div class="row_group_transparent">
+        <div class="row_transparent">
             <div class="titlebox_small"><p>Atuais</p></div>
 
             <div class="column_filler_small"></div>
 
-            <div class="column_group_transparent">
-                <div class="infobox_upper">
-                    <div class="infobox_upper_title"><p>Mínimo de Presenças Semanais: </p></div>
-                    <span class="infobox_upper_data_number" id="min_sem_atual"></span>
+            <div class="column_transparent">
+                <div class="card">
+                    <div class="card_upper_title"><p>Mín. de Presenças Semanais por Pessoa</p></div>
+                    <span class="card_upper_data_number" id="min_sem_atual"></span>
                 </div>
 
-                <div class="infobox_lower">
-                    <div class="infobox_lower_title"><p>% Mínimo do Corpo Efetivo Presente Diariamente: </p></div>
-                    <span class="infobox_lower_data_number" id="perc_min_atual"></span>
+                <div class="card">
+                    <div class="card_lower_title"><p>% Mín. do Corpo Efetivo Presente por Dia</p></div>
+                    <span class="card_lower_data_number" id="perc_min_atual"></span>
                 </div>
             </div>
             
@@ -84,61 +84,85 @@
 
             <div class="column_filler_small"></div>
 
-            <div class="column_group_transparent">
-                <div class="inputbox_upper">
-                    <div class="inputbox_upper_title"><p>Mínimo de Presenças Semanais: </p></div>
-                    <input class="inputbox_upper_data_number" type="number">
+            <div class="column_transparent">
+                <div class="card">
+                    <div class="card_upper_title"><p>Mín. de Presenças Semanais por Pessoa</p></div>
+                    <input class="card_upper_data_number" type="number">
                 </div>
-                <div class="inputbox_lower">
-                    <div class="inputbox_lower_title"><p>% Mínimo do Corpo Efetivo Presente Diariamente: </p></div>
-                    <input class="inputbox_lower_data_number" type="number">
+                <div class="card">
+                    <div class="card_lower_title"><p>% Mín. do Corpo Efetivo Presente por Dia</p></div>
+                    <input class="card_lower_data_number" type="number">
                 </div>
             </div>
         </div>
+
+        <div class="row_filler_small"></div>
+
+        <div class="row_transparent"> 
+            <div class="column_filler_regular"></div>
+            <div class="column_filler_flex"></div>
+            <div class="column_filler_regular"></div>
+            <div class="column_filler_flex"></div>
+            <div class="column_filler_regular"></div>
+            
+            <button class="button_confirm">Confirmar</button>
+            
+            <div class="column_filler_regular"></div>
+                
+            <button class="button_clear">Limpar</button>    
+        </div>
         <div>
             <h2><span>Adicionar Membros na Minha Equipe</span></h2>
-            <h3>Cadastrar Membro</h3>
-            <div class="row_group_transparent">
-                <div class="column_group_transparent">
-                    <div class="inputbox">
-                        <div class="inputbox_title"><p>Nome Completo</p></div>
-                        <input class="inputbox_data_text_large" type="text">
+            <div class="column_filled">
+                <h3>Cadastrar Membro</h3>
+                <div class="row_transparent">
+                    <div class="card">
+                        <div class="card_title"><p>Nome Completo</p></div>
+                        <input class="card_data_text_large" type="text">
                     </div>
 
-                    <div class="row_filler_small"></div>
+                    <div class="column_filler_regular"></div>
                     
-                    <div class="inputbox">
-                        <div class="inputbox_title"><p>E-mail</p></div>
-                        <input class="inputbox_data_text_large" type="text">
+                    <div class="card">
+                        <div class="card_title"><p>Senha</p></div>
+                        <input class="card_data_text_regular" type="password">
                     </div>
                 </div>
                 
-                <div class="column_filler_regular"></div>
+                <div class="row_filler_small"></div>
                 
-                <div class="column_group_transparent">
-                    <div class="inputbox">
-                        <div class="inputbox_title"><p>Senha</p></div>
-                        <input class="inputbox_data_text_regular" type="password">
+                <div class="row_transparent">
+                    <div class="card">
+                        <div class="card_title"><p>E-mail</p></div>
+                        <input class="card_data_text_large" type="text">
                     </div>
                     
-                    <div class="row_filler_small"></div>
+                    <div class="column_filler_regular"></div>
 
-                    <div class="inputbox">
-                        <div class="inputbox_title"><p>Confirmar Senha</p></div>
-                        <input class="inputbox_data_text_regular" type="password">
+                    <div class="card">
+                        <div class="card_title"><p>Confirmar Senha</p></div>
+                        <input class="card_data_text_regular" type="password">
                     </div>
 
                     <div class="row_filler_small"></div>
+                    
+                </div>
 
-                    <div class="row_group_transparent"> 
-                        <button class="button_confirm">Confirmar</button>
+                <div class="row_filler_small"></div>
+                
+                <div class="row_transparent"> 
+                    <div class="column_filler_regular"></div>
+                    <div class="column_filler_flex"></div>
+                    <div class="column_filler_regular"></div>
+                    <div class="column_filler_flex"></div>
+                    <div class="column_filler_regular"></div>
+                    
+                    <button class="button_confirm">Confirmar</button>
+                    
+                    <div class="column_filler_regular"></div>
                         
-                        <div class="column_filler_regular"></div>
-                            
-                        <button class="button_clear">Limpar</button>    
-                    </div>
+                    <button class="button_clear">Limpar</button>    
                 </div>
-                
 
             </div>
         </div>
