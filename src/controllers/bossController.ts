@@ -1,12 +1,7 @@
 import { Request, Response } from "express";
 import { IBossServices } from "../services/bossServices";
 import { Boss } from "../entities/Boss";
-import bcrypt from "bcrypt";
-import { User } from "../entities/User";
-import { userServices } from "../services/userServices";
 import { bossServices } from "../services";
-import { userRepository } from "../repositories";
-import { Rules } from "../abstractions/Rules";
 
 export class BossController
 {
