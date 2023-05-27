@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express";
 
 export class MemberValidators
 {
-    async register(req: Request, res: Response, next: NextFunction) {
+    register(req: Request, res: Response, next: NextFunction) {
         const { name, username, password, confirm_password } = req.body
 
         if (!name || !username || !password || !confirm_password ) {
@@ -16,7 +16,7 @@ export class MemberValidators
         next()
     }
 
-    async get(req: Request, res: Response, next: NextFunction)  {
+    get(req: Request, res: Response, next: NextFunction)  {
         if (Object.keys(req.body).length !== 0) {
             return res.status(400).json({ msg: 'There should not be any parameters' })
         }
@@ -24,7 +24,7 @@ export class MemberValidators
         next()
     }
 
-    async changeDesiredSchedule(req: Request, res: Response, next: NextFunction) {
+    changeDesiredSchedule(req: Request, res: Response, next: NextFunction) {
         const id = req.params.id
         if (typeof id !== 'string') {
             return res.status(400).json({ msg: 'The id parameter is not in the correct form' })
@@ -44,7 +44,7 @@ export class MemberValidators
         next()
     }
 
-    async delete(req: Request, res: Response, next: NextFunction) {
+    delete(req: Request, res: Response, next: NextFunction) {
         const id = req.params.id
         if (typeof id !== 'string') {
             return res.status(400).json({ msg: 'The id parameter is not in the correct form' })

@@ -1,9 +1,8 @@
 import { NextFunction, Request, Response } from "express";
-import { Rules } from "../abstractions/Rules";
 
 export class BossValidators
 {
-    async register(req: Request, res: Response, next: NextFunction) {
+    register(req: Request, res: Response, next: NextFunction) {
         const { name, username, password, confirm_password, organization_name, moa, mpw } = req.body
 
         if (!name || !username || !password || !confirm_password || !organization_name || !moa || !mpw) {
@@ -22,7 +21,7 @@ export class BossValidators
         next()
     }
 
-    async get(req: Request, res: Response, next: NextFunction)  {
+    get(req: Request, res: Response, next: NextFunction)  {
         if (Object.keys(req.body).length !== 0) {
             return res.status(400).json({ msg: 'There should not be any parameters' })
         }
@@ -30,7 +29,7 @@ export class BossValidators
         next()
     }
 
-    async getTeamLeaders(req: Request, res: Response, next: NextFunction)  {
+    getTeamLeaders(req: Request, res: Response, next: NextFunction)  {
         const id = req.params.id
         if (typeof id !== 'string') {
             return res.status(400).json({ msg: 'The id parameter is not in the correct form' })
@@ -43,7 +42,7 @@ export class BossValidators
         next()
     }
 
-    async changeOrganizationRules(req: Request, res: Response, next: NextFunction) {
+    changeOrganizationRules(req: Request, res: Response, next: NextFunction) {
         const id = req.params.id
         if (typeof id !== 'string') {
             return res.status(400).json({ msg: 'The id parameter is not in the correct form' })
@@ -57,7 +56,7 @@ export class BossValidators
         next()
     }
 
-    async delete(req: Request, res: Response, next: NextFunction) {
+    delete(req: Request, res: Response, next: NextFunction) {
         const id = req.params.id
         if (typeof id !== 'string') {
             return res.status(400).json({ msg: 'The id parameter is not in the correct form' })

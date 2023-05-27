@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express";
 
 export class TeamLeaderValidators
 {
-    async register(req: Request, res: Response, next: NextFunction) {
+    register(req: Request, res: Response, next: NextFunction) {
         const { name, username, password, confirm_password, team_name } = req.body
 
         if (!name || !username || !password || !confirm_password || !team_name) {
@@ -18,7 +18,7 @@ export class TeamLeaderValidators
         next()
     }
 
-    async get(req: Request, res: Response, next: NextFunction) {
+    get(req: Request, res: Response, next: NextFunction) {
         if (Object.keys(req.body).length !== 0) {
             return res.status(400).json({ msg: 'There should not be any parameters' })
         }
@@ -26,7 +26,7 @@ export class TeamLeaderValidators
         next()
     }
 
-    async getMembers(req: Request, res: Response, next: NextFunction) {
+    getMembers(req: Request, res: Response, next: NextFunction) {
         const id = req.params.id
         if (typeof id !== 'string') {
             return res.status(400).json({ msg: 'The id parameter is not in the correct form' })
@@ -39,7 +39,7 @@ export class TeamLeaderValidators
         next()
     }
 
-    async changeTeamSchedule(req: Request, res: Response, next: NextFunction) {
+    changeTeamSchedule(req: Request, res: Response, next: NextFunction) {
         const id = req.params.id
         if (typeof id !== 'string') {
             return res.status(400).json({ msg: 'The id parameter is not in the correct form' })
@@ -63,7 +63,7 @@ export class TeamLeaderValidators
         next()
     }
 
-    async changeTeamRules(req: Request, res: Response, next: NextFunction) {
+    changeTeamRules(req: Request, res: Response, next: NextFunction) {
         const id = req.params.id
         if (typeof id !== 'string') {
             return res.status(400).json({ msg: 'The id parameter is not in the correct form' })
@@ -77,7 +77,7 @@ export class TeamLeaderValidators
         next()
     }
 
-    async delete(req: Request, res: Response, next: NextFunction) {
+    delete(req: Request, res: Response, next: NextFunction) {
         const id = req.params.id
         if (typeof id !== 'string') {
             return res.status(400).json({ msg: 'The id parameter is not in the correct form' })
