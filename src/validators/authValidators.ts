@@ -31,7 +31,7 @@ export class AuthValidators
     
             const { role } = jwt.verify(token, secret)
     
-            req.body.role = role
+            req.params.role = role
             next()
     
         } catch(err) {
@@ -41,7 +41,7 @@ export class AuthValidators
 
     boss(req: Request, res: Response, next: NextFunction) {
         try {
-            if (req.body.role === 'boss') {
+            if (req.params.role === 'boss') {
                 next()
             } else {
                 res.status(401).json({ msg: 'not allowed' })
@@ -53,7 +53,7 @@ export class AuthValidators
 
     teamLeader(req: Request, res: Response, next: NextFunction) {
         try {
-            if (req.body.role === 'team_leader') {
+            if (req.params.role === 'team_leader') {
                 next()
             } else {
                 res.status(401).json({ msg: 'not allowed' })
@@ -65,7 +65,7 @@ export class AuthValidators
 
     member(req: Request, res: Response, next: NextFunction) {
         try {
-            if (req.body.role === 'member') {
+            if (req.params.role === 'member') {
                 next()
             } else {
                 res.status(401).json({ msg: 'not allowed' })
