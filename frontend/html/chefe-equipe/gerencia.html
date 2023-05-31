@@ -6,17 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>SmartShift - Gerenciar Minha Equipe</title>
 	<link rel="stylesheet" href="../../css/dono-organizacao/equipes_regras.css">
+    <script src="../../../frontend/js/chefe-equipe/gerencia.js"></script>
 </head>
 <body>
 
     <div class="avatar"></div>
     <p class="username">José da Silva</p>
     <p class="function">Chefe de Equipe</p>
-
+    
     <nav>
         <div style="border: 1px solid black; width: 200px; height: 100px;"></div>
 	    <ul>                
-		    <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Dashboard</a></li>
 		    <li><a href="#">Escalas</a></li>
 		    <li><a href="#">Configurações</a></li>
             <li><a href="#">Log Out</a></li>
@@ -32,12 +33,12 @@
                         <h3>Minha Equipe</h3>
                         <div class="card">
                             <div class="card_upper_title"><p>Mín. de Presenças Semanais por Pessoa</p></div>
-                            <div class="card_upper_data_number"><span min_sem = "min_sem_atual"></span></div>
+                            <div class="card_upper_data_number"><span id = "_my_moa"></span></div>
                         </div>
 
                         <div class="card">
                             <div class="card_lower_title"><p>% Mínimo do Corpo Efetivo Presente Diariamente: </p></div>
-                            <div class="card_lower_data_number"><span id="perc_min_atual"></span></div>
+                            <div class="card_lower_data_number"><span id="_my_mpw"></span></div>
                         </div>
                     </div>
                 </div>
@@ -49,12 +50,12 @@
                         <h3>Regras Gerais da Escala</h3>
                         <div class="card">
                             <div class="card_upper_title"><p>Mín. de Presenças Semanais por Pessoa</p></div>
-                            <div class="card_upper_data_number"><span min_sem = "min_sem_atual"></span></div>
+                            <div class="card_upper_data_number"><span id = "_org_moa"></span></div>
                         </div>
 
                         <div class="card">
                             <div class="card_lower_title"><p>% Mín. do Corpo Efetivo Presente por Dia</p></div>
-                            <div class="card_lower_data_number"><span id="perc_min_atual"></span></div>
+                            <div class="card_lower_data_number"><span id="_org_mpw"></span></div>
                         </div>
                     </div>
                 </div>

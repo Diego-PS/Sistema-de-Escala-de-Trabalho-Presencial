@@ -14,7 +14,9 @@
                     background-position: center;
                 }
             </style>
-        </head>
+            
+        <script src="../js/login.js"></script>
+    </head>
     <body>
         <div class="row_filler_large"></div>
         
@@ -31,14 +33,27 @@
 
             <div class="col_flex_centered_transparent">
                 <h5>LOGIN</h5>
-                <input class="button_card" placeholder="ID ou e-mail" type="text">
+
+                <form id = "_login_form">
+
+                    <input class="button_card" placeholder="ID ou e-mail" type="text" id="_username" required>
+
+                    <div class="row_filler_small"></div>
+
+                    <input class="button_card" placeholder="Senha" type="password" id="_password" type="submit" required>
+
+                    <div class="row_filler_small"></div>
+                    
+                    <button class="button_login" type="submit" id="_login_button">ENTRAR</button>    
+                    
+                </form>
+                
                 <div class="row_filler_small"></div>
-                <input class="button_card" placeholder="Senha" type="password">
-                <div class="row_filler_small"></div>
-                <button class="button_login">ENTRAR</button>
-                <div class="row_filler_small"></div>
-                <a href="login.html">Esqueceu a senha?</a>
+                
+                <div id="result"></div>
+                
                 <div class="row_filler_large"></div>
+
                 <button class="button_login"><a href="cadastro.html">Cadastrar a organização</a></button>
             </div>
 
