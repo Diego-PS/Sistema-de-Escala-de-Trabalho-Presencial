@@ -4,10 +4,23 @@ import express from 'express'
 import { router } from './routes'
 import { User } from "./entities/User";
 import jwt from "jsonwebtoken";
+import path from "path";
 
 const app = express()
 
 app.use(express.json())
+
+app.get('/teste.html', async (req: Request, res: Response) => {
+    res.sendFile(path.join(__dirname+'../../teste.html'))
+})
+
+app.get('/style.css', async (req: Request, res: Response) => {
+    res.sendFile(path.join(__dirname+'../../style.css'))
+})
+
+app.get('/scripts.js', async (req: Request, res: Response) => {
+    res.sendFile(path.join(__dirname+'../../scripts.js'))
+})
 
 // app.post('/auth/login', async (req: Request, res: Response) => {
 //     const { username, password } = req.body
