@@ -4,22 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
     <title>Página de Login</title>
     <!-- Importar o Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZEZa6a7kpDf5cYRvoRxrs/" crossorigin="anonymous">
-    <link rel="stylesheet" href="./login.css" >
+    <link rel="stylesheet" href="./css/cadastro.css" >
 </head>
 <body>
-    <div class="rec"></div>
-    <div style="border: 1px solid black; width: 200px; height: 100px; position: fixed; top: 250px; left: 100px;"></div>
+    <!--<div class="rec"></div>-->
+    <div class="logo">
+        <img src="imgs/logo_trans.png">
+    </div>
+
     <div class="moto">Sua equipe organizada a alguns cliques de distância.</div>
 
+    <p class="title">Cadastro</p>
     <div class="login-container">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="login-form">
                     <form>
-                        <h2>Cadastro</h2>
+
                         <div class="form-group">
                             <input type="text" class="form-control" id="name" placeholder="Nome da Organização">
                         </div>
@@ -34,16 +41,14 @@
                         </div>
                         <button type="submit" class="btn btn-primary btn-block">Cadastrar Organização</button>
 
-
                     </form>
-
-                    <p>Já tem uma conta?</p>
-                    <button type="submit" class="btn btn-primary btn-block">Fazer Login</button>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Importar os Scripts -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmIaPksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1
+
+    <p class="texto">Já tem uma conta?</p>
+    <div class="botao"><button type="submit" class="btn btn-primary btn-block">Fazer Login</button></div>
+    
+</body>
+</html>
