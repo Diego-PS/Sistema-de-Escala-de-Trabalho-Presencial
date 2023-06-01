@@ -70,7 +70,7 @@ request.onload = function preencheTabelas() {
 
         a.textContent = teamLeader.team_name
         b.textContent = teamLeader.name
-        c.textContent = "XXX"
+        c.textContent = teamLeader.num_of_members.toString()
         d.textContent = teamLeader.team_rules.moa
         e.textContent = teamLeader.team_rules.mpw
     })
