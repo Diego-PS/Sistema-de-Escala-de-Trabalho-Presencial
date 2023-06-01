@@ -6,21 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>SmartShift - Equipes e Regras</title>
 	<link rel="stylesheet" href="equipes_regras.css">
-    <script defer>
-        console.log('teste')
-        function getCookie(name) {
-        const value = `; ${document.cookie}`;
-        const parts = value.split(`; ${name}=`);
-        if (parts.length === 2) return parts.pop().split(';').shift();
-        }
-        console.log(getCookie('token'))
-    </script>
+    <script src="equipes_regras.js"></script>
 </head>
 <body>
 
     <div class="avatar"></div>
-    <p class="username">José da Silva</p>
-    <p class="function">Dono da Organização</p>
+    <p class="username" id="_name">ph_name</p>
+    <p class="function" id="_role">ph_role</p>
 
         <nav>
             <div style="border: 1px solid black; width: 200px; height: 100px;"></div>
@@ -40,14 +32,14 @@
 
                 <div class="card">
                     <div class="card_title"><p>Mín. de Presenças Semanais por Pessoa</p></div>
-                    <div class="card_data_number_1"><span id="min_sem_atual"></span></div>
+                    <div class="card_data_number_1" id="_MOA"></div>
                 </div>
 
                 <div class="col_filler_regular"></div>
 
                 <div class="card">
                     <div class="card_title"><p>% Mín. do Corpo Efetivo Presente por Dia</p></div>
-                    <div class="card_data_number_1"><span id="perc_min_atual"></span></div>
+                    <div class="card_data_number_1" id="_MPW"></div>
                 </div>
             </div>
 
@@ -56,84 +48,39 @@
                 <div class="row_noflex_transparent">
                     <div class="col_flex_filled">
                         <h3>Informações Gerais</h3>
-                        <div>
-                            <table class="matrix_type1">
+                        <table class="matrix_type1" id="_tab1">
+                            <tr>
+                                <th>Equipe</th>
+                                <th>Chefia</th>
+                                <th>Nº de Membros</th>
+                            </tr>
+                            <tbody>
                                 <tr>
-                                    <th>Equipe</th>
-                                    <th>Chefia</th>
-                                    <th>Nº de Membros</th>
                                 </tr>
-                                <tbody id="tb_equipes_infos">
-                                    <tr>
-                                        <td>'Finanças'</td>
-                                        <td>'Chefe 1'</td>
-                                        <td>'15'</td>
-                                    </tr>
-                                    <tr>
-                                        <td>'Recursos Humanos'</td>
-                                        <td>'Chefe 2'</td>
-                                        <td>'16'</td>
-                                    </tr>
-                                    <tr>
-                                        <td>'Almoxarifado'</td>
-                                        <td>'Chefe 3'</td>
-                                        <td>'17'</td>
-                                    </tr>
-                                    <tr>
-                                        <td>'Diretoria de Compras'</td>
-                                        <td>'Chefe 4'</td>
-                                        <td>'3'</td>
-                                    </tr>
-                                    <tr>
-                                        <td>'Projetos'</td>
-                                        <td>'Chefe 5'</td>
-                                        <td>'6'</td>
-                                    </tr>
-                                </tbody>
-                            </table>    
-                        </div>
+                            </tbody>
+                        </table>    
                     </div>
 
                     <div class="col_filler_regular"></div>
 
                     <div class="col_noflex_filled">
                         <h3>Regras da Escala</h3>
-                        <div>
-                            <table class="matrix_type2">
+                        <table class="matrix_type2" id="_tab2">
+                            <tr>
+                                <th>Mín. Presenças Sem.</th>
+                                <th>% Mín. do Corpo Efetivo</th>
+                            </tr>
+                            <tbody>
                                 <tr>
-                                    <th>Mín. Presenças Sem.</th>
-                                    <th>% Mín. do Corpo Efetivo</th>
                                 </tr>
-                                <tbody id="tb_equipes_regras">
-                                    <tr>
-                                        <td>'3'</td>
-                                        <td>'70%'</td>
-                                    </tr>
-                                    <tr>
-                                        <td>'2'</td>
-                                        <td>'60%'</td>
-                                    </tr>
-                                    <tr>
-                                        <td>'3'</td>
-                                        <td>'70%'</td>
-                                    </tr>
-                                    <tr>
-                                        <td>'3'</td>
-                                        <td>'80%'</td>
-                                    </tr>
-                                    <tr>
-                                        <td>'2'</td>
-                                        <td>'50%'</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                            </tbody>
+                        </table>
                     </div>
 
                 </div>
             </div>
             <h2><span>Criar Nova Equipe</span></h2>
-            <div>
+            <form id="_newTeamForm" action="">
                 <div class="row_noflex_transparent">
                     <div class="col_flex_transparent">
                         <div class="col_flex_filled">
@@ -204,7 +151,7 @@
                         </div>                        
                     </div>
                 </div>
-            </div>
+            </form>
         </main>    
 </body>
 </html>

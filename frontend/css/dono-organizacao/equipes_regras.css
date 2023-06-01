@@ -42,7 +42,7 @@
     
     /*-----Cards-----*/
     --card_data_font_color: #A7A6A6;
-    --card_data_font_size: 16px;
+    --card_data_font_size: 30px;
     --card_data_bg_color: #363636;
     --card_data_border_color: #BB86FC;
     --card_title_font_color: #363636;
@@ -239,6 +239,9 @@ h5{
     font-size: var(--card_data_font_size);
     text-align: center;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: var(--card_data_bg_color);
     border-radius: 0px var(--border_curve_size_regular) var(--border_curve_size_regular) 0px;
 
@@ -442,6 +445,7 @@ h5{
 .matrix_type1 td {
     color: var(--matrix_data_font_color);
     font-size: var(--matrix_data_font_size);
+    text-align: center;
 
     background-color: var(--matrix_data_bg_color);
     border: 1px solid var(--matrix_border_color);
@@ -450,13 +454,7 @@ h5{
     width: auto;
 }
 
-.matrix_type1 td:nth-child(1){
-    text-align: left;
-    width: var(--data_width_text_regular);
-}
-
 .matrix_type1 td:nth-child(3){
-    text-align: center;
     width: var(--data_width_number);
 }
 

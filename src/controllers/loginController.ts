@@ -20,17 +20,16 @@ export class LoginController
             if (!checkPassorwd) {
                 return res.status(422).json({ msg: 'Invalid password' })
             }
-
-            const id = user.id
     
             const secret = process.env.SECRET
     
             const token = jwt.sign({
-                role: user.role
+                role: user.role,
+                id: user.id
             }, secret)
 
             res.cookie("token" , token, {
-                httpOnly: true,
+                httpOnly: false,
             })
     
             res.redirect('/equipes_regras.html')

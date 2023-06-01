@@ -51,6 +51,11 @@ app.get('/equipes_regras.css', async (req: Request, res: Response) => {
 })
 
 
+app.get('/equipes_regras.js', async (req: Request, res: Response) => {
+    res.sendFile(path.join(__dirname+'../../frontend/js/dono-organizacao/equipes_regras.js'))
+})
+
+
 app.use(router)
 
 export { app }
