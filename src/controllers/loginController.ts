@@ -33,7 +33,8 @@ export class LoginController
                 httpOnly: true,
             })
     
-            res.status(200).json({ msg: "Authentication was successful", token , id })
+            res.redirect('/equipes_regras.html')
+            // res.status(200).json({ msg: "Authentication was successful", token , id })
         } catch(err) {
             return res.status(500).json({ msg: err?.message ?? 'Something went wrong' })
         }
