@@ -20,6 +20,8 @@ export class LoginController
             if (!checkPassorwd) {
                 return res.status(422).json({ msg: 'Invalid password' })
             }
+
+            const id = user.id
     
             const secret = process.env.SECRET
     
@@ -27,7 +29,7 @@ export class LoginController
                 role: user.role
             }, secret)
     
-            res.status(200).json({ msg: "Authentication was successful", token })
+            res.status(200).json({ msg: "Authentication was successful", token , id })
         } catch(err) {
             return res.status(500).json({ msg: err?.message ?? 'Something went wrong' })
         }
