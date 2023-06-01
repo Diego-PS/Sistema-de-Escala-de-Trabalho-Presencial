@@ -28,6 +28,10 @@ export class LoginController
             const token = jwt.sign({
                 role: user.role
             }, secret)
+
+            res.cookie("token" , token, {
+                httpOnly: true,
+            })
     
             res.status(200).json({ msg: "Authentication was successful", token , id })
         } catch(err) {

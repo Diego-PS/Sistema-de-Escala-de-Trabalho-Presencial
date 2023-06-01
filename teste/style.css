@@ -24,3 +24,7 @@
       flex: 1 1 calc(33% - 2rem);
     }
   }
+
+  h1 { 
+    color:blue;
+  }

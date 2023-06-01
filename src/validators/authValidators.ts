@@ -5,7 +5,9 @@ export class AuthValidators
 {
     login(req: Request, res: Response, next: NextFunction) {
         const { username, password } = req.body
- 
+
+        console.log(req.body)
+
         if (!username) {
             return res.status(422).json({ msg: 'The username is mandatory' })
         }
@@ -18,8 +20,11 @@ export class AuthValidators
     }
 
     auth(req: Request, res: Response, next: NextFunction) {
-        const authHeader = req.headers['authorization']
-        const token = authHeader && authHeader.split(" ")[1]
+
+        const token = req.cookies.token
+
+        //const authHeader = req.headers['authorization']
+        //const token = authHeader && authHeader.split(" ")[1]
     
         if (!token) {
             return res.status(401).json({ msg: "Access denied" })
