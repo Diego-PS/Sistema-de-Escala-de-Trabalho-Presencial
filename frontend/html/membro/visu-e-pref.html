@@ -4,27 +4,245 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Vertical Navigation Bar</title>
-    <link rel="stylesheet" href="./visualizacao.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+    <title>Smart Shift</title>
+    <link rel="stylesheet" href="./css/membro/visu-e-pref.css">
 </head>
 <body>
 
-    <div class="avatar"></div>
-    <p class="username">Maria da Silva</p>
-    <p class="function">Membro</p>
+  <div class="avatar">
+    <img src="imgs/user3.png">
+  </div>
+
+  <p class="username">Maria da Silva</p>
+  <p class="function">Membro</p>
+
+	<p class="title">Dashboard</p>
 
     <div class="container">
 	    <nav>
-            <div style="border: 1px solid black; width: 200px; height: 100px;"></div>
+        <div class="logo"><img src="imgs/logo.png"></div>
 		    <ul>                
 			    <li><a href="#">Dashboard</a></li>
-			    <li><a href="#">Escalas</a></li>
 			    <li><a href="#">Configurações</a></li>
                 <li><a href="#">Log Out</a></li>
 		    </ul>            
 	    </nav>
     </div>   
-    
-    
+
+    <!-- Minha equipe -->
+    <div class="container-team">
+        <div class="container-back-one">
+            <p class="my-team">Minha equipe</p>
+            <div class="info-team">
+                <div class="r1">Chefe</div>
+                <div class="r1">Membros</div>
+          </div>
+
+          <div class="info-team-2">
+            <div class="r2"></div>
+            <div class="r2"></div>
+      </div>
+        </div>
+    </div>
+
+    <!-- Escala -->
+    <div class="shift">
+        <div class="container-back-two">
+            <!-- Membros -->
+            <div class="member">Membros</div>
+
+            <div class="rectangle-group">
+                <div class="rectangle">Membro I</div>
+                <div class="rectangle">Membro II</div>
+                <div class="rectangle">Membro III</div>
+                <div class="rectangle">Membro IV</div>
+                <div class="rectangle">Membro V</div>
+                <div class="rectangle">Membro VI</div>
+                <div class="rectangle">Membro VII</div>
+                <div class="rectangle">Membro VIII</div>
+                <div class="rectangle">Membro IX</div>
+                <div class="rectangle">Membro X</div>
+        </div>
+
+            <!-- Escala -->
+            <div class="currentshift">Escala atual</div>
+            
+            <div>
+                <table id="weekdays1">
+                  <tr>
+                    <td><button id="b3">Seg</button></td>
+                    <td><button id="b3">Ter</button></td>
+                    <td><button id="b3">Qua</button></td>
+                    <td><button id="b3">Qui</button></td>
+                    <td><button id="b3">Sex</button></td>
+                    <td><button id="b3">Tot</button></td>
+                  </tr>    
+              </div>
+
+            <div>
+                <table id="matrix1">
+                  <tr>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b2"></button></td>
+                  </tr>
+                
+                  <tr>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b2"></button></td>
+                  </tr>
+                  
+                  <tr>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b2"></button></td>
+                  </tr>
+                  
+                  <tr>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b2"></button></td>
+                  </tr>
+                  
+                  <tr>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b2"></button></td>
+                  </tr>
+                  
+                  <tr>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b2"></button></td>
+                  </tr>
+                  
+                  <tr>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b2"></button></td>
+                  </tr>
+                  
+                  <tr>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b2"></button></td>
+                  </tr>
+                  
+                  <tr>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b2"></button></td>
+                  </tr>
+                  
+                  <tr>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b2"></button></td>
+                  </tr>
+                </table>
+                </div>
+        </div>
+    </div>
+
+    <!-- Regras gerais -->
+    <div class="container-rules">
+        <div class="container-back-three">
+            <p class="my-team">Regras Gerais da Escala</p>
+            <div class="info-rules">
+                <div class="r1">Min. presença semanal</div>
+                <div class="r1">% mínima do corpo efetivo</div>
+          </div>
+
+          <div class="info-rules-2">
+            <div class="r2"></div>
+            <div class="r2"></div>
+      </div>
+        </div>
+    </div>
+
+    <!-- Minhas pref -->
+    <div class="container-pref">
+        <div class="container-back-four">
+            <p class="my-team">Minha preferência de escala</p>
+
+            <div>
+                <table id="weekdays2">
+                  <tr>
+                    <td><button id="b3">Seg</button></td>
+                    <td><button id="b3">Ter</button></td>
+                    <td><button id="b3">Qua</button></td>
+                    <td><button id="b3">Qui</button></td>
+                    <td><button id="b3">Sex</button></td>
+                    <td><button id="b3">Tot</button></td>
+                  </tr>    
+            </div>
+
+            <div class="rectangle-group-2">
+                <div class="mini-rectangle">Atual</div>
+                <div class="mini-rectangle">Nova</div>
+        </div>
+
+            <div>
+                <table id="matrix2">
+                  <tr>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b2"></button></td>
+                  </tr>
+                
+                  <tr>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b1" onclick="this.classList.toggle('clicado')"></button></td>
+                    <td><button id="b2"></button></td>
+                  </tr>
+                </table>
+            </div>  
+
+            <div class="confirmar"><button type="submit" class="btn btn-primary btn-block">Confirmar</button></div>
+  
+            <div class="limpar"><button type="submit" class="btn btn-primary btn-block">Limpar</button></div>
+        </div>
+    </div>
+
 </body>
 </html>
