@@ -1,0 +1,108 @@
+:root{   
+    /*-----Matrix-----*/
+    --matrix_header_font_color: #363636;
+    --matrix_header_font_size: 16px;
+    --matrix_header_bg_color: #BB86FC;
+    --matrix_data_font_color: #A7A6A6;
+    --matrix_data_font_size: 16px;
+    --matrix_data_bg_color: #363636;
+    --matrix_border_color: #BB86FC;
+}
+
+
+/*----------------------------------------------------------------------------
+----------------------------------------------------------------------------*/
+
+.m_col_flex_filled{
+    padding: var(--group_padding);
+    background-color: var(--group_bg_color);
+    display: block;
+    border-radius: var(--border_curve_size_regular) var(--border_curve_size_regular) var(--border_curve_size_regular) var(--border_curve_size_regular);
+    flex: 1;
+}
+
+.m_col_noflex_filled{
+    padding: var(--group_padding);
+    background-color: var(--group_bg_color);
+    display: block;
+    border-radius: var(--border_curve_size_regular) var(--border_curve_size_regular) var(--border_curve_size_regular) var(--border_curve_size_regular);
+}
+
+
+/*----------------------------------------------------------------------------
+----------------------------------------------------------------------------*/
+
+.m1{
+    border-color: var(--matrix_border_color);
+    border-spacing: 0;
+    text-align: center;
+    align-self: center;
+    flex: 1;
+    width: 100%;
+}
+
+.m1 th {
+    color: var(--matrix_header_font_color);
+    font-size: var(--matrix_header_font_size);
+
+    background-color: var(--matrix_header_bg_color);
+    border-radius: var(--border_curve_size_regular) var(--border_curve_size_regular) 0 0;
+
+    padding: 8px;
+    width: auto;    
+}
+
+.m1 td {
+    color: var(--matrix_data_font_color);
+    font-size: var(--matrix_data_font_size);
+    text-align: center;
+
+    background-color: var(--matrix_data_bg_color);
+    border: 1px solid var(--matrix_border_color);
+
+    padding: 8px;
+    width: auto;
+}
+
+.m1 td:nth-child(3){
+    width: var(--data_width_number);
+}
+
+.m1 tr:last-child td{
+    border-radius: 0 0 var(--border_curve_size_regular) var(--border_curve_size_regular);
+}
+
+/*----------------------------------------------------------------------------
+----------------------------------------------------------------------------*/
+
+.m2{
+    border-color: var(--matrix_border_color);
+    border-spacing: 0;
+    text-align: center;
+    align-self: center;
+}
+
+.m2 th {
+    color: var(--matrix_header_font_color);
+    font-size: var(--matrix_header_font_size);
+
+    background-color: var(--matrix_header_bg_color);
+    border-radius: var(--border_curve_size_regular) var(--border_curve_size_regular) 0 0;
+
+    padding: 8px;
+}
+
+.m2 td {
+    color: var(--matrix_data_font_color);
+    font-size: var(--matrix_data_font_size);
+
+    background-color: var(--matrix_data_bg_color);
+    border: 1px solid var(--matrix_border_color);
+
+    padding: 8px;
+    width: var(--data_width_number_special);
+}
+
+.m2 tr:last-child td{
+    border-radius: 0 0 var(--border_curve_size_regular) var(--border_curve_size_regular);
+}

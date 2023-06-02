@@ -5,47 +5,105 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>SmartShift - Equipes e Regras</title>
-	<link rel="stylesheet" href="equipes_regras.css">
+
+    <link rel="stylesheet" href="_cards_buttons.css">
+    <link rel="stylesheet" href="_fillers.css">
+    <link rel="stylesheet" href="_matrixes.css">
+    <link rel="stylesheet" href="_postLogin.css">
+    <link rel="stylesheet" href="_variables.css">
+
     <script src="equipes_regras.js" defer></script>
 </head>
 <body>
     <p class="username" id="_name">ph_name</p>
     <p class="function" id="_role">ph_role</p>
-
+  
         <nav>
-            <div style="width: 200px; height: 130px; background-image: url('logo.png'); background-size: cover; background-position: center;"></div>
+            <div class="logo"><img src="/logo.png"></div>
             <ul>
                 <li><a href="\equipes_regras.html">Dashboard</a></li>
                 <li><a href="#">Configurações (x)</a></li>
-                <li><a href="#">Log Out (x)</a></li>
-                </ul>            
+                <li><a href="\login.html">Log Out</a></li>
+            </ul>            
         </nav>
 
         <main>
             <h1>Equipes e Regras</h1>
-            <h2><span>Regras Gerais da Organização</span></h2>
+        <h2><span>Regras da Escala da Minha Organização</span></h2>
 
+        <form id="_form_bossChangeRules" method="post">
             <div class="row_noflex_transparent">
 
-                <div class="card">
-                    <div class="card_title"><p>Mín. de Presenças Semanais por Pessoa</p></div>
-                    <div class="card_data_number_1" id="_MOA"></div>
+                <div class="titlebox_small">
+                    <p>Atuais</p>
+                </div>
+
+                <div class="col_filler_small"></div>
+
+                <div class="col_flex_transparent">
+                    <div class="card">
+                        <div class="card_upper_title">
+                            <p>Mín. de Presenças Semanais por Pessoa</p>
+                        </div>
+                        <span class="card_upper_data_number" id="_MOAatual"></span>
+                    </div>
+
+                    <div class="card">
+                        <div class="card_lower_title">
+                            <p>% Mín. do Corpo Efetivo Presente por Dia</p>
+                        </div>
+                        <span class="card_lower_data_number" id="_MPWatual"></span>
+                    </div>
                 </div>
 
                 <div class="col_filler_regular"></div>
 
-                <div class="card">
-                    <div class="card_title"><p>% Mín. do Corpo Efetivo Presente por Dia</p></div>
-                    <div class="card_data_number_1" id="_MPW"></div>
+                <div class="titlebox_small">
+                    <p>Novas</p>
+                </div>
+
+                <div class="col_filler_small"></div>
+
+                <div class="col_flex_transparent">
+                    <div class="card">
+                        <div class="card_upper_title">
+                            <p>Mín. de Presenças Semanais por Pessoa</p>
+                        </div>
+                        <input class="card_upper_data_number" type="number" name="moa">
+                    </div>
+                    <div class="card">
+                        <div class="card_lower_title">
+                            <p>% Mín. do Corpo Efetivo Presente por Dia</p>
+                        </div>
+                        <input class="card_lower_data_number" type="number" name="mpw">
+                    </div>
                 </div>
             </div>
+
+            <div class="row_filler_small"></div>
+
+            <div class="row_noflex_transparent">
+                <div class="col_filler_regular"></div>
+                <div class="col_filler_flex"></div>
+                <div class="col_filler_regular"></div>
+                <div class="col_filler_flex"></div>
+                <div class="col_filler_regular"></div>
+
+                <button class="button_confirm" onclick="formSubmit_bossChangeRules()">Confirmar</button>
+
+                <div class="col_filler_regular"></div>
+
+                <button class="button_clear">Limpar (x)</button>
+            </div>
+        </form>
+
 
             <div>
                 <h2><span>Dashboard - Equipes da Organização</span></h2>
                 <div class="row_noflex_transparent">
-                    <div class="col_flex_filled">
+                    <div class="m_col_flex_filled">
                         <h3>Informações Gerais</h3>
-                        <table class="matrix_type1" id="_tab1">
+                        <table class="m1" id="_tab1">
                             <tr>
                                 <th>Equipe</th>
                                 <th>Chefia</th>
@@ -60,9 +118,9 @@
 
                     <div class="col_filler_regular"></div>
 
-                    <div class="col_noflex_filled">
+                    <div class="m_col_noflex_filled">
                         <h3>Regras da Escala</h3>
-                        <table class="matrix_type2" id="_tab2">
+                        <table class="m2" id="_tab2">
                             <tr>
                                 <th>Mín. Presenças Sem.</th>
                                 <th>% Mín. do Corpo Efetivo</th>
@@ -136,7 +194,7 @@
                         <div class="col_filler_regular"></div>
                         <div class="col_filler_flex"></div>
                         <div class="col_filler_regular"></div>
-                        <button class="button_confirm" onclick = "cria_action()">Confirmar</button>
+                        <button class="button_confirm" onclick = "formSubmit_registerTeamLeader()">Confirmar</button>
                         
                         <div class="col_filler_regular"></div>
                             

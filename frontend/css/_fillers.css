@@ -1,0 +1,21 @@
+
+.row_filler_small{
+    height: var(--row_filler_small_h);
+}
+
+.row_filler_large{
+    height: var(--row_filler_large_h);
+}
+
+.col_filler_flex{
+    display: flex;
+    flex: 1;
+}
+
+.col_filler_small{
+    width: var(--col_filler_small_w);
+}
+
+.col_filler_regular{
+    width: var(--col_filler_regular_w);
+}

@@ -1,1 +1,12 @@
+body {
+    background-image: url("login_bg_img.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+}
 
+
+h1{
+    color: var(--h5_font_color);
+    font-size: var(--h5_font_size);
+}

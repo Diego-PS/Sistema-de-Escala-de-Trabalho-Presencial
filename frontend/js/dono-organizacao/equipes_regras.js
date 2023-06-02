@@ -13,8 +13,8 @@
     }
     const token = getCookie('token')
     console.log(token)
-    const id = JSON.parse(atob(token.split('.')[1])).id
-    console.log(id)
+    const bossId = JSON.parse(atob(token.split('.')[1])).id
+    console.log(bossId)
 
 
 
@@ -27,14 +27,14 @@ request1.onload = function dadosDoBoss() {
   var allBosses = JSON.parse(this.response)
 
   var boss = allBosses.filter(function(boss) {
-    return boss.id === id; // Replace with the desired ID
+    return boss.id === bossId; // Replace with the desired ID
   });
   console.log(boss)
 
   var name = document.getElementById('_name')
   var role = document.getElementById('_role')
-  var MOA = document.getElementById('_MOA')
-  var MPW = document.getElementById('_MPW')
+  var MOA = document.getElementById('_MOAatual')
+  var MPW = document.getElementById('_MPWatual')
 
   name.textContent = boss[0].name
   role.textContent = boss[0].role
@@ -49,7 +49,7 @@ request1.send()
 //=====================================================
 var request = new XMLHttpRequest()
 
-request.open('GET', 'http://localhost:4000/boss/teamleaders/' + id, true)
+request.open('GET', 'http://localhost:4000/boss/teamleaders/' + bossId, true)
 request.setRequestHeader('Authorization', token);
 
 request.onload = function preencheTabelas() {
@@ -79,10 +79,16 @@ request.onload = function preencheTabelas() {
 // Send request
 request.send()
 
+function formSubmit_bossChangeRules () {
+    const cadastrar_lider_form = document.getElementById("_form_bossChangeRules")
 
-function cria_action () {
+    cadastrar_lider_form.action = `/boss/changerules/${bossId}` 
+    cadastrar_lider_form.submit()
+}
+
+function formSubmit_registerTeamLeader () {
     const cadastrar_lider_form = document.getElementById("_newTeamForm")
 
-    cadastrar_lider_form.action = `/teamleader/register/${id}` 
+    cadastrar_lider_form.action = `/teamleader/register/${bossId}` 
     cadastrar_lider_form.submit()
 }

@@ -1,5 +1,5 @@
 body {
-    background-image: url('../imgs/login_bg_img.png');
+    background-image: url('login_bg_img.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center top;
@@ -75,8 +75,7 @@ body {
 }
 
 .logo img{
-    width: 250px;
-    height: 250px;
+    height: 190px;
     position: absolute; 
     top: 200px; 
     left: 40px;
