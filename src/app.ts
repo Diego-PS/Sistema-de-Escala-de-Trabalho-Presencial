@@ -55,6 +55,9 @@ app.get('/equipes_regras.js', async (req: Request, res: Response) => {
     res.sendFile(path.join(__dirname+'../../frontend/js/dono-organizacao/equipes_regras.js'))
 })
 
+app.get('/logo_1.png', async (req: Request, res: Response) => {
+    res.sendFile(path.join(__dirname+'../../frontend/imgs/logo_1.png'))
+})
 
 app.use(router)
 
