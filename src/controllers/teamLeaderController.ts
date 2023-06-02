@@ -44,7 +44,7 @@ export class TeamLeaderController
         try {
             const team_leader = await TeamLeader.getById(id)
             await team_leader.changeTeamSchedule(req.body)
-            return res.status(201).json({ msg: 'Team Schedule was successfully updated' })
+            return res.redirect('/vizualizacao.html')
         } catch(err) {
             return res.status(500).json({ msg: err?.message ?? 'Something went wrong' })
         }
