@@ -1,9 +1,9 @@
-.row_noflex_transparent{
+.row_noflex_transparent {
     display: flex;
     justify-content: space-between;
 }
 
-.col_flex_transparent{
+.col_flex_transparent {
     display: block;
     flex-direction: column;
     justify-content: space-between;
@@ -11,7 +11,7 @@
     justify-content: center;
 }
 
-.col_flex_filled{
+.col_flex_filled {
     padding: var(--group_padding);
     background-color: var(--group_bg_color);
     display: block;
@@ -19,7 +19,7 @@
     flex: 1;
 }
 
-.col_flex_centered_transparent{
+.col_flex_centered_transparent {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -27,30 +27,30 @@
     flex: 1;
 }
 
-.col_noflex_filled{
+.col_noflex_filled {
     padding: var(--group_padding);
     background-color: var(--group_bg_color);
     display: block;
     border-radius: var(--border_curve_size_regular) var(--border_curve_size_regular) var(--border_curve_size_regular) var(--border_curve_size_regular);
 }
 
-.card{
+.card {
     display: flex;
     flex: 1;
 }
 
-.card_title{
+.card_title {
     color: var(--card_title_font_color);
     font-size: var(--card_title_font_size);
     text-align: center;
 
     background-color: var(--card_title_bg_color);
     border-radius: var(--border_curve_size_regular) 0px 0px var(--border_curve_size_regular);
-    
+
     flex: 1;
 }
 
-.card_data_number_1{
+.card_data_number_1 {
     color: var(--card_data_font_color);
     font-size: var(--card_data_font_size);
     text-align: center;
@@ -64,7 +64,7 @@
     width: var(--data_width_number);
 }
 
-.card_data_number_2{
+.card_data_number_2 {
     color: var(--card_data_font_color);
     font-size: var(--card_data_font_size);
     text-align: center;
@@ -77,7 +77,7 @@
     width: var(--data_width_number);
 }
 
-.card_data_text_regular{
+.card_data_text_regular {
     color: var(--card_data_font_color);
     font-size: var(--card_data_font_size);
     text-align: center;
@@ -90,7 +90,7 @@
     width: var(--data_width_text_regular);
 }
 
-.card_data_text_large{
+.card_data_text_large {
     color: var(--card_data_font_color);
     font-size: var(--card_data_font_size);
     text-align: center;
@@ -103,7 +103,7 @@
     width: var(--data_width_text_large);
 }
 
-.card_data_text_verylarge{
+.card_data_text_verylarge {
     color: var(--card_data_font_color);
     font-size: var(--card_data_font_size);
     text-align: center;
@@ -120,23 +120,23 @@
 ------------------------------------------------------------------------------
 ----------------------------------------------------------------------------*/
 
-.card_upper_title{
+.card_upper_title {
     color: var(--card_title_font_color);
     font-size: var(--card_title_font_size);
     text-align: center;
 
     background-color: var(--card_title_bg_color);
     border-radius: var(--border_curve_size_regular) 0px 0px 0px;
-    
+
     flex: 1;
 }
 
-.card_upper_data_number{
+.card_upper_data_number {
     color: var(--card_data_font_color);
     font-size: var(--card_data_font_size);
     text-align: center;
 
-    background-color:  var(--card_data_bg_color);
+    background-color: var(--card_data_bg_color);
     border-radius: 0px var(--border_curve_size_regular) 0px 0px;
 
     border: solid var(--border_size);
@@ -149,7 +149,7 @@
 ------------------------------------------------------------------------------
 ----------------------------------------------------------------------------*/
 
-.card_lower_title{
+.card_lower_title {
     color: var(--card_title_font_color);
     font-size: var(--card_title_font_size);
     text-align: center;
@@ -160,12 +160,12 @@
     flex: 1;
 }
 
-.card_lower_data_number{
+.card_lower_data_number {
     color: var(--card_data_font_color);
     font-size: var(--card_data_font_size);
     text-align: center;
 
-    background-color:  var(--card_data_bg_color);
+    background-color: var(--card_data_bg_color);
     border-radius: 0px 0px var(--border_curve_size_regular) 0px;
 
     border: solid var(--border_size);
@@ -178,14 +178,14 @@
 ------------------------------------------------------------------------------
 ----------------------------------------------------------------------------*/
 
-.titlebox_small{
+.titlebox_small {
     color: var(--titlebox_small_font_color);
     font-size: var(--titlebox_small_font_size);
     text-align: center;
 
     background-color: var(--titlebox_small_bg_color);
     border-radius: var(--border_curve_size_regular) var(--border_curve_size_regular) var(--border_curve_size_regular) var(--border_curve_size_regular);
-    
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -197,11 +197,11 @@
 ------------------------------------------------------------------------------
 ----------------------------------------------------------------------------*/
 
-.button_confirm{
+.button_confirm {
     color: var(--button_font_color);
     font-size: var(--button_font_size);
     text-align: center;
-    
+
     background-color: var(--button_confirm_bg_color);
     border-radius: var(--border_curve_size_regular) var(--border_curve_size_regular) var(--border_curve_size_regular) var(--border_curve_size_regular);
 
@@ -209,11 +209,11 @@
     flex: 1;
 }
 
-.button_clear{
+.button_clear {
     color: var(--button_font_color);
     font-size: var(--button_font_size);
     text-align: center;
-    
+
     background-color: var(--button_clear_bg_color);
     border-radius: var(--border_curve_size_regular) var(--border_curve_size_regular) var(--border_curve_size_regular) var(--border_curve_size_regular);
 
@@ -221,11 +221,11 @@
     flex: 1;
 }
 
-.button_login{
+.button_login {
     color: var(--button_login_font_color);
     font-size: var(--button_login_font_size);
     text-align: center;
-    
+
     background-color: var(--button_login_bg_color);
     border-radius: var(--border_curve_size_large) var(--border_curve_size_large) var(--border_curve_size_large) var(--border_curve_size_large);
 
@@ -234,11 +234,11 @@
     margin: auto;
 }
 
-.button_card{
+.button_card {
     color: #868484;
     font-size: var(--button_login_font_size);
     text-align: center;
-    
+
     background-color: #EEEEEE;
     border-radius: var(--border_curve_size_large) var(--border_curve_size_large) var(--border_curve_size_large) var(--border_curve_size_large);
 
@@ -247,3 +247,53 @@
     margin: auto;
 }
 
+/*--------------------------------------------------
+--------------------------------------------------*/
+
+.b1 {
+    background-color: #A7A6A6;
+    border-radius: 10px;
+}
+
+.b1.clicado {
+    background-color: #BB86FC;
+}
+
+.b2 {
+    background-color: #363636;
+    border-radius: 10px;
+    outline: 1px solid #BB86FC;
+    color: white;
+}
+
+.b2.warn {
+    background-color: red;
+}
+
+.b3 {
+    background-color: #BB86FC;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.b4on {
+    background-color: #BB86FC;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.b4on:active {
+    transform: translateY(2px);
+    background-color: #BB86FC;
+}
+
+.b4off {
+    background-color: #A7A6A6;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.b4off:active {
+    transform: translateY(2px);
+    background-color: #BB86FC;
+}
