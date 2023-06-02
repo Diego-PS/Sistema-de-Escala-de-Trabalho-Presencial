@@ -55,7 +55,7 @@ export class TeamLeaderController
         try {
             const team_leader = await TeamLeader.getById(id)
             await team_leader.changeTeamRules(req.body)
-            return res.status(201).json({ msg: 'Team rules successfully updated' })
+            return res.redirect('/gerencia.html')
         } catch(err) {
             return res.status(500).json({ msg: err?.message ?? 'Something went wrong' })
         }

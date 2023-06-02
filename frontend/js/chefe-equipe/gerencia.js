@@ -46,32 +46,6 @@ request1.send()
 
 
 function muda_regra () {
-    
-    console.log("teste")
-
-    let content = {
-        Details: alter_form.alter.value.toString()
-    };
-    
-    console.log(content)
-
-    fetch(`http://localhost:4000/teamleader/changerules/${id}`, {
-        method: 'PATCH',
-        headers: {
-            'Content-type': 'application/json; charset=UTF-8',
-            'Accept': 'application/json'
-        },
-        body: JSON.stringify(content)
-    }).then((response) => {
-        console.log('PATCH Response.status: ', response.status);
-        if(response.status !== 204)
-            return response.json();
-        else
-            return response.statusText;
-    }).then((data) => {
-        alert(data);
-    });
-
     const mudar_regra_form = document.getElementById("_changeRulesForm")
 
     mudar_regra_form.action = `/teamleader/changerules/${id}` 
