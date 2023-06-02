@@ -563,15 +563,20 @@ nav a:hover {
 }
 
 .username {
-    color: white;
+    color: black;
     position: absolute;
     right: 190px;
     top: 15px;
-}
-
-.function {
-    color: white;
+    color: #BB86FC;
+    font-size: 18px;
+  }
+  
+  .function {
+    color: black;
     position: absolute;
     right: 190px;
-    top: 35px;
-}
+    top: 45px;
+    color: #BB86FC;
+    font-size: 10px;
+  }
+  

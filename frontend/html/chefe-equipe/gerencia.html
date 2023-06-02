@@ -21,7 +21,7 @@
         <ul>
             <li><a href="\gerencia.html">Equipe</a></li>
             <li><a href="\visualizacao.html">Escala</a></li>
-        <li><a href="#">Configurações (x)</a></li>
+            <li><a href="#">Configurações (x)</a></li>
             <li><a href="#">Log Out (x)</a></li>
         </ul>
     </nav>
@@ -52,7 +52,6 @@
         <h2><span>Regras da Escala da Minha Equipe</span></h2>
 
         <form id="_changeRulesForm">
-            <input type="hidden" name="_method" value="patch">
             <div class="row_noflex_transparent">
 
                 <div class="titlebox_small">
@@ -114,71 +113,74 @@
 
                 <div class="col_filler_regular"></div>
 
-                <button class="button_clear">Limpar</button>
+                <button class="button_clear">Limpar (x)</button>
             </div>
         </form>
         <div>
             <h2><span>Adicionar Membros na Minha Equipe</span></h2>
-            <div class="col_flex_filled">
-                <h3>Cadastrar Membro</h3>
-                <div class="row_noflex_transparent">
-                    <div class="card">
-                        <div class="card_title">
-                            <p>Nome Completo</p>
+            <form id="_newTeamForm" method= "post">
+                <div class="col_flex_filled">
+
+                    <h3>Cadastrar Novo Membro</h3>
+
+                    <div class="row_noflex_transparent">
+    
+                        <div class="col_flex_transparent">
+                            <div class="card">
+                                <div class="card_title"><p>Nome do Membro</p></div>
+                                <input type="text" class="card_data_text_large" name="name">
+                            </div>      
+                            
+                            <div class="row_filler_small"></div>
+    
+                            <div class="card">
+                                <div class="card_title"><p>Nome do Usuário</p></div>
+                                <input class="card_data_text_large" type="text" name="username">
+                            </div>
+                            
                         </div>
-                        <input class="card_data_text_large" type="text" id="user_name">
+                        
+                        <div class="col_filler_regular"></div>
+                        
+                        <div class="col_flex_transparent">
+                            
+                            <div class="card">
+                                <div class="card_title"><p>Senha</p></div>
+                                <input class="card_data_text_regular" type="password" name="password">
+                            </div>
+    
+                            <div class="row_filler_small"></div>
+    
+                            <div class="card">
+                                <div class="card_title"><p>Confirmar Senha</p></div>
+                                <input class="card_data_text_regular" type="password" name="confirm_password">
+                            </div>
+    
+                            <div class="row_filler_small"></div>
+                            
+                        </div>
+    
+                        <div class="column_filler_regular"></div>
+                        
+                    </div>
+                    
+                    <div class="row_noflex_transparent"> 
+                        <div class="col_filler_regular"></div>
+                        <div class="col_filler_flex"></div>
+                        <div class="col_filler_regular"></div>
+                        <div class="col_filler_flex"></div>
+                        <div class="col_filler_regular"></div>
+                        <button class="button_confirm" onclick = "addMember()">Confirmar</button>
+                        
+                        <div class="col_filler_regular"></div>
+                            
+                        <button class="button_clear">Limpar (x)</button>    
+                        
                     </div>
 
-                    <div class="col_filler_regular"></div>
-
-                    <div class="card">
-                        <div class="card_title">
-                            <p>Senha</p>
-                        </div>
-                        <input class="card_data_text_regular" type="password">
-                    </div>
                 </div>
+            </form>
 
-                <div class="row_filler_small"></div>
-
-                <div class="row_noflex_transparent">
-                    <div class="card">
-                        <div class="card_title">
-                            <p>E-mail</p>
-                        </div>
-                        <input class="card_data_text_large" type="text">
-                    </div>
-
-                    <div class="col_filler_regular"></div>
-
-                    <div class="card">
-                        <div class="card_title">
-                            <p>Confirmar Senha</p>
-                        </div>
-                        <input class="card_data_text_regular" type="password">
-                    </div>
-
-                    <div class="row_filler_small"></div>
-
-                </div>
-
-                <div class="row_filler_small"></div>
-
-                <div class="row_noflex_transparent">
-                    <div class="col_filler_regular"></div>
-                    <div class="col_filler_flex"></div>
-                    <div class="col_filler_regular"></div>
-                    <div class="col_filler_flex"></div>
-                    <div class="col_filler_regular"></div>
-
-                    <button class="button_confirm">Confirmar</button>
-
-                    <div class="col_filler_regular"></div>
-
-                    <button class="button_clear">Limpar</button>
-                </div>
-
-            </div>
         </div>
     </main>
 

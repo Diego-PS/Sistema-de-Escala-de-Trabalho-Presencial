@@ -79,6 +79,22 @@ app.get('/visualizacao.css', async (req: Request, res: Response) => {
     res.sendFile(path.join(__dirname+'../../frontend/css/chefe-equipe/visualizacao.css'))
 })
 
+//------------------------------------------------------------
+
+app.get('/visu-e-pref.html', async (req: Request, res: Response) => {
+    res.sendFile(path.join(__dirname+'/../frontend/html/membro/visu-e-pref.html'))
+})
+
+app.get('/visu-e-pref.html.js', async (req: Request, res: Response) => {
+    res.sendFile(path.join(__dirname+'/../frontend/js/membro/visu-e-pref.html.js'))
+})
+
+app.get('/visu-e-pref.css', async (req: Request, res: Response) => {
+    res.sendFile(path.join(__dirname+'../../frontend/css/membro/visu-e-pref.css'))
+})
+
+//------------------------------------------------------------
+
 app.use(router)
 
 export { app }

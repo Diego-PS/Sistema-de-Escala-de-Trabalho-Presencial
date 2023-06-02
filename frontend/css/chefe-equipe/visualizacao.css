@@ -307,3 +307,49 @@ nav a:hover {
 .btn:hover {
   background-color: #BB86FC;
 }
+
+/*------------------------------------------------------------*/
+
+.matrix_1{
+  border-color: white;
+  border-spacing: 0;
+  text-align: center;
+  align-self: center;
+  flex: 1;
+  width: 100%;
+  position: absolute;
+  top: 300px;
+
+
+}
+
+.matrix_1 td {
+  width: 200px;
+  height: 30px;
+  background-color: #BB86FC;
+  margin: 2.5px;
+  border-radius: 10px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cell_1 {
+  background-color: #A7A6A6;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.cell_1:hover {
+  background-color: #BB86FC;
+}
+
+.cell_1:active {
+  transform: translateY(2px);
+  background-color: #BB86FC;
+}
+
+.cell_1.clicado {
+  background-color: #BB86FC;
+}

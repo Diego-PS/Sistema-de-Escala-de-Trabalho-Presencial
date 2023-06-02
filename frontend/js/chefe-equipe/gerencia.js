@@ -46,6 +46,7 @@ request1.send()
 
 
 function muda_regra () {
+    
     console.log("teste")
 
     let content = {
@@ -75,4 +76,11 @@ function muda_regra () {
 
     mudar_regra_form.action = `/teamleader/changerules/${id}` 
     mudar_regra_form.submit()
+}
+
+function addMember () {
+    const cadastrar_lider_form = document.getElementById("_newTeamForm")
+
+    cadastrar_lider_form.action = `/member/register/${id}` 
+    cadastrar_lider_form.submit()
 }
