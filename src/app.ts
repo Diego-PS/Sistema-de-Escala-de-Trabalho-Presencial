@@ -59,6 +59,11 @@ app.get('/logo_1.png', async (req: Request, res: Response) => {
     res.sendFile(path.join(__dirname+'../../frontend/imgs/logo_1.png'))
 })
 
+app.get('/login_bg_img.png', async (req: Request, res: Response) => {
+    res.sendFile(path.join(__dirname+'../../frontend/imgs/login_bg_img.png'))
+})
+
+
 app.use(router)
 
 export { app }
