@@ -19,60 +19,40 @@
     <nav>
         <div style="border: 1px solid black; width: 200px; height: 100px;"></div>
         <ul>
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Escalas</a></li>
-            <li><a href="#">Configurações</a></li>
-            <li><a href="#">Log Out</a></li>
+            <li><a href="\gerencia.html">Equipe</a></li>
+            <li><a href="\visualizacao.html">Escala</a></li>
+        <li><a href="#">Configurações (x)</a></li>
+            <li><a href="#">Log Out (x)</a></li>
         </ul>
     </nav>
     <main>
         <h1>Gerenciar Minha Equipe</h1>
         <div>
-            <h2><span>Regras da Escala da Minha Equipe</span></h2>
-            <div class="row_noflex_transparent">
-                <div class="col_flex_transparent">
-                    <div class="col_flex_filled">
-                        <h3>Minha Equipe</h3>
-                        <div class="card">
-                            <div class="card_upper_title">
-                                <p>Mín. de Presenças Semanais por Pessoa</p>
-                            </div>
-                            <div class="card_upper_data_number"><span id="_my_moa"></span></div>
-                        </div>
+            <h2><span>Regras Gerais da Organização</span></h2>
 
-                        <div class="card">
-                            <div class="card_lower_title">
-                                <p>% Mínimo do Corpo Efetivo Presente Diariamente: </p>
-                            </div>
-                            <div class="card_lower_data_number"><span id="_my_mpw"></span></div>
-                        </div>
+            <div class="row_noflex_transparent">
+
+                <div class="card">
+                    <div class="card_title">
+                        <p>Mín. de Presenças Semanais por Pessoa</p>
                     </div>
+                    <div class="card_data_number_1" id="_MOA"></div>
                 </div>
 
                 <div class="col_filler_regular"></div>
 
-                <div class="col_flex_transparent">
-                    <div class="col_flex_filled">
-                        <h3>Regras Gerais da Escala</h3>
-                        <div class="card">
-                            <div class="card_upper_title">
-                                <p>Mín. de Presenças Semanais por Pessoa</p>
-                            </div>
-                            <div class="card_upper_data_number"><span id="_org_moa"></span></div>
-                        </div>
-
-                        <div class="card">
-                            <div class="card_lower_title">
-                                <p>% Mín. do Corpo Efetivo Presente por Dia</p>
-                            </div>
-                            <div class="card_lower_data_number"><span id="_org_mpw"></span></div>
-                        </div>
+                <div class="card">
+                    <div class="card_title">
+                        <p>% Mín. do Corpo Efetivo Presente por Dia</p>
                     </div>
+                    <div class="card_data_number_1" id="_MPW"></div>
                 </div>
             </div>
         </div>
         <h2><span>Regras da Escala da Minha Equipe</span></h2>
-        <form id="_changeRulesForm" method= "patch">
+
+        <form id="_changeRulesForm">
+            <input type="hidden" name="_method" value="patch">
             <div class="row_noflex_transparent">
 
                 <div class="titlebox_small">
@@ -110,13 +90,13 @@
                         <div class="card_upper_title">
                             <p>Mín. de Presenças Semanais por Pessoa</p>
                         </div>
-                        <input class="card_upper_data_number" type="number" name ="moa">
+                        <input class="card_upper_data_number" type="number" name="moa">
                     </div>
                     <div class="card">
                         <div class="card_lower_title">
                             <p>% Mín. do Corpo Efetivo Presente por Dia</p>
                         </div>
-                        <input class="card_lower_data_number" type="number" name = "mpw">
+                        <input class="card_lower_data_number" type="number" name="mpw">
                     </div>
                 </div>
             </div>
@@ -130,7 +110,7 @@
                 <div class="col_filler_flex"></div>
                 <div class="col_filler_regular"></div>
 
-                <button class="button_confirm" onclick = "muda_regra()">Confirmar</button>
+                <button class="button_confirm" onclick="muda_regra()">Confirmar</button>
 
                 <div class="col_filler_regular"></div>
 

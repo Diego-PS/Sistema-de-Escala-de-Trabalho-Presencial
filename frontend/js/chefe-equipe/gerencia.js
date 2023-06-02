@@ -46,11 +46,12 @@ request1.send()
 
 
 function muda_regra () {
+    console.log("teste")
 
     let content = {
         Details: alter_form.alter.value.toString()
-        };
-
+    };
+    
     console.log(content)
 
     fetch(`http://localhost:4000/teamleader/changerules/${id}`, {
