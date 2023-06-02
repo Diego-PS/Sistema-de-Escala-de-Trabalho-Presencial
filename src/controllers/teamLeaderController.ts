@@ -13,7 +13,7 @@ export class TeamLeaderController
         try {
             const boss = await Boss.getById(boss_id)
             const team_leader = await boss.createTeamLeader(req.body)
-            return res.status(201).json({ msg: 'Team successfully registered' })
+            return res.redirect('/equipes_regras.html')
         } catch(err) {
             return res.status(500).json({ msg: err?.message ?? 'Something went wrong' })
         }
