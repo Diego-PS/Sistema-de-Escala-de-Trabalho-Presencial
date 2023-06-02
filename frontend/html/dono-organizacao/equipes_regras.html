@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>SmartShift - Equipes e Regras</title>
 	<link rel="stylesheet" href="equipes_regras.css">
-    <script src="equipes_regras.js"></script>
+    <script src="equipes_regras.js" defer></script>
 </head>
 <body>
     <p class="username" id="_name">ph_name</p>
@@ -79,7 +79,7 @@
             </div>
             <h2><span>Criar Nova Equipe</span></h2>
 
-            <form id="_newTeamForm" action="/teamleader/register/0449a121-256c-4cde-ae46-f2bc189e1cb2" method= "post">
+            <form id="_newTeamForm" method= "post">
                 <div class="col_flex_filled">
 
                     <h3>Cadastrar Equipe e Chefia</h3>
@@ -138,7 +138,7 @@
                         <div class="col_filler_regular"></div>
                         <div class="col_filler_flex"></div>
                         <div class="col_filler_regular"></div>
-                        <button class="button_confirm" type="submit" >Confirmar</button>
+                        <button class="button_confirm" onclick = "cria_action()">Confirmar</button>
                         
                         <div class="col_filler_regular"></div>
                             
@@ -148,6 +148,7 @@
 
                 </div>
             </form>
+       
         </main>    
 </body>
 </html>

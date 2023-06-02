@@ -78,3 +78,11 @@ request.onload = function preencheTabelas() {
 
 // Send request
 request.send()
+
+
+function cria_action () {
+    const cadastrar_lider_form = document.getElementById("_newTeamForm")
+
+    cadastrar_lider_form.action = `/teamleader/register/${id}` 
+    cadastrar_lider_form.submit()
+}
