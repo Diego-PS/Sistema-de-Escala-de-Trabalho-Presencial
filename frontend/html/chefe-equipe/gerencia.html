@@ -1,27 +1,29 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>SmartShift - Gerenciar Minha Equipe</title>
-	<link rel="stylesheet" href="equipes_regras.css">
+    <link rel="stylesheet" href="equipes_regras.css">
     <script src="gerencia.js"></script>
 </head>
+
 <body>
 
     <div class="avatar"></div>
-    <p class="username" id = "_name"></p>
-    <p class="function" id = "_role"></p>
-    
+    <p class="username" id="_name"></p>
+    <p class="function" id="_role"></p>
+
     <nav>
         <div style="border: 1px solid black; width: 200px; height: 100px;"></div>
-	    <ul>                
+        <ul>
             <li><a href="#">Dashboard</a></li>
-		    <li><a href="#">Escalas</a></li>
-		    <li><a href="#">Configurações</a></li>
+            <li><a href="#">Escalas</a></li>
+            <li><a href="#">Configurações</a></li>
             <li><a href="#">Log Out</a></li>
-	    </ul>            
+        </ul>
     </nav>
     <main>
         <h1>Gerenciar Minha Equipe</h1>
@@ -32,12 +34,16 @@
                     <div class="col_flex_filled">
                         <h3>Minha Equipe</h3>
                         <div class="card">
-                            <div class="card_upper_title"><p>Mín. de Presenças Semanais por Pessoa</p></div>
-                            <div class="card_upper_data_number"><span id = "_my_moa"></span></div>
+                            <div class="card_upper_title">
+                                <p>Mín. de Presenças Semanais por Pessoa</p>
+                            </div>
+                            <div class="card_upper_data_number"><span id="_my_moa"></span></div>
                         </div>
 
                         <div class="card">
-                            <div class="card_lower_title"><p>% Mínimo do Corpo Efetivo Presente Diariamente: </p></div>
+                            <div class="card_lower_title">
+                                <p>% Mínimo do Corpo Efetivo Presente Diariamente: </p>
+                            </div>
                             <div class="card_lower_data_number"><span id="_my_mpw"></span></div>
                         </div>
                     </div>
@@ -49,12 +55,16 @@
                     <div class="col_flex_filled">
                         <h3>Regras Gerais da Escala</h3>
                         <div class="card">
-                            <div class="card_upper_title"><p>Mín. de Presenças Semanais por Pessoa</p></div>
-                            <div class="card_upper_data_number"><span id = "_org_moa"></span></div>
+                            <div class="card_upper_title">
+                                <p>Mín. de Presenças Semanais por Pessoa</p>
+                            </div>
+                            <div class="card_upper_data_number"><span id="_org_moa"></span></div>
                         </div>
 
                         <div class="card">
-                            <div class="card_lower_title"><p>% Mín. do Corpo Efetivo Presente por Dia</p></div>
+                            <div class="card_lower_title">
+                                <p>% Mín. do Corpo Efetivo Presente por Dia</p>
+                            </div>
                             <div class="card_lower_data_number"><span id="_org_mpw"></span></div>
                         </div>
                     </div>
@@ -62,113 +72,137 @@
             </div>
         </div>
         <h2><span>Regras da Escala da Minha Equipe</span></h2>
-        <div class="row_noflex_transparent">
-            <div class="titlebox_small"><p>Atuais</p></div>
+        <form id="_changeRulesForm" method= "patch">
+            <div class="row_noflex_transparent">
 
-            <div class="col_filler_small"></div>
-
-            <div class="col_flex_transparent">
-                <div class="card">
-                    <div class="card_upper_title"><p>Mín. de Presenças Semanais por Pessoa</p></div>
-                    <span class="card_upper_data_number" id="_MOAatual"></span>
+                <div class="titlebox_small">
+                    <p>Atuais</p>
                 </div>
 
-                <div class="card">
-                    <div class="card_lower_title"><p>% Mín. do Corpo Efetivo Presente por Dia</p></div>
-                    <span class="card_lower_data_number" id="_MPWatual"></span>
+                <div class="col_filler_small"></div>
+
+                <div class="col_flex_transparent">
+                    <div class="card">
+                        <div class="card_upper_title">
+                            <p>Mín. de Presenças Semanais por Pessoa</p>
+                        </div>
+                        <span class="card_upper_data_number" id="_MOAatual"></span>
+                    </div>
+
+                    <div class="card">
+                        <div class="card_lower_title">
+                            <p>% Mín. do Corpo Efetivo Presente por Dia</p>
+                        </div>
+                        <span class="card_lower_data_number" id="_MPWatual"></span>
+                    </div>
+                </div>
+
+                <div class="col_filler_regular"></div>
+
+                <div class="titlebox_small">
+                    <p>Novas</p>
+                </div>
+
+                <div class="col_filler_small"></div>
+
+                <div class="col_flex_transparent">
+                    <div class="card">
+                        <div class="card_upper_title">
+                            <p>Mín. de Presenças Semanais por Pessoa</p>
+                        </div>
+                        <input class="card_upper_data_number" type="number" name ="moa">
+                    </div>
+                    <div class="card">
+                        <div class="card_lower_title">
+                            <p>% Mín. do Corpo Efetivo Presente por Dia</p>
+                        </div>
+                        <input class="card_lower_data_number" type="number" name = "mpw">
+                    </div>
                 </div>
             </div>
-            
-            <div class="col_filler_regular"></div>
-            
-            <div class="titlebox_small"><p>Novas</p></div>
 
-            <div class="col_filler_small"></div>
+            <div class="row_filler_small"></div>
 
-            <div class="col_flex_transparent">
-                <div class="card">
-                    <div class="card_upper_title"><p>Mín. de Presenças Semanais por Pessoa</p></div>
-                    <input class="card_upper_data_number" type="number">
-                </div>
-                <div class="card">
-                    <div class="card_lower_title"><p>% Mín. do Corpo Efetivo Presente por Dia</p></div>
-                    <input class="card_lower_data_number" type="number">
-                </div>
+            <div class="row_noflex_transparent">
+                <div class="col_filler_regular"></div>
+                <div class="col_filler_flex"></div>
+                <div class="col_filler_regular"></div>
+                <div class="col_filler_flex"></div>
+                <div class="col_filler_regular"></div>
+
+                <button class="button_confirm" onclick = "muda_regra()">Confirmar</button>
+
+                <div class="col_filler_regular"></div>
+
+                <button class="button_clear">Limpar</button>
             </div>
-        </div>
-
-        <div class="row_filler_small"></div>
-
-        <div class="row_noflex_transparent"> 
-            <div class="col_filler_regular"></div>
-            <div class="col_filler_flex"></div>
-            <div class="col_filler_regular"></div>
-            <div class="col_filler_flex"></div>
-            <div class="col_filler_regular"></div>
-            
-            <button class="button_confirm">Confirmar</button>
-            
-            <div class="col_filler_regular"></div>
-                
-            <button class="button_clear">Limpar</button>    
-        </div>
+        </form>
         <div>
             <h2><span>Adicionar Membros na Minha Equipe</span></h2>
             <div class="col_flex_filled">
                 <h3>Cadastrar Membro</h3>
                 <div class="row_noflex_transparent">
                     <div class="card">
-                        <div class="card_title"><p>Nome Completo</p></div>
+                        <div class="card_title">
+                            <p>Nome Completo</p>
+                        </div>
                         <input class="card_data_text_large" type="text" id="user_name">
                     </div>
 
                     <div class="col_filler_regular"></div>
-                    
+
                     <div class="card">
-                        <div class="card_title"><p>Senha</p></div>
+                        <div class="card_title">
+                            <p>Senha</p>
+                        </div>
                         <input class="card_data_text_regular" type="password">
                     </div>
                 </div>
-                
+
                 <div class="row_filler_small"></div>
-                
+
                 <div class="row_noflex_transparent">
                     <div class="card">
-                        <div class="card_title"><p>E-mail</p></div>
+                        <div class="card_title">
+                            <p>E-mail</p>
+                        </div>
                         <input class="card_data_text_large" type="text">
                     </div>
-                    
+
                     <div class="col_filler_regular"></div>
 
                     <div class="card">
-                        <div class="card_title"><p>Confirmar Senha</p></div>
+                        <div class="card_title">
+                            <p>Confirmar Senha</p>
+                        </div>
                         <input class="card_data_text_regular" type="password">
                     </div>
 
                     <div class="row_filler_small"></div>
-                    
+
                 </div>
 
                 <div class="row_filler_small"></div>
-                
-                <div class="row_noflex_transparent"> 
+
+                <div class="row_noflex_transparent">
                     <div class="col_filler_regular"></div>
                     <div class="col_filler_flex"></div>
                     <div class="col_filler_regular"></div>
                     <div class="col_filler_flex"></div>
                     <div class="col_filler_regular"></div>
-                    
+
                     <button class="button_confirm">Confirmar</button>
-                    
+
                     <div class="col_filler_regular"></div>
-                        
-                    <button class="button_clear">Limpar</button>    
+
+                    <button class="button_clear">Limpar</button>
                 </div>
 
             </div>
         </div>
     </main>
 
-    
+
 </body>
+
 </html>
