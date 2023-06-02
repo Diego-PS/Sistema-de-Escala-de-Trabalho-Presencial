@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>SmartShift - Gerenciar Minha Equipe</title>
-	<link rel="stylesheet" href="../../css/dono-organizacao/equipes_regras.css">
-    <script src="../../../frontend/js/chefe-equipe/gerencia.js"></script>
+	<link rel="stylesheet" href="equipes_regras.css">
+    <script src="gerencia.js"></script>
 </head>
 <body>
 
     <div class="avatar"></div>
-    <p class="username">José da Silva</p>
-    <p class="function">Chefe de Equipe</p>
+    <p class="username" id = "_name"></p>
+    <p class="function" id = "_role"></p>
     
     <nav>
         <div style="border: 1px solid black; width: 200px; height: 100px;"></div>
@@ -70,12 +70,12 @@
             <div class="col_flex_transparent">
                 <div class="card">
                     <div class="card_upper_title"><p>Mín. de Presenças Semanais por Pessoa</p></div>
-                    <span class="card_upper_data_number" id="min_sem_atual"></span>
+                    <span class="card_upper_data_number" id="_MOAatual"></span>
                 </div>
 
                 <div class="card">
                     <div class="card_lower_title"><p>% Mín. do Corpo Efetivo Presente por Dia</p></div>
-                    <span class="card_lower_data_number" id="perc_min_atual"></span>
+                    <span class="card_lower_data_number" id="_MPWatual"></span>
                 </div>
             </div>
             

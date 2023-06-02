@@ -26,17 +26,6 @@ app.use((req: Request, res: Response, next: NextFunction) => {
     next();
   });
 
-app.get('/teste.html', async (req: Request, res: Response) => {
-    res.sendFile(path.join(__dirname+'../../teste.html'))
-})
-
-app.get('/style.css', async (req: Request, res: Response) => {
-    res.sendFile(path.join(__dirname+'../../teste/style.css'))
-})
-
-app.get('/scripts.js', async (req: Request, res: Response) => {
-    res.sendFile(path.join(__dirname+'../../scripts.js'))
-})
 
 app.get('/login.html', async (req: Request, res: Response) => {
     res.sendFile(path.join(__dirname+'/../frontend/html/login.html'))
@@ -65,6 +54,15 @@ app.get('/logo.png', async (req: Request, res: Response) => {
 
 app.get('/login_bg_img.png', async (req: Request, res: Response) => {
     res.sendFile(path.join(__dirname+'../../frontend/imgs/login_bg_img.png'))
+})
+
+
+app.get('/gerencia.html', async (req: Request, res: Response) => {
+    res.sendFile(path.join(__dirname+'/../frontend/html/chefe-equipe/gerencia.html'))
+})
+
+app.get('/gerencia.js', async (req: Request, res: Response) => {
+    res.sendFile(path.join(__dirname+'/../frontend/js/chefe-equipe/gerencia.js'))
 })
 
 

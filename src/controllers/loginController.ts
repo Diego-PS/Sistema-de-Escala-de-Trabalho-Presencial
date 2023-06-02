@@ -32,7 +32,17 @@ export class LoginController
                 httpOnly: false,
             })
     
-            res.redirect('/equipes_regras.html')
+            if(user.role == "boss"){
+                res.redirect('/equipes_regras.html')
+            }
+            if(user.role == "team_leader"){
+                res.redirect('/gerencia.html')
+            }
+            if(user.role == "member"){
+                res.redirect('/visu-e-pref.html')
+            }
+            
+            
             // res.status(200).json({ msg: "Authentication was successful", token , id })
         } catch(err) {
             return res.status(500).json({ msg: err?.message ?? 'Something went wrong' })
