@@ -27,6 +27,7 @@
     --data_width_number_special: 130px;
     --data_width_text_regular: 200px;
     --data_width_text_large: 300px;
+    --data_width_text_verylarge: 600px;
     
     /*-----Headers-----*/
     --h1_font_color: #EEEEEE;
@@ -285,6 +286,19 @@ h5{
     border: solid var(--border_size);
     border-color: var(--card_data_border_color);
     width: var(--data_width_text_large);
+}
+
+.card_data_text_verylarge{
+    color: var(--card_data_font_color);
+    font-size: var(--card_data_font_size);
+    text-align: center;
+
+    background-color: var(--card_data_bg_color);
+    border-radius: 0px var(--border_curve_size_regular) var(--border_curve_size_regular) 0px;
+
+    border: solid var(--border_size);
+    border-color: var(--card_data_border_color);
+    width: var(--data_width_text_verylarge);
 }
 
 /*----------------------------------------------------------------------------

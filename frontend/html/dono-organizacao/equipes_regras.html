@@ -80,76 +80,74 @@
                 </div>
             </div>
             <h2><span>Criar Nova Equipe</span></h2>
-            <form id="_newTeamForm" action="">
-                <div class="row_noflex_transparent">
-                    <div class="col_flex_transparent">
-                        <div class="col_flex_filled">
-                            <h3>Cadastrar Equipe</h3>
+
+            <form id="_newTeamForm" action="/teamleader/register/0449a121-256c-4cde-ae46-f2bc189e1cb2" method= "post">
+                <div class="col_flex_filled">
+
+                    <h3>Cadastrar Equipe e Chefia</h3>
+
+                    <div class="card">
+                        <div class="card_title"><p>Nome da Equipe</p></div>
+                        <input type="text" class="card_data_text_verylarge" name="team_name">
+                    </div>
+                    <div class="row_filler_small"></div>
+
+                    <div class="row_noflex_transparent">
+
+    
+                        <div class="col_flex_transparent">
                             <div class="card">
-                                <div class="card_title"><p>Nome</p></div>
-                                <input type="text" class="card_data_text_large">
-                            </div>
-    
-                            <div class="row_filler_small"></div>
-    
-                            <div class="card">
-                                <div class="card_title"><p>Mín. de Presenças Semanais por Pessoa</p></div>
-                                <input type="number" class="card_data_number_2">
-                            </div>
-    
-                            <div class="row_filler_small"></div>
-    
-                            <div class="card">
-                                <div class="card_title"><p>% Mín. do Corpo Efetivo Presente por Dia</p></div>
-                                <input type="number" class="card_data_number_2">
-                            </div>
+                                <div class="card_title"><p>Nome do Líder</p></div>
+                                <input type="text" class="card_data_text_large" name="name">
+                            </div>      
                             
                             <div class="row_filler_small"></div>
-                            
-                            <div class="row_noflex_transparent">
-                                <button class="button_confirm">Confirmar</button>
-                                
-                                <div class="col_filler_regular"></div>
-                                
-                                <button class="button_clear">Limpar</button>
+    
+                            <div class="card">
+                                <div class="card_title"><p>Nome do Usuário</p></div>
+                                <input class="card_data_text_large" type="text" name="username">
                             </div>
                             
                         </div>
-                    </div>
-                    
-                    <div class="col_filler_regular"></div>
-
-                    <div class="col_flex_transparent">
                         
-                        <div class="col_flex_filled">
-                            <h3>Cadastrar Chefia</h3>
+                        <div class="col_filler_regular"></div>
+                        
+                        <div class="col_flex_transparent">
                             
                             <div class="card">
-                            <div class="card_title"><p>Nome Completo</p></div>
-                            <input type="text" class="card_data_text_large">
-                        </div>      
-
-                        <div class="row_filler_small"></div>
+                                <div class="card_title"><p>Senha</p></div>
+                                <input class="card_data_text_regular" type="password" name="password">
+                            </div>
+    
+                            <div class="row_filler_small"></div>
+    
+                            <div class="card">
+                                <div class="card_title"><p>Confirmar Senha</p></div>
+                                <input class="card_data_text_regular" type="password" name="confirm_password">
+                            </div>
+    
+                            <div class="row_filler_small"></div>
+                            
+                        </div>
+    
+                        <div class="column_filler_regular"></div>
                         
-                        <div class="card">
-                            <div class="card_title"><p>E-mail</p></div>
-                            <input type="text" class="card_data_text_large">
-                        </div>      
-
-                        <div class="row_filler_small"></div>
-                        
-                        <div class="card">
-                            <div class="card_title"><p>Senha</p></div>
-                            <input type="text" class="card_data_text_regular">
-                        </div>        
-                        
-                        <div class="row_filler_small"></div>
-                        
-                        <div class="card">
-                            <div class="card_title"><p>Confirmar Senha</p></div>
-                            <input type="text" class="card_data_text_regular">
-                        </div>                        
                     </div>
+                    
+                    <div class="row_noflex_transparent"> 
+                        <div class="col_filler_regular"></div>
+                        <div class="col_filler_flex"></div>
+                        <div class="col_filler_regular"></div>
+                        <div class="col_filler_flex"></div>
+                        <div class="col_filler_regular"></div>
+                        <button class="button_confirm" type="submit" >Confirmar</button>
+                        
+                        <div class="col_filler_regular"></div>
+                            
+                        <button class="button_clear">Limpar (Desativado)</button>    
+                        
+                    </div>
+
                 </div>
             </form>
         </main>    
