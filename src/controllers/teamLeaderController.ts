@@ -22,7 +22,13 @@ export class TeamLeaderController
     async get(req: Request, res: Response) {
         try {
             const team_leaders = await TeamLeader.getAll()
-            return res.status(201).json(team_leaders)
+            const team_leaders_response = []
+            for (const team_leader of team_leaders) {
+                const members = await team_leader.getMembers()
+                const num_of_members = members.length
+                team_leaders_response.push({ ...team_leader, num_of_members })
+            }
+            return res.status(201).json(team_leaders_response)
         } catch(err) {
             return res.status(500).json({ msg: err?.message ?? 'Something went wrong' })
         }
