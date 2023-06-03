@@ -23,6 +23,7 @@ var request1 = new XMLHttpRequest()
 request1.open('GET', 'http://localhost:4000/teamleader', true)
 
 var teamLeader = null
+var num_members = 0
 
 request1.onload = function dadosDoTeamLeader() {
 var allTeamLeaders = JSON.parse(this.response)
@@ -55,6 +56,7 @@ var change_team_schedule_obj = {}
 
 request2.onload = function preencheTabelas() {
     var data = JSON.parse(this.response)
+    num_members = data.length
 
     const member_names_rows_div = document.getElementsByClassName('rectangle-group')[0]
     data.forEach(member => {
@@ -65,6 +67,7 @@ request2.onload = function preencheTabelas() {
     })
 
     const matrix1 = document.getElementById('matrix1')
+    var day_attendence_current = { mon: 0, tue: 0, wed: 0, thu: 0, fri: 0 }
     for (member of data) {
         const table_row = document.createElement('tr')
         let tot = 0
@@ -74,6 +77,7 @@ request2.onload = function preencheTabelas() {
             if (member.actual_schedule[day]) {
                 table_data_button.className = 'b1 clicado'
                 tot++
+                day_attendence_current[day]++
             } else {
                 table_data_button.className = 'b1'
             }
@@ -91,6 +95,31 @@ request2.onload = function preencheTabelas() {
         table_data.appendChild(table_data_button)
         table_row.appendChild(table_data)
         matrix1.appendChild(table_row)
+    }
+
+    const info_current_shift = document.getElementById('infoCurrentShift')
+    const table_row_current_shift = document.createElement('tr')
+    const table_row_percentage = document.createElement('tr')
+    for (day of ['mon', 'tue', 'wed', 'thu', 'fri']) {
+        const table_data_current_shift = document.createElement('td')
+        const table_data_percentage = document.createElement('td')
+        const table_data_button_current_shift = document.createElement('button')
+        const table_data_button_percentage = document.createElement('button')
+        if (day_attendence_current[day]*100 < parseInt(teamLeader.team_rules.mpw)*num_members) {
+            table_data_button_current_shift.className = 'b2 warn'
+            table_data_button_percentage.className = 'b2 warn'
+        } else {
+            table_data_button_current_shift.className = 'b2'
+            table_data_button_percentage.className = 'b2'
+        }
+        table_data_button_current_shift.innerHTML = day_attendence_current[day]
+        table_data_current_shift.appendChild(table_data_button_current_shift)
+        table_row_current_shift.appendChild(table_data_current_shift)
+        info_current_shift.appendChild(table_row_current_shift)
+        table_data_button_percentage.innerHTML = parseInt(day_attendence_current[day]*100/num_members)
+        table_data_percentage.appendChild(table_data_button_percentage)
+        table_row_percentage.appendChild(table_data_percentage)
+        info_current_shift.appendChild(table_row_percentage)
     }
 
     const matrix2 = document.getElementById('matrix2')
