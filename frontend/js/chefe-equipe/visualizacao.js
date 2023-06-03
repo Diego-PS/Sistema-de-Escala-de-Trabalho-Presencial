@@ -155,24 +155,40 @@ request2.onload = function preencheTabelas() {
         return function () {
             const this_button = document.getElementById(`${username}-${day}`)
             const tot_button = document.getElementById(`tot:${username}`)
+            const attendence_day = document.getElementById(`attendence:${day}`)
+            const percentage_day = document.getElementById(`percentage:${day}`)
             change_team_schedule_obj[username][day] = !change_team_schedule_obj[username][day]
             const isOn = this_button.className == 'b4on'
             if (isOn) {
                 this_button.className = 'b4off'
                 tot_button.innerHTML--
+                attendence_day.innerHTML--
+                percentage_day.innerHTML = parseInt(attendence_day.innerHTML*100/num_members)
             } else {
                 this_button.className = 'b4on'
                 tot_button.innerHTML++
+                attendence_day.innerHTML++
+                percentage_day.innerHTML = parseInt(attendence_day.innerHTML*100/num_members)
             }
             if (tot_button.innerHTML < parseInt(teamLeader.team_rules.moa)) {
                 tot_button.className = 'b2 warn'
             } else {
                 tot_button.className = 'b2'
             }
+            console.log(attendence_day.innerHTML*100)
+            console.log(parseInt(teamLeader.team_rules.mpw)*num_members)
+            if (attendence_day.innerHTML*100 < parseInt(teamLeader.team_rules.mpw)*num_members) {
+                attendence_day.className = 'b2 warn'
+                percentage_day.className = 'b2 warn'
+            } else {
+                attendence_day.className = 'b2'
+                percentage_day.className = 'b2'
+            }
         }
     }
 
     const matrix3 = document.getElementById('matrix3')
+    var day_attendence_new = { mon: 0, tue: 0, wed: 0, thu: 0, fri: 0 }
     for (member of data) {
         const table_row = document.createElement('tr')
         let tot = 0
@@ -187,6 +203,7 @@ request2.onload = function preencheTabelas() {
                 table_data_button.className = 'b4on'
                 tot++
                 this_member_schedule[day] = true
+                day_attendence_new[day]++
             } else {
                 table_data_button.className = 'b4off'
                 this_member_schedule[day] = false
@@ -206,6 +223,33 @@ request2.onload = function preencheTabelas() {
         table_data_tot.appendChild(table_data_tot_button)
         table_row.appendChild(table_data_tot)
         matrix3.appendChild(table_row)
+    }
+
+    const info_new_shift = document.getElementById('infoNewShift')
+    const table_row_new_shift = document.createElement('tr')
+    const table_row_percentage_new = document.createElement('tr')
+    for (day of ['mon', 'tue', 'wed', 'thu', 'fri']) {
+        const table_data_new_shift = document.createElement('td')
+        const table_data_percentage_new = document.createElement('td')
+        const table_data_button_new_shift = document.createElement('button')
+        const table_data_button_percentage_new = document.createElement('button')
+        if (day_attendence_new[day]*100 < parseInt(teamLeader.team_rules.mpw)*num_members) {
+            table_data_button_new_shift.className = 'b2 warn'
+            table_data_button_percentage_new.className = 'b2 warn'
+        } else {
+            table_data_button_new_shift.className = 'b2'
+            table_data_button_percentage_new.className = 'b2'
+        }
+        table_data_button_new_shift.innerHTML = day_attendence_new[day]
+        table_data_button_new_shift.id = `attendence:${day}`
+        table_data_new_shift.appendChild(table_data_button_new_shift)
+        table_row_new_shift.appendChild(table_data_new_shift)
+        info_new_shift.appendChild(table_row_new_shift)
+        table_data_button_percentage_new.innerHTML = parseInt(day_attendence_new[day]*100/num_members)
+        table_data_button_percentage_new.id = `percentage:${day}`
+        table_data_percentage_new.appendChild(table_data_button_percentage_new)
+        table_row_percentage_new.appendChild(table_data_percentage_new)
+        info_new_shift.appendChild(table_row_percentage_new)
     }
 }
 
