@@ -54,7 +54,6 @@ request2.setRequestHeader('Authorization', token);
 var change_team_schedule_obj = {}
 
 request2.onload = function preencheTabelas() {
-
     var data = JSON.parse(this.response)
 
     const member_names_rows_div = document.getElementsByClassName('rectangle-group')[0]
