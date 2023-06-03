@@ -1,12 +1,107 @@
 body {
-    background-image: url("login_bg_img.png");
+    background-image: url('login_bg_img.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center top;
+    font-family: 'Questrial', sans-serif;
 }
 
+.btn-primary {
+    background-color: #BB86FC;
+    border: none;
+    border-radius: 40px;
+    width: 350px;
+    height: 40px;
+    font-family: 'Questrial', sans-serif;
+    left: 970px;
+    color: #03234D;
+}
 
-h1{
-    color: var(--h5_font_color);
-    font-size: var(--h5_font_size);
+.btn-primary:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
+
+.btn{
+    border: none;
+    cursor: pointer;
+}
+  
+.btn:hover {
+    background-color: #BB86FC;
+}
+
+.rec{
+    width: 50%;
+    background-color: #b67272;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+.login-form{
+    position: fixed; /* or absolute */
+    top: 150px;
+    left: 970px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.moto{
+    color: #03234D;
+    font-size: 44px;
+    width: 500px;
+    position: fixed; /* or absolute */
+    top: 400px;
+    left: 100px;
+}
+
+.form-control{ /*Caixinhas de texto do formulário*/
+    background-color: white;
+    border-radius: 40px;
+    width: 350px;
+    height: 40px;
+    margin: 10px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.logo img{
+    height: 190px;
+    position: absolute; 
+    top: 200px; 
+    left: 40px;
+  }
+
+.title{
+    color: #BB86FC;
+    font-size: 32px;
+    position: absolute;
+    top: 80px;
+    left: 980px;
+}
+
+.texto{
+    color: #BB86FC;
+    font-size: 14px;
+    position: absolute;
+    top:500px;
+    left: 1100px;
+}
+
+.botao{
+    color: #BB86FC;
+    color: #BB86FC;
+    font-size: 14px;
+    position: absolute;
+    top:600px;
+    left: 980px;
 }

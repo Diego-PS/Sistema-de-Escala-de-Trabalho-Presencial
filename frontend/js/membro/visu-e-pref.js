@@ -77,7 +77,6 @@ request2.onload = function preencheTabelas() {
         console.log(teamLeader)
 
         document.getElementById('_teamLeaderName').textContent = teamLeader.name
-        document.getElementById('_teamNumberOfMembers').textContent = teamLeader.name
         document.getElementById('_teamMOA').textContent = teamLeader.team_rules.moa
         document.getElementById('_teamMPW').textContent = teamLeader.team_rules.mpw
 
@@ -110,6 +109,8 @@ request2.onload = function preencheTabelas() {
         table_row.appendChild(table_data)
         matrix2.appendChild(table_row)
 
+        var num_of_members = 0;
+
         const member_names_rows_div = document.getElementsByClassName('rectangle-group')[0]
         data.forEach(member => {
             if (member.team_leader_id === memberData.team_leader_id) {
@@ -117,8 +118,11 @@ request2.onload = function preencheTabelas() {
                 member_name_row_div.className = 'rectangle'
                 member_name_row_div.innerHTML = member.name
                 member_names_rows_div.appendChild(member_name_row_div)
+                num_of_members++
             }
         })
+
+        document.getElementById('_teamNumberOfMembers').textContent = num_of_members
 
         const matrix1 = document.getElementById('team_current_shift')
         console.log(data)

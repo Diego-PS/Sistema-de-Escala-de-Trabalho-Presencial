@@ -222,29 +222,41 @@
 }
 
 .button_login {
-    color: var(--button_login_font_color);
-    font-size: var(--button_login_font_size);
-    text-align: center;
+    background-color: #BB86FC;
+    border: none;
+    border-radius: 40px;
+    width: 350px;
+    height: 40px;
+    font-family: 'Questrial', sans-serif;
+    left: 970px;
+    color: #03234D;
+}
 
-    background-color: var(--button_login_bg_color);
-    border-radius: var(--border_curve_size_large) var(--border_curve_size_large) var(--border_curve_size_large) var(--border_curve_size_large);
-
-    height: var(--button_login_h);
-    width: var(--button_login_w);
-    margin: auto;
+.btn-button_login:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
 }
 
 .button_card {
-    color: #868484;
-    font-size: var(--button_login_font_size);
+    background-color: white;
+    border-radius: 40px;
+    width: 350px;
+    height: 40px;
+    margin: 10px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
+}
 
-    background-color: #EEEEEE;
-    border-radius: var(--border_curve_size_large) var(--border_curve_size_large) var(--border_curve_size_large) var(--border_curve_size_large);
 
-    height: var(--button_login_h);
-    width: var(--button_login_w);
-    margin: auto;
+.botao{
+    color: #BB86FC;
+    font-size: 14px;
+    position: absolute;
+    top:550px;
+    left: 980px;
 }
 
 /*--------------------------------------------------
