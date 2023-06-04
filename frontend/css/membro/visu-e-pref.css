@@ -5,6 +5,8 @@
   position: absolute;
   top: 120px;
   border-radius: 10px;
+    padding-left: 5px;
+
 }
 
 .my-team{
@@ -60,7 +62,7 @@
 }
 
 .container-back-two{
-  width: 630px;
+  width: 570px;
   height: 570px;
   background-color: #363636;
   position: absolute;
