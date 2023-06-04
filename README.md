@@ -18,8 +18,16 @@ Facilitar a determinação de escalas de trabalho presencial de uma empresa, sat
 
 ## Tecnologias
 - Banco de Dados: MongoDB.
+
+![image](https://github.com/Diego-PS/Sistema-de-Escala-de-Trabalho-Presencial/assets/54641834/7edeb355-5eb8-4f96-8661-fae0702625f6)
+
 - Backend: Express.js (Node.js).
+
+![image](https://github.com/Diego-PS/Sistema-de-Escala-de-Trabalho-Presencial/assets/54641834/a55eaeda-bf3c-46f6-ad73-0d777e2388db)
+
 - Frontend: HTML, CSS, JS com uso de Bootstrap.
+
+![image](https://github.com/Diego-PS/Sistema-de-Escala-de-Trabalho-Presencial/assets/54641834/006c62ea-557d-4c59-bbe6-a820216daa58)
 
 ## Backlog do produto
 1 - Como membro de equipe, eu gostaria de informar minha preferência de escala presencial. <br/>
