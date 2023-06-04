@@ -107,13 +107,12 @@ Facilitar a determinação de escalas de trabalho presencial de uma empresa, sat
 - Construir a interface de atualização das regras da organização [Júlia, Gustavo]
 
 ## Documentação da arquitetura
-Facilitar a determinação de escalas de trabalho presencial de uma empresa, satisfazendo as regras de cada equipe e considerando as preferências de cada funcionário.
 
 ### Por que o sistema está adotando essa arquitetura?
-Para garantir o correto funcionamento das regras de negócio, implementada no sistema nos chamados services, idependente de qual banco de dados for adotado. Assim, temos a implementação dessas regras desacoplada da tecnologia de banco de dados utilizadas, desse modo aumentando a coesão e favorecendo a reusabilidade do código.
+Para garantir o correto funcionamento das regras de negócio, implementada no sistema nos chamados services, idependente de qual banco de dados for adotado. Assim, temos a implementação dessas regras desacoplada da tecnologia de banco de dados utilizada, desse modo aumentando a coesão e favorecendo a reusabilidade do código.
 
 ### Porta de saída
-A porta de saída para acessar o banco de dados trata-se da interface dos repositórios, quando chamamos um método de um repositório, estamos utilizanso uma porta de saída
+A porta de saída para acessar o banco de dados trata-se da interface dos repositórios, quando chamamos um método de um repositório, estamos utilizando uma porta de saída.
 
 <img width="631" alt="image" src="https://github.com/Diego-PS/Sistema-de-Escala-de-Trabalho-Presencial/assets/54641834/c01accff-25a5-4563-9d14-d22b7cb82035">
 
@@ -121,5 +120,14 @@ A porta está declarando o serviço que é esperado pelo sistema, ouo seja, o qu
 
 <img width="631" alt="image" src="https://github.com/Diego-PS/Sistema-de-Escala-de-Trabalho-Presencial/assets/54641834/5b45c2df-0c14-47f9-bd6a-f5d13318d3f2">
 
-Essa imagem apresenta o uso da porta (a interface que obtém as informações do banco de dados
+Essa imagem apresenta o uso da porta (a interface que obtém as informações do banco de dados.
 
+### Adaptador
+O adaptador é a implementação concreta da porta da saída, isto é, a implementação de um repositório no nosso sistema, esse repositório irá buscar e atualizar as informações do banco de dados, para isso utilizando metódos externos à classe de domínio. A seguir um exemplo:
+
+<img width="545" alt="Screenshot 2023-06-04 at 13 19 34" src="https://github.com/Diego-PS/Sistema-de-Escala-de-Trabalho-Presencial/assets/54641834/dcf8eef0-9894-4d31-8802-58b9709138b4">
+
+Note que o código destacado em verde chama os métodos externos ao domínio, específicos do banco de dados que ficam num diretório separado para a database. Há um exemplo de inserção e recuperação de informação do banco. O objetivo é implementar as regras estipuladas na porta da saída, por isso ele implementa a sua respectiva interface.
+
+### Vantagem
+Com esta implementação em arquitetura hexagonal, caso haja uma mudança na tecnologia de banco de dados, por exemplo, se trocar do MongoDB para o PostgreSQL, não será necessaário realizar nenhuma mudança na classe de domínio do sistema, bastando modelar o banco dentro do diretório database e implementar o repositório (adaptador).
