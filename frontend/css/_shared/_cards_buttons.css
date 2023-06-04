@@ -266,16 +266,8 @@
 }
 
 /*--------------------------------------------------
+BOTÕES COM RESULTADOS (AVALIAM O CUMPRIMENTO DAS REGRAS)
 --------------------------------------------------*/
-
-.b1 {
-    background-color: #A7A6A6;
-    border-radius: 10px;
-}
-
-.b1.clicado {
-    background-color: #BB86FC;
-}
 
 .b2 {
     background-color: #363636;
@@ -288,25 +280,47 @@
     background-color: red;
 }
 
+/*--------------------------------------------------
+BOTÕES COM DIAS DA SEMANA
+--------------------------------------------------*/
+
 .b3 {
     background-color: #BB86FC;
     border: 2px solid black;
     border-radius: 10px;
 }
 
+/*--------------------------------------------------
+BOTÕES COM AS ESCALAS DE CADA DIA
+> Estes são os botões não-clicáveis, que contém somente as escalas atuais
+--------------------------------------------------*/
+.b1 {
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
+.b1.clicado {
+    background-color: #9b4afd;
+}
+
+/*--------------------------------------------------
+BOTÕES COM AS ESCALAS DE CADA DIA.
+> Estes botões são os clicáveis
+--------------------------------------------------*/
+
 .b4on {
-    background-color: #BB86FC;
+    background-color: #9b4afd;
     border-radius: 10px;
     cursor: pointer;
 }
 
 .b4on:active {
     transform: translateY(2px);
-    background-color: #BB86FC;
+    background-color: #9b4afd;
 }
 
 .b4off {
-    background-color: #A7A6A6;
+    background-color: #ffffff;
     border-radius: 10px;
     cursor: pointer;
 }

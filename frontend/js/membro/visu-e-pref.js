@@ -78,6 +78,7 @@ request2.onload = function preencheTabelas() {
         teamLeader = teamLeaderData
         console.log(teamLeader)
 
+        document.getElementById('_team').textContent = teamLeader.team_name
         document.getElementById('_teamLeaderName').textContent = teamLeader.name
         document.getElementById('_teamMOA').textContent = teamLeader.team_rules.moa
         document.getElementById('_teamMPW').textContent = teamLeader.team_rules.mpw
