@@ -115,15 +115,15 @@ Facilitar a determinação de escalas de trabalho presencial de uma empresa, sat
 - Construir a interface de atualização das regras da organização [Júlia, Gustavo]
 
 ### Histórias do backlog da sprint
-- Como usuário, eu gostaria de cadatrar uma organização e cadatrar-me como chefe da mesma.
-- Como usuário do sistema, eu gostaria de ser cadastrado/realizar o login no sistema.
-- Como dono da organização, eu gostaria de criar equipes e adicionar os chefes de cada equipe.
-- Como chefe da organização, eu gostaria de criar regras gerais para todas as equipes.
-- Como chefe de equipe, eu gostaria de determinar as regras da minha equipe.
-- Como chefe de equipe, eu gostaria de adicionar membros na minha equipe.
-- Como chefe de equipe, eu gostaria de consultar as preferências de escala da minha equipe e determinar a escala.
-- Como membro de equipe, eu gostaria de consultar a escala atual da equipe.
-- Como membro de equipe, eu gostaria de informar minha preferência de escala presencial.
+- [ ] Como usuário, eu gostaria de cadatrar uma organização e cadatrar-me como chefe da mesma.
+- [ ] Como usuário do sistema, eu gostaria de ser cadastrado/realizar o login no sistema.
+- [ ] Como dono da organização, eu gostaria de criar equipes e adicionar os chefes de cada equipe.
+- [ ] Como chefe da organização, eu gostaria de criar regras gerais para todas as equipes.
+- [ ] Como chefe de equipe, eu gostaria de determinar as regras da minha equipe.
+- [ ] Como chefe de equipe, eu gostaria de adicionar membros na minha equipe.
+- [ ] Como membro de equipe, eu gostaria de consultar a escala atual da equipe.
+- [ ] Como membro de equipe, eu gostaria de informar minha preferência de escala presencial.
+- [ ] Como chefe de equipe, eu gostaria de consultar as preferências de escala da minha equipe e determinar a escala.
 
 ## Documentação da arquitetura
 
