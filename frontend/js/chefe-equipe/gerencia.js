@@ -38,30 +38,34 @@ request1.onload = function dadosDoTeamLeader() {
 
     var innerRequest = new XMLHttpRequest()
     innerRequest.open('GET', 'http://localhost:4000/boss', true)
-    
+
     innerRequest.onload = function dadosDoBoss() {
-        
+
         var allBossesData = JSON.parse(this.response)
-        
+
         var bossData = allBossesData.filter(function (boss) {
             return boss.id === bossId; // Replace with the desired ID
         })[0];
 
         boss = bossData
-        
+
         document.getElementById('_orgMOA').textContent = boss.organization_rules.moa
         document.getElementById('_orgMPW').textContent = boss.organization_rules.mpw
-        
-        
-       var name = document.getElementById('_name')
-       var role = document.getElementById('_role')
-       var MOA = document.getElementById('_MOAatual')
-       var MPW = document.getElementById('_MPWatual')
-       
-       name.textContent = teamLeader[0].name
-       role.textContent = teamLeader[0].role
-       MOA.textContent = teamLeader[0].team_rules.moa
-       MPW.textContent = teamLeader[0].team_rules.mpw
+
+
+        var name = document.getElementById('_name')
+        var teamName = document.getElementById('_team')
+        var role = document.getElementById('_role')
+        var MOA = document.getElementById('_MOAatual')
+        var MPW = document.getElementById('_MPWatual')
+
+        name.textContent = teamLeader[0].name
+        teamName.textContent = teamLeader[0].team_name
+        if (teamLeader[0].role == 'team_leader') {
+            role.textContent = 'Líder'
+        }
+        MOA.textContent = teamLeader[0].team_rules.moa
+        MPW.textContent = teamLeader[0].team_rules.mpw
     }
     innerRequest.send()
 

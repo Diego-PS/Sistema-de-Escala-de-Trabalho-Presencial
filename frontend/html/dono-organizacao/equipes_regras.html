@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,20 +17,32 @@
 
     <script src="equipes_regras.js" defer></script>
 </head>
-<body>
-    <p class="username" id="_name">ph_name</p>
-    <p class="function" id="_role">ph_role</p>
-  
-        <nav>
-            <div class="logo"><img src="/logo.png"></div>
-            <ul>
-                <li><a href="\equipes_regras.html">Dashboard</a></li>
-                <li><a href="\login.html">Log Out</a></li>
-            </ul>            
-        </nav>
 
-        <main>
-            <h1>Equipes e Regras</h1>
+<body>
+    <div class="container_userinfo">
+
+            <div class="container_userinfo_titles">
+                <p class="username_title">NOME</p>
+                <p class="team_title">ORG.</p>
+                <p class="role_title">PAPEL</p>
+            </div>
+        <div class="container_userinfo_contents">
+            <p class="username" id="_name">ph_name</p>
+            <p class="team" id="_org">ph_org</p>
+            <p class="role" id="_role">ph_role</p>
+        </div>
+    </div>
+
+    <nav>
+        <div class="logo"><img src="/logo.png"></div>
+        <ul>
+            <li><a href="\equipes_regras.html">Dashboard</a></li>
+            <li><a href="\login.html">Log Out</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h1>Equipes e Regras</h1>
         <h2><span>Regras da Escala da Minha Organização</span></h2>
 
         <form id="_form_bossChangeRules" method="post">
@@ -90,101 +103,112 @@
         </form>
 
 
-            <div>
-                <h2><span>Dashboard - Equipes da Organização</span></h2>
-                <div class="row_noflex_transparent">
-                    <div class="m_col_flex_filled">
-                        <h3>Informações Gerais</h3>
-                        <table class="m1" id="_tab1">
+        <div>
+            <h2><span>Dashboard - Equipes da Organização</span></h2>
+            <div class="row_noflex_transparent">
+                <div class="m_col_flex_filled">
+                    <h3>Informações Gerais</h3>
+                    <table class="m1" id="_tab1">
+                        <tr>
+                            <th>Equipe</th>
+                            <th>Chefia</th>
+                            <th>Nº de Membros</th>
+                        </tr>
+                        <tbody>
                             <tr>
-                                <th>Equipe</th>
-                                <th>Chefia</th>
-                                <th>Nº de Membros</th>
                             </tr>
-                            <tbody>
-                                <tr>
-                                </tr>
-                            </tbody>
-                        </table>    
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="col_filler_regular"></div>
+
+                <div class="m_col_noflex_filled">
+                    <h3>Regras da Escala</h3>
+                    <table class="m2" id="_tab2">
+                        <tr>
+                            <th>Mín. Presenças Sem.</th>
+                            <th>% Mín. do Corpo Efetivo</th>
+                        </tr>
+                        <tbody>
+                            <tr>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        <h2><span>Criar Nova Equipe</span></h2>
+
+        <form id="_newTeamForm" method="post">
+            <div class="col_flex_filled">
+
+                <h3>Cadastrar Equipe e Chefia</h3>
+
+                <div class="card">
+                    <div class="card_title">
+                        <p>Nome da Equipe</p>
+                    </div>
+                    <input type="text" class="card_data_text_verylarge" name="team_name">
+                </div>
+                <div class="row_filler_small"></div>
+
+                <div class="row_noflex_transparent">
+
+                    <div class="col_flex_transparent">
+                        <div class="card">
+                            <div class="card_title">
+                                <p>Nome do Líder</p>
+                            </div>
+                            <input type="text" class="card_data_text_large" name="name">
+                        </div>
+
+                        <div class="row_filler_small"></div>
+
+                        <div class="card">
+                            <div class="card_title">
+                                <p>Nome do Usuário</p>
+                            </div>
+                            <input class="card_data_text_large" type="text" name="username">
+                        </div>
+
                     </div>
 
                     <div class="col_filler_regular"></div>
 
-                    <div class="m_col_noflex_filled">
-                        <h3>Regras da Escala</h3>
-                        <table class="m2" id="_tab2">
-                            <tr>
-                                <th>Mín. Presenças Sem.</th>
-                                <th>% Mín. do Corpo Efetivo</th>
-                            </tr>
-                            <tbody>
-                                <tr>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="col_flex_transparent">
+
+                        <div class="card">
+                            <div class="card_title">
+                                <p>Senha</p>
+                            </div>
+                            <input class="card_data_text_regular" type="password" name="password">
+                        </div>
+
+                        <div class="row_filler_small"></div>
+
+                        <div class="card">
+                            <div class="card_title">
+                                <p>Confirmar Senha</p>
+                            </div>
+                            <input class="card_data_text_regular" type="password" name="confirm_password">
+                        </div>
+
+                        <div class="row_filler_small"></div>
+
                     </div>
 
+                    <div class="column_filler_regular"></div>
+
+                </div>
+
+                <div class="row_flex_transp_right">
+                    <button class="button_confirm" onclick="formSubmit_registerTeamLeader()">Confirmar</button>
                 </div>
             </div>
-            <h2><span>Criar Nova Equipe</span></h2>
-
-            <form id="_newTeamForm" method= "post">
-                <div class="col_flex_filled">
-
-                    <h3>Cadastrar Equipe e Chefia</h3>
-
-                    <div class="card">
-                        <div class="card_title"><p>Nome da Equipe</p></div>
-                        <input type="text" class="card_data_text_verylarge" name="team_name">
-                    </div>
-                    <div class="row_filler_small"></div>
-
-                    <div class="row_noflex_transparent">
-    
-                        <div class="col_flex_transparent">
-                            <div class="card">
-                                <div class="card_title"><p>Nome do Líder</p></div>
-                                <input type="text" class="card_data_text_large" name="name">
-                            </div>      
-                            
-                            <div class="row_filler_small"></div>
-    
-                            <div class="card">
-                                <div class="card_title"><p>Nome do Usuário</p></div>
-                                <input class="card_data_text_large" type="text" name="username">
-                            </div>
-                            
-                        </div>
-                        
-                        <div class="col_filler_regular"></div>
-                        
-                        <div class="col_flex_transparent">
-                            
-                            <div class="card">
-                                <div class="card_title"><p>Senha</p></div>
-                                <input class="card_data_text_regular" type="password" name="password">
-                            </div>
-    
-                            <div class="row_filler_small"></div>
-    
-                            <div class="card">
-                                <div class="card_title"><p>Confirmar Senha</p></div>
-                                <input class="card_data_text_regular" type="password" name="confirm_password">
-                            </div>
-    
-                            <div class="row_filler_small"></div>
-                            
-                        </div>
-    
-                        <div class="column_filler_regular"></div>
-                        
-                    </div>
-                    
-                    <div class="row_flex_transp_right"> 
-                        <button class="button_confirm" onclick = "formSubmit_registerTeamLeader()">Confirmar</button>
-                    </div>
-                </div>
-            </form>
-        </main>    
+        </form>
+    </main>
 </body>
+
 </html>

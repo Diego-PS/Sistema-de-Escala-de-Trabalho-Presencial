@@ -32,12 +32,16 @@ request1.onload = function dadosDoBoss() {
   console.log(boss)
 
   var name = document.getElementById('_name')
+  var orgName = document.getElementById('_org')
   var role = document.getElementById('_role')
   var MOA = document.getElementById('_MOAatual')
   var MPW = document.getElementById('_MPWatual')
 
   name.textContent = boss[0].name
-  role.textContent = boss[0].role
+  orgName.textContent = boss[0].organization_name
+  if(boss[0].role == 'boss'){
+      role.textContent = 'Dono da Organização'
+  }
   MOA.textContent = boss[0].organization_rules.moa
   MPW.textContent = boss[0].organization_rules.mpw
 

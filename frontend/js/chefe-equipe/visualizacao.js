@@ -33,12 +33,16 @@ return teamLeader.id === id; // Replace with the desired ID
 })[0];
 
 var name = document.getElementById('_name')
+var teamName = document.getElementById('_team')
 var role = document.getElementById('_role')
 //var MOA = document.getElementById('_MOAatual')
 //var MPW = document.getElementById('_MPWatual')
 
 name.textContent = teamLeader.name
-role.textContent = teamLeader.role
+teamName.textContent = teamLeader.team_name
+if (teamLeader.role == 'team_leader') {
+    role.textContent = 'Líder'
+}
 //MOA.textContent = teamLeader[0].team_rules.moa
 //MPW.textContent = teamLeader[0].team_rules.mpw
 

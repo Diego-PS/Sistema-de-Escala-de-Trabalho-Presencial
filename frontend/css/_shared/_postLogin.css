@@ -6,7 +6,7 @@ body{
 
 main{
     position: absolute;
-    top: 0px;
+    top: 50px;
     left: 270px;
     bottom: var(--outer_margins);
     right: var(--outer_margins);
@@ -52,23 +52,55 @@ nav a:hover {
     color: #fff;
 }
 
-.username {
-    color: black;
+.container_userinfo{
     position: absolute;
-    right: 50px;
-    top: 15px;
+    right: var(--outer_margins);
+    top: 10px;
+    background-color: #3e3e3e;
+    display: flex;
+    border-radius: var(--border_curve_size_regular) 0 0 var(--border_curve_size_regular);
+    padding-left: 10px;
+    padding-right: 10px;
+    width: var(--data_width_text_large);
+}
+
+.container_userinfo_titles{
     color: #BB86FC;
+    display: block;
+    text-align: left;
+    margin-right: 10px;   
+}
+
+.container_userinfo_contents{
+    color: #ffffff;
+    display: block;
+    text-align: left;
+}
+
+.username_title {
     font-size: 18px;
 }
 
-.function {
-    color: black;
-    position: absolute;
-    right: 50px;
-    top: 45px;
-    color: #BB86FC;
-    font-size: 10px;
+.username {
+    font-size: 18px;
 }
+
+.team_title {
+    font-size: 14px;
+}
+
+.team {
+    font-size: 14px;
+}
+
+.role_title {
+    font-size: 14px;
+}
+
+.role {
+    font-size: 14px;
+}
+
 
 /*----------------------------------------------------------------------------
 ------------------------------------------------------------------------------

@@ -36,8 +36,10 @@ request1.onload = function dadosDoTeamLeader() {
     var role = document.getElementById('_role')
 
     name.textContent = member.name
-    role.textContent = member.role
-}
+    if(member.role == 'member'){
+        role.textContent = 'Membro'
+    }
+  }
 
 request1.send()
 
