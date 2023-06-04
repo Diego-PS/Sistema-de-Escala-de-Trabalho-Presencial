@@ -32,23 +32,23 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 ------------------------------------------------------------*/
 
 app.get('/_fillers.css', async (req: Request, res: Response) => {
-    res.sendFile(path.join(__dirname + '../../frontend/css/_fillers.css'))
+    res.sendFile(path.join(__dirname + '../../frontend/css/_shared/_fillers.css'))
 })
 
 app.get('/_variables.css', async (req: Request, res: Response) => {
-    res.sendFile(path.join(__dirname + '../../frontend/css/_variables.css'))
+    res.sendFile(path.join(__dirname + '../../frontend/css/_shared/_variables.css'))
 })
 
 app.get('/_postLogin.css', async (req: Request, res: Response) => {
-    res.sendFile(path.join(__dirname + '../../frontend/css/_postLogin.css'))
+    res.sendFile(path.join(__dirname + '../../frontend/css/_shared/_postLogin.css'))
 })
 
 app.get('/_matrixes.css', async (req: Request, res: Response) => {
-    res.sendFile(path.join(__dirname + '../../frontend/css/_matrixes.css'))
+    res.sendFile(path.join(__dirname + '../../frontend/css/_shared/_matrixes.css'))
 })
 
 app.get('/_cards_buttons.css', async (req: Request, res: Response) => {
-    res.sendFile(path.join(__dirname + '../../frontend/css/_cards_buttons.css'))
+    res.sendFile(path.join(__dirname + '../../frontend/css/_shared/_cards_buttons.css'))
 })
 
 /*------------------------------------------------------------
@@ -60,6 +60,10 @@ app.get('/equipes_regras.js', async (req: Request, res: Response) => {
 
 app.get('/equipes_regras.html', async (req: Request, res: Response) => {
     res.sendFile(path.join(__dirname + '/../frontend/html/dono-organizacao/equipes_regras.html'))
+})
+
+app.get('/equipes_regras.css', async (req: Request, res: Response) => {
+    res.sendFile(path.join(__dirname + '/../frontend/css/dono-organizacao/equipes_regras.css'))
 })
 
 /*------------------------------------------------------------
@@ -113,6 +117,10 @@ app.get('/gerencia.html', async (req: Request, res: Response) => {
 
 app.get('/gerencia.js', async (req: Request, res: Response) => {
     res.sendFile(path.join(__dirname + '/../frontend/js/chefe-equipe/gerencia.js'))
+})
+
+app.get('/gerencia.css', async (req: Request, res: Response) => {
+    res.sendFile(path.join(__dirname + '/../frontend/css/chefe-equipe/gerencia.css'))
 })
 
 //------------------------------------------------------------

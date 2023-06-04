@@ -13,7 +13,10 @@
   <title>Smart Shift</title>
 
   <link rel="stylesheet" href="visualizacao.css">
+
   <link rel="stylesheet" href="_cards_buttons.css">
+  <link rel="stylesheet" href="_postLogin.css">
+  <link rel="stylesheet" href="_variables.css">
 
   <script src="visualizacao.js"></script>
 </head>
@@ -22,9 +25,6 @@
   <p class="username" id="_name">ph_name</p>
   <p class="function" id="_role">ph_role</p>
 
-  <div style="color: #BB86FC">
-    <p class="title">Escalas</p>
-  </div>
 
   <div class="container">
     <nav>
@@ -37,96 +37,99 @@
     </nav>
   </div>
 
-  <div class="container">
+  <main>
 
-    <div class="member">Membros</div>
 
-    <div class="rectangle-group">
+    <h1>Visualizar e Alterar Escalas</h1>
+    <div class="container">
+
+      <div class="member">Membros</div>
+
+      <div class="rectangle-group">
+      </div>
+
+      <div>
+        <table id="weekdays1">
+          <tr>
+            <td>
+              <div style="font-family: 'Questrial', sans-serif;"><button class="b3">Seg</button>
+            </td>
+      </div>
+      <td><button class="b3">Ter</button></td>
+      <td><button class="b3">Qua</button></td>
+      <td><button class="b3">Qui</button></td>
+      <td><button class="b3">Sex</button></td>
+      <td><button class="b3">Tot</button></td>
+      </tr>
     </div>
 
     <div>
-      <table id="weekdays1">
+      <table id="weekdays2">
         <tr>
-          <td>
-            <div style="font-family: 'Questrial', sans-serif;"><button class="b3">Seg</button>
-          </td>
+          <td><button class="b3">Seg</button></td>
+          <td><button class="b3">Ter</button></td>
+          <td><button class="b3">Qua</button></td>
+          <td><button class="b3">Qui</button></td>
+          <td><button class="b3">Sex</button></td>
+          <td><button class="b3">Tot</button></td>
+        </tr>
     </div>
-    <td><button class="b3">Ter</button></td>
-    <td><button class="b3">Qua</button></td>
-    <td><button class="b3">Qui</button></td>
-    <td><button class="b3">Sex</button></td>
-    <td><button class="b3">Tot</button></td>
-    </tr>
-  </div>
 
-  <div>
-    <table id="weekdays2">
-      <tr>
-        <td><button class="b3">Seg</button></td>
-        <td><button class="b3">Ter</button></td>
-        <td><button class="b3">Qua</button></td>
-        <td><button class="b3">Qui</button></td>
-        <td><button class="b3">Sex</button></td>
-        <td><button class="b3">Tot</button></td>
-      </tr>
-  </div>
+    <div>
+      <table id="weekdays3">
+        <tr>
+          <td><button class="b3">Seg</button></td>
+          <td><button class="b3">Ter</button></td>
+          <td><button class="b3">Qua</button></td>
+          <td><button class="b3">Qui</button></td>
+          <td><button class="b3">Sex</button></td>
+          <td><button class="b3">Tot</button></td>
+        </tr>
+    </div>
 
-  <div>
-    <table id="weekdays3">
-      <tr>
-        <td><button class="b3">Seg</button></td>
-        <td><button class="b3">Ter</button></td>
-        <td><button class="b3">Qua</button></td>
-        <td><button class="b3">Qui</button></td>
-        <td><button class="b3">Sex</button></td>
-        <td><button class="b3">Tot</button></td>
-      </tr>
-  </div>
+    <div class="currentshift">Escala atual</div>
 
-  <div class="currentshift">Escala atual</div>
+    <div class="preferences">Preferências</div>
 
-  <div class="preferences">Preferências</div>
+    <div class="newshift">Nova escala</div>
 
-  <div class="newshift">Nova escala</div>
+    <div>
+      <table id="matrix1">
+      </table>
+    </div>
 
-  <div>
-    <table id="matrix1">
-    </table>
-  </div>
+    <div>
+      <table id="matrix2">
 
-  <div>
-    <table id="matrix2">
+      </table>
+    </div>
 
-    </table>
-  </div>
-
-  <div>
-    <table id="matrix3">
-    </table>
-  </div>
+    <div>
+      <table id="matrix3">
+      </table>
+    </div>
 
 
-  <div>
-    <table id="infoCurrentShift">
-    </table>
-  </div>
+    <div>
+      <table id="infoCurrentShift">
+      </table>
+    </div>
 
-  <div>
-    <table id="infoNewShift">
-    </table>
-  </div>
+    <div>
+      <table id="infoNewShift">
+      </table>
+    </div>
 
-  <div class="info-title">
-    <div class="rectangle-2">Total de presentes</div>
-    <div class="rectangle-2">% do corpo efetivo</div>
-  </div>
+    <div class="info-title">
+      <div class="rectangle-2">Total de presentes</div>
+      <div class="rectangle-2">% do corpo efetivo</div>
+    </div>
 
-  <div class="adicionarMembro"><button type="submit" class="btn btn-primary btn-block">Adicionar Membro</button></div>
+    <div class="confirmar"><button type="submit" class="btn btn-primary btn-block"
+        onclick="changeSchedule()">Confirmar</button></div>
 
-  <div class="confirmar"><button type="submit" class="btn btn-primary btn-block" onclick="changeSchedule()">Confirmar</button></div>
-
-  <div class="limpar"><button type="submit" class="btn btn-primary btn-block">Limpar</button></div>
-  </div>
+    </div>
+  </main>
 </body>
 
 </html>

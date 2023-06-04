@@ -205,20 +205,8 @@
     background-color: var(--button_confirm_bg_color);
     border-radius: var(--border_curve_size_regular) var(--border_curve_size_regular) var(--border_curve_size_regular) var(--border_curve_size_regular);
 
+    width: 25%;
     height: var(--button_h);
-    flex: 1;
-}
-
-.button_clear {
-    color: var(--button_font_color);
-    font-size: var(--button_font_size);
-    text-align: center;
-
-    background-color: var(--button_clear_bg_color);
-    border-radius: var(--border_curve_size_regular) var(--border_curve_size_regular) var(--border_curve_size_regular) var(--border_curve_size_regular);
-
-    height: var(--button_h);
-    flex: 1;
 }
 
 .button_login {

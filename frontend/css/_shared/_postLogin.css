@@ -1,11 +1,12 @@
 body{
     font-family: "Questrial", sans-serif;
     background-color: var(--bg_color);
+    color: #363636;
 }
 
 main{
     position: absolute;
-    top: 100px;
+    top: 0px;
     left: 270px;
     bottom: var(--outer_margins);
     right: var(--outer_margins);

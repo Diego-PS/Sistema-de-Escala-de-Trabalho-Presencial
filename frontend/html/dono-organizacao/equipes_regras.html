@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>SmartShift - Equipes e Regras</title>
 
+    <link rel="stylesheet" href="equipes_regras.css">
+
     <link rel="stylesheet" href="_cards_buttons.css">
     <link rel="stylesheet" href="_fillers.css">
     <link rel="stylesheet" href="_matrixes.css">
@@ -81,18 +83,9 @@
 
             <div class="row_filler_small"></div>
 
-            <div class="row_noflex_transparent">
-                <div class="col_filler_regular"></div>
-                <div class="col_filler_flex"></div>
-                <div class="col_filler_regular"></div>
-                <div class="col_filler_flex"></div>
-                <div class="col_filler_regular"></div>
-
+            <div class="row_flex_transp_right">
                 <button class="button_confirm" onclick="formSubmit_bossChangeRules()">Confirmar</button>
 
-                <div class="col_filler_regular"></div>
-
-                <button class="button_clear">Limpar (x)</button>
             </div>
         </form>
 
@@ -187,23 +180,11 @@
                         
                     </div>
                     
-                    <div class="row_noflex_transparent"> 
-                        <div class="col_filler_regular"></div>
-                        <div class="col_filler_flex"></div>
-                        <div class="col_filler_regular"></div>
-                        <div class="col_filler_flex"></div>
-                        <div class="col_filler_regular"></div>
+                    <div class="row_flex_transp_right"> 
                         <button class="button_confirm" onclick = "formSubmit_registerTeamLeader()">Confirmar</button>
-                        
-                        <div class="col_filler_regular"></div>
-                            
-                        <button class="button_clear">Limpar (x)</button>    
-                        
                     </div>
-
                 </div>
             </form>
-       
         </main>    
 </body>
 </html>

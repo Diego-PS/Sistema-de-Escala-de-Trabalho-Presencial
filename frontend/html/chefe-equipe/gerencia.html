@@ -12,6 +12,8 @@
 
     <title>SmartShift - Gerenciar Minha Equipe</title>
 
+    <link rel="stylesheet" href="gerencia.css">
+
     <link rel="stylesheet" href="_cards_buttons.css">
     <link rel="stylesheet" href="_fillers.css">
     <link rel="stylesheet" href="_postLogin.css">
@@ -23,7 +25,7 @@
 <body>
     <p class="username" id="_name">ph_name</p>
     <p class="function" id="_role">ph_role</p>
-  
+
     <nav>
         <div class="logo"><img src="/logo.png"></div>
         <ul>
@@ -110,18 +112,10 @@
 
             <div class="row_filler_small"></div>
 
-            <div class="row_noflex_transparent">
-                <div class="col_filler_regular"></div>
-                <div class="col_filler_flex"></div>
-                <div class="col_filler_regular"></div>
-                <div class="col_filler_flex"></div>
-                <div class="col_filler_regular"></div>
-
+            <div class="row_flex_transp_right">
                 <button class="button_confirm" onclick="muda_regra()">Confirmar</button>
+            </div>
 
-                <div class="col_filler_regular"></div>
-
-                <button class="button_clear">Limpar (x)</button>
             </div>
         </form>
         <div>
@@ -180,22 +174,17 @@
 
                     </div>
 
-                    <div class="row_noflex_transparent">
-                        <div class="col_filler_regular"></div>
-                        <div class="col_filler_flex"></div>
-                        <div class="col_filler_regular"></div>
-                        <div class="col_filler_flex"></div>
-                        <div class="col_filler_regular"></div>
+                    <div class="row_flex_transp_right">
+
+                        
                         <button class="button_confirm" onclick="addMember()">Confirmar</button>
-
-                        <div class="col_filler_regular"></div>
-
-                        <button class="button_clear">Limpar (x)</button>
-
+                        
                     </div>
 
                 </div>
-            </form>
+
+        </div>
+        </form>
 
         </div>
     </main>

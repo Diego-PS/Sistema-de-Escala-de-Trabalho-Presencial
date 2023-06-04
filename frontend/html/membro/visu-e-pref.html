@@ -13,6 +13,9 @@
   <title>Smart Shift</title>
 
   <link rel="stylesheet" href="_cards_buttons.css">
+  <link rel="stylesheet" href="_postlogin.css">
+  <link rel="stylesheet" href="_variables.css">
+
   <link rel="stylesheet" href="/visu-e-pref.css">
 
   <script src="/visu-e-pref.js"></script>
@@ -22,7 +25,6 @@
   <p class="username" id="_name"></p>
   <p class="function" id="_role"></p>
 
-  <p class="title">Dashboard</p>
 
   <div class="container">
     <nav>
@@ -34,112 +36,117 @@
     </nav>
   </div>
 
-  <!-- Minha equipe -->
-  <div class="container-team">
-    <div class="container-back-one">
-      <p class="my-team">Minha equipe</p>
-      <div class="info-team">
-        <div class="r1">Chefe</div>
-        <div class="r1">Membros</div>
-      </div>
-
-      <div class="info-team-2">
-        <div class="r2" id="_teamLeaderName">ph</div>
-        <div class="r2" id="_teamNumberOfMembers"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Escala -->
-  <div class="shift">
-    <div class="container-back-two">
-      <!-- Membros -->
-      <div class="member">Membros</div>
+  <main>
 
 
-      <!-- Escala -->
-      <div class="currentshift">Escala atual</div>
+    <h1>Minha Escala e Informações da Equipe</h1>
+    <!-- Minha equipe -->
+    <div class="container-team">
+      <div class="container-back-one">
+        <h3>Minha equipe</h3>
+        <div class="info-team">
+          <div class="r1">Chefe</div>
+          <div class="r1">Membros</div>
+        </div>
 
-      <div>
-        <table id="weekdays1">
-          <tr>
-            <td><button class="b3">Seg</button></td>
-            <td><button class="b3">Ter</button></td>
-            <td><button class="b3">Qua</button></td>
-            <td><button class="b3">Qui</button></td>
-            <td><button class="b3">Sex</button></td>
-            <td><button class="b3">Tot</button></td>
-          </tr>
-      </div>
-
-      <div class="rectangle-group">
-      </div>
-
-      <div>
-        <table class="matrix1" id="team_current_shift">
-          <tr>
-          </tr>
-        </table>
+        <div class="info-team-2">
+          <div class="r2" id="_teamLeaderName">ph</div>
+          <div class="r2" id="_teamNumberOfMembers"></div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Regras gerais -->
-  <div class="container-rules">
-    <div class="container-back-three">
-      <p class="my-team">Regras Gerais da Escala</p>
-      <div class="info-rules">
-        <div class="r1">Min. presença semanal</div>
-        <div class="r1">% mínima do corpo efetivo</div>
-      </div>
+    <!-- Escala -->
+    <div class="shift">
+      <div class="container-back-two">
+        <h3>Escala Atual da Equipe</h3>
+        <!-- Membros -->
+        <div class="member">Membros</div>
 
-      <div class="info-rules-2">
-        <div class="r2" id="_teamMOA"></div>
-        <div class="r2" id="_teamMPW"></div>
+
+        <!-- Escala -->
+        <div class="currentshift">Escala atual</div>
+
+        <div>
+          <table id="weekdays1">
+            <tr>
+              <td><button class="b3">Seg</button></td>
+              <td><button class="b3">Ter</button></td>
+              <td><button class="b3">Qua</button></td>
+              <td><button class="b3">Qui</button></td>
+              <td><button class="b3">Sex</button></td>
+              <td><button class="b3">Tot</button></td>
+            </tr>
+        </div>
+
+        <div class="rectangle-group">
+        </div>
+
+        <div>
+          <table class="matrix1" id="team_current_shift">
+            <tr>
+            </tr>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Minhas pref -->
-  <div class="container-pref">
-    <div class="container-back-four">
-      <p class="my-team">Minha preferência de escala</p>
+    <!-- Regras gerais -->
+    <div class="container-rules">
+      <div class="container-back-three">
+        <h3>Regras Gerais da Escala</h3>
+        <div class="info-rules">
+          <div class="r1">Min. presença semanal</div>
+          <div class="r1">% mínima do corpo efetivo</div>
+        </div>
 
-      <div>
-        <table id="weekdays2">
-          <tr>
-            <td><button class="b3">Seg</button></td>
-            <td><button class="b3">Ter</button></td>
-            <td><button class="b3">Qua</button></td>
-            <td><button class="b3">Qui</button></td>
-            <td><button class="b3">Sex</button></td>
-            <td><button class="b3">Tot</button></td>
-          </tr>
+        <div class="info-rules-2">
+          <div class="r2" id="_teamMOA"></div>
+          <div class="r2" id="_teamMPW"></div>
+        </div>
       </div>
-
-      <div class="rectangle-group-2">
-        <div class="mini-rectangle">Atual</div>
-        <div class="mini-rectangle">Nova</div>
-      </div>
-
-      <div>
-        <table class="matrix2" id="_myCurrentShift">
-          <tr>
-          </tr>
-        </table>
-
-        <table class="matrix3" id="_myNewShift">
-          <tr>
-          </tr>
-        </table>
-      </div>
-
-      <div class="confirmar"><button type="submit" class="btn btn-primary btn-block" onclick="MemberChangeDesiredSchedule()">Confirmar</button></div>
-
-      <div class="limpar"><button type="submit" class="btn btn-primary btn-block">Limpar</button></div>
     </div>
-  </div>
 
+    <!-- Minhas pref -->
+    <div class="container-pref">
+      <div class="container-back-four">
+        <h3>Minha preferência de escala</h3>
+
+        <div>
+          <table id="weekdays2">
+            <tr>
+              <td><button class="b3">Seg</button></td>
+              <td><button class="b3">Ter</button></td>
+              <td><button class="b3">Qua</button></td>
+              <td><button class="b3">Qui</button></td>
+              <td><button class="b3">Sex</button></td>
+              <td><button class="b3">Tot</button></td>
+            </tr>
+        </div>
+
+        <div class="rectangle-group-2">
+          <div class="mini-rectangle">Atual</div>
+          <div class="mini-rectangle">Nova</div>
+        </div>
+
+        <div>
+          <table class="matrix2" id="_myCurrentShift">
+            <tr>
+            </tr>
+          </table>
+
+          <table class="matrix3" id="_myNewShift">
+            <tr>
+            </tr>
+          </table>
+        </div>
+
+        <div class="confirmar"><button type="submit" class="btn btn-primary btn-block"
+            onclick="MemberChangeDesiredSchedule()">Confirmar</button></div>
+      </div>
+    </div>
+
+  </main>
 </body>
 
 </html>
