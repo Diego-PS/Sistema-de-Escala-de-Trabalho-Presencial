@@ -168,6 +168,7 @@
   top: 580px;
   left: 770px;
   border-radius: 10px;
+  width: 257px;
 }
 
 .limpar{
@@ -190,14 +191,14 @@
 
 .btn-primary{
   border-radius: 10px;
-  height: 30px;
+  height: var(--button_h);
   font-family: 'Questrial', sans-serif;
 }
 
 .btn{
   border: none;
   cursor: pointer;
-  background-color: #A7A6A6;
+  width: 257px;
 }
 
 .btn:hover {

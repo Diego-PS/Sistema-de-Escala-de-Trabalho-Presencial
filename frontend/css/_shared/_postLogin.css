@@ -58,7 +58,7 @@ nav a:hover {
     top: 10px;
     background-color: #3e3e3e;
     display: flex;
-    border-radius: var(--border_curve_size_regular) 0 0 var(--border_curve_size_regular);
+    border-radius: var(--border_curve_size_regular);
     padding-left: 10px;
     padding-right: 10px;
     width: var(--data_width_text_large);

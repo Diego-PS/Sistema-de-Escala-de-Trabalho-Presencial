@@ -58,6 +58,10 @@ request2.setRequestHeader('Authorization', token);
 
 var change_team_schedule_obj = {}
 
+var base_h = 50 + 100 //main, 
+var btn_h = 30;
+var add_h = 0;
+
 request2.onload = function preencheTabelas() {
     var data = JSON.parse(this.response)
     num_members = data.length
@@ -68,7 +72,23 @@ request2.onload = function preencheTabelas() {
         member_name_row_div.className = 'rectangle'
         member_name_row_div.innerHTML = member.name
         member_names_rows_div.appendChild(member_name_row_div)
+        add_h += btn_h
     })
+
+    var new_h = add_h + base_h
+
+    console.log(new_h)
+
+    var adjust_h1 = document.getElementById('totals_titles')
+    var adjust_h2 = document.getElementById('infoCurrentShift')
+    var adjust_h3 = document.getElementById('infoNewShift')
+    var adjust_h4 = document.getElementById('confirm')
+    
+    adjust_h1.style.top = `${new_h}px`
+    adjust_h2.style.top = `${new_h}px`
+    adjust_h3.style.top = `${new_h}px`
+    adjust_h4.style.top = `${new_h + 2.5*btn_h}px`
+
 
     const matrix1 = document.getElementById('matrix1')
     var day_attendence_current = { mon: 0, tue: 0, wed: 0, thu: 0, fri: 0 }

@@ -200,13 +200,31 @@
 .button_confirm {
     color: var(--button_font_color);
     font-size: var(--button_font_size);
+    font-family: 'Questrial', sans-serif;
     text-align: center;
 
     background-color: var(--button_confirm_bg_color);
-    border-radius: var(--border_curve_size_regular) var(--border_curve_size_regular) var(--border_curve_size_regular) var(--border_curve_size_regular);
+    border-radius: var(--border_curve_size_large);
 
     width: 25%;
     height: var(--button_h);
+
+    cursor: pointer;
+
+}
+
+.button_confirm:hover {
+    background-color: #BB86FC;
+}
+
+
+.button_confirm_absolute {
+    color: var(--button_font_color);
+    font-size: var(--button_font_size);
+    text-align: center;
+
+    background-color: var(--button_confirm_bg_color);
+    border-radius: var(--border_curve_size_large);
 }
 
 .button_login {
@@ -239,11 +257,11 @@
 }
 
 
-.botao{
+.botao {
     color: #BB86FC;
     font-size: 14px;
     position: absolute;
-    top:550px;
+    top: 550px;
     left: 980px;
 }
 

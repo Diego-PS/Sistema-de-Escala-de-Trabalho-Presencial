@@ -224,7 +224,7 @@
 .confirmar{
   position: absolute;
   top: 200px;
-  left: 20px;
+  left: 25px;
 }
 
 .limpar{
@@ -234,15 +234,15 @@
 }
 
 .btn-primary{
-  border-radius: 10px;
-  height: 30px;
+  height: var(--button_h);
   font-family: 'Questrial', sans-serif;
 }
 
 .btn{
   border: none;
   cursor: pointer;
-  background-color: #A7A6A6;
+  width: 350px;
+
 }
 
 .btn:hover {
