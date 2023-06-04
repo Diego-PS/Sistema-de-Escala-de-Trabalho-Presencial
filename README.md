@@ -114,6 +114,17 @@ Facilitar a determinação de escalas de trabalho presencial de uma empresa, sat
 - Construir a interface com o banco de dados referente às regras da organização [Lucas]
 - Construir a interface de atualização das regras da organização [Júlia, Gustavo]
 
+### Histórias do backlog da sprint
+- Como usuário, eu gostaria de cadatrar uma organização e cadatrar-me como chefe da mesma.
+- Como usuário do sistema, eu gostaria de ser cadastrado/realizar o login no sistema.
+- Como dono da organização, eu gostaria de criar equipes e adicionar os chefes de cada equipe.
+- Como chefe da organização, eu gostaria de criar regras gerais para todas as equipes.
+- Como chefe de equipe, eu gostaria de determinar as regras da minha equipe.
+- Como chefe de equipe, eu gostaria de adicionar membros na minha equipe.
+- Como chefe de equipe, eu gostaria de consultar as preferências de escala da minha equipe e determinar a escala.
+- Como membro de equipe, eu gostaria de consultar a escala atual da equipe.
+- Como membro de equipe, eu gostaria de informar minha preferência de escala presencial.
+
 ## Documentação da arquitetura
 
 ### Por que o sistema está adotando essa arquitetura?
@@ -139,3 +150,9 @@ Note que o código destacado em verde chama os métodos externos ao domínio, es
 
 ### Vantagem
 Com esta implementação em arquitetura hexagonal, caso haja uma mudança na tecnologia de banco de dados, por exemplo, se trocar do MongoDB para o PostgreSQL, não será necessaário realizar nenhuma mudança na classe de domínio do sistema, bastando modelar o banco dentro do diretório database e implementar o repositório (adaptador).
+
+## Insights do GitHub
+
+<img width="911" alt="image" src="https://github.com/Diego-PS/Sistema-de-Escala-de-Trabalho-Presencial/assets/54641834/1ca225a7-3233-4a0d-b97d-d437d36a93c3">
+
+<img width="911" alt="image" src="https://github.com/Diego-PS/Sistema-de-Escala-de-Trabalho-Presencial/assets/54641834/25201432-67d2-4d10-8a1e-2a7fd12ca539">
