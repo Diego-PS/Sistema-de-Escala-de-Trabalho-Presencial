@@ -26,7 +26,7 @@ body {
     border: none;
     cursor: pointer;
 }
-  
+
 .btn:hover {
     background-color: #BB86FC;
 }
@@ -42,14 +42,31 @@ body {
     z-index: -1;
 }
 
+
+.title{
+    color: #BB86FC;
+    font-size: 32px;
+    position: absolute;
+    top: 30px;
+    left: 870px;
+}
+
 .login-form{
     position: fixed; /* or absolute */
-    top: 150px;
-    left: 970px;
+    top: 110px;
+    left: 860px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+}
+
+.botao{
+    color: #BB86FC;
+    font-size: 14px;
+    position: absolute;
+    top: 350px;
+    left: 870px;
 }
 
 .moto{
@@ -81,27 +98,10 @@ body {
     left: 40px;
   }
 
-.title{
-    color: #BB86FC;
-    font-size: 32px;
-    position: absolute;
-    top: 80px;
-    left: 980px;
-}
-
 .texto{
     color: #BB86FC;
     font-size: 14px;
     position: absolute;
     top:500px;
     left: 1100px;
-}
-
-.botao{
-    color: #BB86FC;
-    color: #BB86FC;
-    font-size: 14px;
-    position: absolute;
-    top:600px;
-    left: 980px;
 }
