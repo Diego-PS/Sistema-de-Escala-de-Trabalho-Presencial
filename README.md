@@ -105,3 +105,21 @@ Facilitar a determinação de escalas de trabalho presencial de uma empresa, sat
 - Construir rotas de atualização das regras da organização [Diego]
 - Construir a interface com o banco de dados referente às regras da organização [Lucas]
 - Construir a interface de atualização das regras da organização [Júlia, Gustavo]
+
+## Documentação da arquitetura
+Facilitar a determinação de escalas de trabalho presencial de uma empresa, satisfazendo as regras de cada equipe e considerando as preferências de cada funcionário.
+
+### Por que o sistema está adotando essa arquitetura?
+Para garantir o correto funcionamento das regras de negócio, implementada no sistema nos chamados services, idependente de qual banco de dados for adotado. Assim, temos a implementação dessas regras desacoplada da tecnologia de banco de dados utilizadas, desse modo aumentando a coesão e favorecendo a reusabilidade do código.
+
+### Porta de saída
+A porta de saída para acessar o banco de dados trata-se da interface dos repositórios, quando chamamos um método de um repositório, estamos utilizanso uma porta de saída
+
+<img width="631" alt="image" src="https://github.com/Diego-PS/Sistema-de-Escala-de-Trabalho-Presencial/assets/54641834/c01accff-25a5-4563-9d14-d22b7cb82035">
+
+A porta está declarando o serviço que é esperado pelo sistema, ouo seja, o que o repositório deve receber e retornar.
+
+<img width="631" alt="image" src="https://github.com/Diego-PS/Sistema-de-Escala-de-Trabalho-Presencial/assets/54641834/5b45c2df-0c14-47f9-bd6a-f5d13318d3f2">
+
+Essa imagem apresenta o uso da porta (a interface que obtém as informações do banco de dados
+
