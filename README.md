@@ -121,9 +121,9 @@ Facilitar a determinação de escalas de trabalho presencial de uma empresa, sat
 - Como chefe da organização, eu gostaria de criar regras gerais para todas as equipes.
 - Como chefe de equipe, eu gostaria de determinar as regras da minha equipe.
 - Como chefe de equipe, eu gostaria de adicionar membros na minha equipe.
-- Como chefe de equipe, eu gostaria de consultar as preferências de escala da minha equipe e determinar a escala.
 - Como membro de equipe, eu gostaria de consultar a escala atual da equipe.
 - Como membro de equipe, eu gostaria de informar minha preferência de escala presencial.
+- Como chefe de equipe, eu gostaria de consultar as preferências de escala da minha equipe e determinar a escala.
 
 ## Documentação da arquitetura
 

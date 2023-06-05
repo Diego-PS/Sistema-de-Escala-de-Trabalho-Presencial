@@ -12,7 +12,7 @@ const dbUser = process.env.DB_USER
 const dbPass = process.env.DB_PASS
 
 mongoose
-    .connect(`mongodb+srv://${dbUser}:${dbPass}@smartshiftdb.aixb2uu.mongodb.net/?retryWrites=true&w=majority`)
+    .connect(`mongodb+srv://${dbUser}:${dbPass}@smartshift.lmmto2b.mongodb.net/?retryWrites=true&w=majority`)
     .then(() => {
         app.listen(4000, () => console.log("Rodando na porta 4000..."))
         console.log('Conectou ao banco!')
