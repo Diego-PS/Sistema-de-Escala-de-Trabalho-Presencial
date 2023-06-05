@@ -53,7 +53,6 @@ export class BossController
         try {
             const boss = await Boss.getById(id)
             await boss.changeOrganizationRules(req.body)
-            return res.redirect('/equipes_regras.html')
             return res.status(201).json({ msg: 'Organization rules successfully updated'})
         } catch(err) {
             return res.status(500).json({ msg: err?.message ?? 'Something went wrong' })

@@ -84,15 +84,49 @@ request.onload = function preencheTabelas() {
 request.send()
 
 function formSubmit_bossChangeRules () {
-    const cadastrar_lider_form = document.getElementById("_form_bossChangeRules")
+    var req = new XMLHttpRequest()
+    req.open('POST', `http://localhost:4000/boss/changerules/${bossId}`, true)
+    req.setRequestHeader('Authorization', token)
+    req.setRequestHeader('Content-type', 'application/json');
 
-    cadastrar_lider_form.action = `/boss/changerules/${bossId}` 
-    cadastrar_lider_form.submit()
+    req.onreadystatechange = function() {
+        if (req.readyState == XMLHttpRequest.DONE) {
+            const response = JSON.parse(req.responseText)
+            if (req.status === 201) {
+                window.location.href = '/equipes_regras.html'
+            } else {
+                alert(response.msg);
+                window.location.href = '/equipes_regras.html'
+            }
+        }
+    }
+
+    const form = document.getElementById('_form_bossChangeRules')
+    var formData = new FormData(form)
+    console.log(Object.fromEntries(formData.entries()))
+    req.send(JSON.stringify(Object.fromEntries(formData.entries())))
 }
 
 function formSubmit_registerTeamLeader () {
-    const cadastrar_lider_form = document.getElementById("_newTeamForm")
+    var req = new XMLHttpRequest()
+    req.open('POST', `http://localhost:4000/teamleader/register/${bossId}`, true)
+    req.setRequestHeader('Authorization', token)
+    req.setRequestHeader('Content-type', 'application/json');
 
-    cadastrar_lider_form.action = `/teamleader/register/${bossId}` 
-    cadastrar_lider_form.submit()
+    req.onreadystatechange = function() {
+        if (req.readyState == XMLHttpRequest.DONE) {
+            const response = JSON.parse(req.responseText)
+            if (req.status === 201) {
+                window.location.href = '/equipes_regras.html'
+            } else {
+                alert(response.msg);
+                window.location.href = '/equipes_regras.html'
+            }
+        }
+    }
+
+    const form = document.getElementById('_newTeamForm')
+    var formData = new FormData(form)
+    console.log(Object.fromEntries(formData.entries()))
+    req.send(JSON.stringify(Object.fromEntries(formData.entries())))
 }
