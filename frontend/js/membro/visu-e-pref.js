@@ -225,17 +225,24 @@ request2.onload = function preencheTabelas() {
 
 request2.send()
 
-function MemberChangeDesiredSchedule() {
-    var request3 = new XMLHttpRequest()
+function MemberChangeDesiredSchedule () {
+    var req = new XMLHttpRequest()
+    req.open('POST', `http://localhost:4000/member/changeschedule/${memberId}`, true)
+    req.setRequestHeader('Authorization', token)
+    req.setRequestHeader('Content-type', 'application/json');
 
-    request3.open('POST', `http://localhost:4000/member/changeschedule/${memberId}`, true)
-    request3.setRequestHeader('Authorization', token);
-    request3.setRequestHeader('Content-type', 'application/json');
-
-    request3.onload = () => {
-        window.location.href = "http://localhost:4000/visu-e-pref.html";
+    req.onreadystatechange = function() {
+        if (req.readyState == XMLHttpRequest.DONE) {
+            const response = JSON.parse(req.responseText)
+            if (req.status === 201) {
+                window.location.href = '/visu-e-pref.html'
+            } else {
+                alert(response.msg);
+                window.location.href = '/visu-e-pref.html'
+            }
+        }
     }
 
-    request3.send(JSON.stringify(change_member_schedule_obj))
+    req.send(JSON.stringify(change_member_schedule_obj))
 }
 
