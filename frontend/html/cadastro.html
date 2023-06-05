@@ -17,6 +17,7 @@
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZEZa6a7kpDf5cYRvoRxrs/" crossorigin="anonymous">
 
     <link rel="stylesheet" href="cadastro.css">
+    <script src="cadastro.js" defer></script>
 </head>
 
 <body>
@@ -41,7 +42,7 @@
                         <input type="password" class="form-control" placeholder="Confirmar Senha" name="confirm_password">
                         <input type="number" class="form-control" placeholder="Mín. de Presenças Semanais por Pessoa" name="moa">
                         <input type="number" class="form-control" placeholder="% Mín. do Corpo Efetivo Presente por Dia" name="mpw">
-                        <button type="submit" class="btn btn-primary btn-block">Cadastrar Organização</button>
+                        <button type="button" class="btn btn-primary btn-block" onclick="register()">Cadastrar Organização</button>
 
                     </form>
                 </div>

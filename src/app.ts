@@ -97,6 +97,11 @@ app.get('/cadastro.css', async (req: Request, res: Response) => {
     res.sendFile(path.join(__dirname + '/../frontend/css/cadastro.css'))
 })
 
+app.get('/cadastro.js', async (req: Request, res: Response) => {
+    res.sendFile(path.join(__dirname + '/../frontend/js/cadastro.js'))
+})
+
+
 /*------------------------------------------------------------
 ------------------------------------------------------------*/
 

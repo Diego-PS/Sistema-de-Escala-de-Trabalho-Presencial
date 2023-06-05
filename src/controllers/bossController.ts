@@ -10,7 +10,6 @@ export class BossController
     async register(req: Request, res: Response) {
         try {
             const boss = await Boss.create(req.body)
-            return res.redirect('/login.html')
             return res.status(201).json({ msg: 'Organization succesufully registered' })
         } catch(err) {
             return res.status(500).json({ msg: err?.message ?? 'Something went wrong' })
