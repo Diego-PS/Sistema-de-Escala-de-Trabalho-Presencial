@@ -26,6 +26,9 @@ app.use((req: Request, res: Response, next: NextFunction) => {
     next();
 });
 
+app.get('/', (req, res) => {
+    res.redirect('/login.html')
+})
 
 /*------------------------------------------------------------
 .css compartilhados por mais de um html
@@ -76,6 +79,10 @@ app.get('/login.html', async (req: Request, res: Response) => {
 
 app.get('/login.css', async (req: Request, res: Response) => {
     res.sendFile(path.join(__dirname + '/../frontend/css/login.css'))
+})
+
+app.get('/login.js', async (req: Request, res: Response) => {
+    res.sendFile(path.join(__dirname + '/../frontend/js/login.js'))
 })
 
 /*------------------------------------------------------------

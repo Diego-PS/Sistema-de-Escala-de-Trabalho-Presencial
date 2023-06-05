@@ -13,6 +13,7 @@
     <title>SmartShift - Login</title>
 
     <link rel="stylesheet" href="login.css">
+    <script src="login.js" defer></script>
 </head>
 
 <body>
@@ -28,7 +29,7 @@
 
             <div class="login-form">
                 
-                <form id="_login_form" action="/login" method="post">
+                <form id="_login_form">
                     
                     <input class="form-control" placeholder="ID ou e-mail" type="text" id="_username" required
                     name="username">
@@ -38,7 +39,7 @@
                     name="password">
                     
                     
-                    <button class="btn btn-primary btn-block" type="submit" id="_login_button">Entrar</button>
+                    <button class="btn btn-primary btn-block" type="button" id="_login_button" onclick="login()">Entrar</button>
                     
                 </form>
             </div>

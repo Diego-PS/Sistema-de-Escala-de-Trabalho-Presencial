@@ -33,15 +33,14 @@ export class LoginController
             })
     
             if(user.role == "boss"){
-                res.redirect('/equipes_regras.html')
+                return res.status(200).json({ isError: false, msg: "Authentication was successful", url: '/equipes_regras.html' })
             }
             if(user.role == "team_leader"){
-                res.redirect('/gerencia.html')
+                return res.status(200).json({ isError: false, msg: "Authentication was successful", url: '/gerencia.html' })
             }
             if(user.role == "member"){
-                res.redirect('/visu-e-pref.html')
+                return res.status(200).json({ isError: false, msg: "Authentication was successful", url: '/visu-e-pref.html' })
             }
-            
             
             // res.status(200).json({ msg: "Authentication was successful", token , id })
         } catch(err) {
