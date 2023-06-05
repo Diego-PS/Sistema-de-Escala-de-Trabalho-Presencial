@@ -279,16 +279,23 @@ request2.onload = function preencheTabelas() {
 
 request2.send()
 
-function changeSchedule() {
-    var request3 = new XMLHttpRequest()
+function changeSchedule () {
+    var req = new XMLHttpRequest()
+    req.open('POST', `http://localhost:4000/teamleader/changeschedule/${id}`, true)
+    req.setRequestHeader('Authorization', token)
+    req.setRequestHeader('Content-type', 'application/json');
 
-    request3.open('POST', `http://localhost:4000/teamleader/changeschedule/${id}`, true)
-    request3.setRequestHeader('Authorization', token);
-    request3.setRequestHeader('Content-type', 'application/json');
-
-    request3.onload = () => {
-        window.location.href = "http://localhost:4000/visualizacao.html";
+    req.onreadystatechange = function() {
+        if (req.readyState == XMLHttpRequest.DONE) {
+            const response = JSON.parse(req.responseText)
+            if (req.status === 201) {
+                window.location.href = '/visualizacao.html'
+            } else {
+                alert(response.msg);
+                window.location.href = '/visualizacao.html'
+            }
+        }
     }
 
-    request3.send(JSON.stringify(change_team_schedule_obj))
+    req.send(JSON.stringify(change_team_schedule_obj))
 }

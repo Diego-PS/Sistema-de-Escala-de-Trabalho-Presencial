@@ -44,7 +44,7 @@ export class TeamLeaderController
         try {
             const team_leader = await TeamLeader.getById(id)
             await team_leader.changeTeamSchedule(req.body)
-            return res.redirect('/vizualizacao.html')
+            return res.status(201).json({ msg: 'Team schedule successfully updated' })
         } catch(err) {
             return res.status(500).json({ msg: err?.message ?? 'Something went wrong' })
         }
@@ -55,7 +55,7 @@ export class TeamLeaderController
         try {
             const team_leader = await TeamLeader.getById(id)
             await team_leader.changeTeamRules(req.body)
-            return res.redirect('/gerencia.html')
+            return res.status(201).json({ msg: 'Team rules successfully updated' })
         } catch(err) {
             return res.status(500).json({ msg: err?.message ?? 'Something went wrong' })
         }

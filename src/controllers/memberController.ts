@@ -13,7 +13,6 @@ export class MemberController
         try {
             const team_leader = await TeamLeader.getById(team_leader_id)
             const member = await team_leader.createMember(req.body)
-            return res.redirect('/gerencia.html')
             return res.status(201).json({ msg: 'Member successfully registered' })
         } catch(err) {
             return res.status(500).json({ msg: err?.message ?? 'Something went wrong' })
