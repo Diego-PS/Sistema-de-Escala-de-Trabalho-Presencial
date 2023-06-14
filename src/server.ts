@@ -3,7 +3,7 @@ import dotenv from 'dotenv'
 import mongoose from 'mongoose'
 dotenv.config()
 
-const databaseConnection = process.env.DB_CONNECTION_TEST
+const databaseConnection = process.env.DB_CONNECTION_PRESENTATION
 
 mongoose
     .connect(databaseConnection)

@@ -5,8 +5,10 @@
     "allowJs": true,                           
     "esModuleInterop": true,                             
     "forceConsistentCasingInFileNames": true,                                                
-    "skipLibCheck": true                                 
+    "skipLibCheck": true                               
   },
   "exclude": ["node_modules"],
-  "include": ["./src"]
+  "include": ["./src", "./cypress"],
+  "isolatedModules": false,
+  "types": ["node", "cypress"]
 }
