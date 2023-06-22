@@ -165,6 +165,14 @@ app.get('/visu-e-pref.js', async (req: Request, res: Response) => {
 
 //------------------------------------------------------------
 
+app.get('/delete.html', async (req: Request, res: Response) => {
+    res.sendFile(path.join(__dirname + '/../frontend/html/delete.html'))
+})
+
+app.get('/delete.js', async (req: Request, res: Response) => {
+    res.sendFile(path.join(__dirname + '/../frontend/js/delete.js'))
+})
+
 app.use(router)
 
 export { app }
