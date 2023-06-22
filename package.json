@@ -4,7 +4,7 @@
   "description": "Projeto em desenvolvimento para a disciplina Prática em Desenvolvimento de Software - DCC/UFMG.",
   "main": "index.js",
   "scripts": {
-    "test": "jest && npx cypress run",
+    "test": "npm run dev wait-on http://localhost:4000 & jest && npx cypress run",
     "coverage": "jest --coverage",
     "start": "nodemon src/server.ts",
     "dev": "nodemon -L ./src/server.ts && tsc -w"
