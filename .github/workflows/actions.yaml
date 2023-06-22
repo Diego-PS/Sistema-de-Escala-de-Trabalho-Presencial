@@ -25,9 +25,3 @@ jobs:
 
       - name: Run Tests
         run: npm test
-
-      - name: Coverage
-        run: npm run coverage
-
-      - name: Start Server
-        run: npm start
