@@ -18,9 +18,9 @@ jobs:
       - name: 'Create env file'
         run: |
           touch .env
-          echo SECRET=${{ .env.SECRET }} >> .env
-          echo DB_CONNECTION_TEST=${{ .env.DB_CONNECTION_TEST }} >> .env
-          echo DB_CONNECTION_PRESENTATION=${{ .env.DB_CONNECTION_PRESENTATION }} >> .env
+          echo SECRET=${{ secrets.SECRET }} >> .env
+          echo DB_CONNECTION_TEST=${{ secrets.DB_CONNECTION_TEST }} >> .env
+          echo DB_CONNECTION_PRESENTATION=${{ secrets.DB_CONNECTION_PRESENTATION }} >> .env
           cat .env
 
       - name: Setup Node.js
