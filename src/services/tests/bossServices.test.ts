@@ -1,15 +1,12 @@
 import { expect } from '@jest/globals';
 import { bossServices } from ".."
 import { Boss } from '../../entities/Boss';
-import dotenv from 'dotenv'
-import mongoose from 'mongoose';
+import { connectDB, disconnectDB } from '../../connectDB';
 
 describe('Testing bossService', () => {
 
     test('Creating boss', async () => {
-        dotenv.config()
-        const databaseConnection = process.env.DB_CONNECTION_PRESENTATION
-        await mongoose.connect(databaseConnection)
+        await connectDB()
         const boss_to_be_created = new Boss({
             organization_name: 'Test Organization',
             name: 'TestBoss',
@@ -44,7 +41,7 @@ describe('Testing bossService', () => {
         expect(updated_boss.name).toBe('NewTestBoss')
 
         await updated_boss.delete()
-        await mongoose.disconnect()
+        await disconnectDB()
     })
 
     test('should pass', () => {

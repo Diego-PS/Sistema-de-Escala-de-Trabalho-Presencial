@@ -1,17 +1,13 @@
 import { expect } from '@jest/globals';
 import { memberServices } from ".."
 import { Member } from '../../entities/Member';
-import dotenv from 'dotenv'
-import mongoose from 'mongoose';
 import { Schedule } from '../../abstractions/Schedule';
+import { connectDB, disconnectDB } from '../../connectDB';
 
 describe('Testing memberService', () => {
 
     test('Creating member', async () => {
-        dotenv.config()
-        const databaseConnection = process.env.DB_CONNECTION_PRESENTATION
-        await mongoose.connect(databaseConnection)
-        
+        await connectDB()
         const member_to_be_created = new Member({
             team_leader_id: 'team_leader_id',
             desired_schedule: new Schedule({
@@ -38,7 +34,7 @@ describe('Testing memberService', () => {
         expect(created_member.name).toBe('TestMember')
 
         await created_member.delete()
-		await mongoose.disconnect()
+		await disconnectDB()
     })
 
 })
