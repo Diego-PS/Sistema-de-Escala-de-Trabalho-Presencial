@@ -4,10 +4,11 @@
   "description": "Projeto em desenvolvimento para a disciplina Prática em Desenvolvimento de Software - DCC/UFMG.",
   "main": "index.js",
   "scripts": {
-    "test": "npm run dev wait-on http://localhost:4000 & jest && npx cypress run",
+    "test": "start-server-and-test start-server 4000 test-script",
     "coverage": "jest --coverage",
-    "start": "nodemon src/server.ts",
-    "dev": "nodemon -L ./src/server.ts && tsc -w"
+    "dev": "nodemon -L ./src/server.ts && tsc -w",
+    "start-server": "ts-node ./src/server.ts",
+    "test-script": "jest && npx cypress run"
   },
   "keywords": [],
   "author": "",
@@ -30,6 +31,7 @@
     "jest": "^29.5.0",
     "node-dev": "^8.0.0",
     "nodemon": "^2.0.22",
+    "start-server-and-test": "^2.0.0",
     "ts-jest": "^29.1.0",
     "ts-node": "^10.9.1",
     "tsc": "^2.0.4",
