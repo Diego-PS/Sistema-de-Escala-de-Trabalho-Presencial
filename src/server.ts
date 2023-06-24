@@ -3,10 +3,8 @@ import dotenv from 'dotenv'
 import mongoose from 'mongoose'
 dotenv.config()
 
-const databaseConnection = process.env.DB_CONNECTION_PRESENTATION
-
 mongoose
-    .connect(databaseConnection)
+    .connect(`mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@smartshift.lmmto2b.mongodb.net/?retryWrites=true&w=majority`)
     .then(() => {
         app.listen(4000, () => console.log("Rodando na porta 4000..."))
         console.log('Conectou ao banco!')
