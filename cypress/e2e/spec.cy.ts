@@ -108,7 +108,7 @@ describe('Team Leader Stories', () => {
     login(team.leader_username, team.password)
     cy.get('input[name="moa"]').type(team.new_moa)
     cy.get('input[name="mpw"]').type(org.new_mpw)
-    cy.get('button[onclick="muda_regra()"').click({timeout: 5000000})
+    cy.get('button[onclick="muda_regra()"').click({timeout: 50000})
   })
 
   it('verifies team rules change', () => {
@@ -125,20 +125,20 @@ describe('Team Leader Stories', () => {
 
   it('changes team schedule', () => {
     login(team.leader_username, team.password)
-    cy.get('a[href*="visualizacao.html"]').click({timeout: 5000000})
+    cy.get('a[href*="visualizacao.html"]').click({timeout: 50000})
     team.members.forEach(member => {
       for (const day of ['mon', 'tue', 'wed', 'thu', 'fri']) {
         if (!member.schedule[day]) cy.get(`#${member.name}-${day}`).click()
       }
     })
-    cy.get('button[onclick="changeSchedule()"]').click({timeout: 5000000})
+    cy.get('button[onclick="changeSchedule()"]').click({timeout: 50000})
     login(team.leader_username, team.password)
-    cy.get('a[href*="visualizacao.html"]').click({timeout: 5000000})
+    cy.get('a[href*="visualizacao.html"]').click({timeout: 50000})
   })
 
   it('verifies team schedule change', () => {
     login(team.leader_username, team.password)
-    cy.get('a[href*="visualizacao.html"]').click({timeout: 5000000})
+    cy.get('a[href*="visualizacao.html"]').click({timeout: 50000})
     cy.get('#matrix1').children().each(($tr, idx) => {
       const member = team.members[idx]
       const day_map = ['mon', 'tue', 'wed', 'thu', 'fri']
@@ -148,6 +148,7 @@ describe('Team Leader Stories', () => {
             cy.wrap($td).find('.b1').should('exist')
             cy.wrap($td).find('.clicado').should('exist')
           } else {
+
             cy.wrap($td).find('.clicado').should('not.exist')
           }
         }
@@ -193,7 +194,7 @@ describe('Member Stories', () => {
       for (const day of ['mon', 'tue', 'wed', 'thu', 'fri']) {
         if (!member.schedule[day]) cy.get(`#status-${day}`).click()
       }
-      cy.get('button[onclick="MemberChangeDesiredSchedule()"]').click({timeout: 5000000})
+      cy.get('button[onclick="MemberChangeDesiredSchedule()"]').click({timeout: 50000})
     })
   })
 
