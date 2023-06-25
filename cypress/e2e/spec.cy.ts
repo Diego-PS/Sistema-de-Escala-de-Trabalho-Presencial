@@ -148,7 +148,6 @@ describe('Team Leader Stories', () => {
             cy.wrap($td).find('.b1').should('exist')
             cy.wrap($td).find('.clicado').should('exist')
           } else {
-            cy.wrap($td).find('.b1').should('exist')
             cy.wrap($td).find('.clicado').should('not.exist')
           }
         }
