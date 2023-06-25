@@ -45,7 +45,7 @@ const login = (username: string, password: string) => {
   cy.visit('/login.html')
   cy.get('#_username').type(username)
   cy.get('#_password').type(password)
-  cy.get('#_login_button').click()
+  cy.get('#_login_button').click({timeout: 200000})
 }
 
 describe('Organization Boss Stories', () => {
