@@ -48,6 +48,12 @@ const login = (username: string, password: string) => {
   cy.get('#_login_button').click({timeout: 500000})
 }
 
+const reloadManyTimes = (num: number) => {
+  for (let i = 0; i < num; i++) {
+    cy.reload({timeout: 500000})
+  }
+}
+
 describe('Organization Boss Stories', () => {
 
   it('registers an organization', () => {
@@ -132,6 +138,7 @@ describe('Team Leader Stories', () => {
       }
     })
     cy.get('button[onclick="changeSchedule()"]').click({timeout: 50000000})
+    reloadManyTimes(20)
   })
 
   it('verifies team schedule change', () => {
