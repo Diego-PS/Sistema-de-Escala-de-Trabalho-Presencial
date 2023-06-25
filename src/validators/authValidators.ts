@@ -6,8 +6,6 @@ export class AuthValidators
     login(req: Request, res: Response, next: NextFunction) {
         const { username, password } = req.body
 
-        console.log(req.body)
-
         if (!username) {
             return res.status(422).json({ msg: 'The username is mandatory' })
         }
