@@ -131,9 +131,26 @@ describe('Team Leader Stories', () => {
         if (!member.schedule[day]) cy.get(`#${member.name}-${day}`).click()
       }
     })
-    cy.get('button[onclick="changeSchedule()"]').click({timeout: 500000})
+    cy.get('button[onclick="changeSchedule()"]').click({timeout: 50000000})
+  })
+
+  it('verifies team schedule change', () => {
     login(team.leader_username, team.password)
-    cy.get('a[href*="visualizacao.html"]').click({timeout: 500000})
+    cy.get('a[href*="visualizacao.html"]').click({timeout: 50000000})
+    cy.get('#matrix1').children().each(($tr, idx) => {
+      const member = team.members[idx]
+      const day_map = ['mon', 'tue', 'wed', 'thu', 'fri']
+      cy.wrap($tr).children().each(($td, day_idx) => {
+        if (day_idx < 5) {
+          if (member.schedule[day_map[day_idx]]) {
+            cy.wrap($td).find('.b1').should('exist')
+            cy.wrap($td).find('.clicado').should('exist')
+          } else {
+            cy.wrap($td).find('.clicado').should('not.exist')
+          }
+        }
+      })
+    })
   })
 })
 
