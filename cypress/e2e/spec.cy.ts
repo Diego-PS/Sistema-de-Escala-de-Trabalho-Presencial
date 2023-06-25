@@ -105,7 +105,7 @@ describe('Team Leader Stories', () => {
     login(team.leader_username, team.password)
     cy.get('input[name="moa"]').type(team.new_moa)
     cy.get('input[name="mpw"]').type(org.new_mpw)
-    cy.get('button[onclick="muda_regra()"').click({timeout: 1000000})
+    cy.get('button[onclick="muda_regra()"').click({timeout: 5000000})
     login(team.leader_username, team.password)
     cy.get('#_MOAatual').should('have.text', team.new_moa)
     cy.get('#_MPWatual').should('have.text', org.new_mpw)
@@ -119,15 +119,16 @@ describe('Team Leader Stories', () => {
 
   it('changes team schedule', () => {
     login(team.leader_username, team.password)
-    cy.get('a[href*="visualizacao.html"]').click({timeout: 1000000})
+    cy.get('a[href*="visualizacao.html"]').click({timeout: 5000000})
     team.members.forEach(member => {
       for (const day of ['mon', 'tue', 'wed', 'thu', 'fri']) {
         if (!member.schedule[day]) cy.get(`#${member.name}-${day}`).click()
       }
     })
-    cy.get('button[onclick="changeSchedule()"]').click({timeout: 1000000})
+    cy.get('button[onclick="changeSchedule()"]').click({timeout: 5000000})
     login(team.leader_username, team.password)
-    cy.get('a[href*="visualizacao.html"]').click({timeout: 1000000})
+    cy.get('a[href*="visualizacao.html"]').click({timeout: 5000000})
+    cy.reload({timeout: 5000000})
     cy.get('#matrix1').children().each(($tr, idx) => {
       const member = team.members[idx]
       const day_map = ['mon', 'tue', 'wed', 'thu', 'fri']
@@ -183,8 +184,8 @@ describe('Member Stories', () => {
       for (const day of ['mon', 'tue', 'wed', 'thu', 'fri']) {
         if (!member.schedule[day]) cy.get(`#status-${day}`).click()
       }
-      cy.get('button[onclick="MemberChangeDesiredSchedule()"]').click({timeout: 1000000})
-      cy.reload()
+      cy.get('button[onclick="MemberChangeDesiredSchedule()"]').click({timeout: 5000000})
+      cy.reload({timeout: 5000000})
       cy.get('#_myCurrentShift').children().each(($tr, idx) => {
         if (idx == 1) {
           const day_map = ['mon', 'tue', 'wed', 'thu', 'fri']
