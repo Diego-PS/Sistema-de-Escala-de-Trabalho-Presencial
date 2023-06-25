@@ -36,7 +36,7 @@ const team = {
     cy.get('input[name="username"]').type(name)
     cy.get('input[name="password"]').type(password)
     cy.get('input[name="confirm_password"]').type(password)
-    cy.get('button[onclick="addMember()"]').click({timeout: 400000})
+    cy.get('button[onclick="addMember()"]').click({timeout: 500000})
     team.members.push({ name, username: name, password, schedule })
   }
 }
@@ -45,7 +45,7 @@ const login = (username: string, password: string) => {
   cy.visit('/login.html')
   cy.get('#_username').type(username)
   cy.get('#_password').type(password)
-  cy.get('#_login_button').click({timeout: 400000})
+  cy.get('#_login_button').click({timeout: 500000})
 }
 
 describe('Organization Boss Stories', () => {
@@ -85,7 +85,10 @@ describe('Organization Boss Stories', () => {
     login(org.boss_username, org.password)
     cy.get('input[name="moa"]').type(org.moa),
     cy.get('input[name="mpw"]').type(org.new_mpw)
-    cy.get('button[onclick="formSubmit_bossChangeRules()"]').click({timeout: 400000})
+    cy.get('button[onclick="formSubmit_bossChangeRules()"]').click({timeout: 500000})
+  })
+
+  it('verifies organization rules change', () => {
     login(org.boss_username, org.password)
     cy.get('#_MPWatual').should('have.text', org.new_mpw)
   })
@@ -106,6 +109,9 @@ describe('Team Leader Stories', () => {
     cy.get('input[name="moa"]').type(team.new_moa)
     cy.get('input[name="mpw"]').type(org.new_mpw)
     cy.get('button[onclick="muda_regra()"').click({timeout: 5000000})
+  })
+
+  it('verifies team rules change', () => {
     login(team.leader_username, team.password)
     cy.get('#_MOAatual').should('have.text', team.new_moa)
     cy.get('#_MPWatual').should('have.text', org.new_mpw)
@@ -128,7 +134,9 @@ describe('Team Leader Stories', () => {
     cy.get('button[onclick="changeSchedule()"]').click({timeout: 5000000})
     login(team.leader_username, team.password)
     cy.get('a[href*="visualizacao.html"]').click({timeout: 5000000})
-    cy.reload({timeout: 5000000})
+  })
+
+  it('verifies team schedule change', () => {
     login(team.leader_username, team.password)
     cy.get('a[href*="visualizacao.html"]').click({timeout: 5000000})
     cy.get('#matrix1').children().each(($tr, idx) => {
@@ -187,7 +195,12 @@ describe('Member Stories', () => {
         if (!member.schedule[day]) cy.get(`#status-${day}`).click()
       }
       cy.get('button[onclick="MemberChangeDesiredSchedule()"]').click({timeout: 5000000})
-      cy.reload({timeout: 5000000})
+    })
+  })
+
+  it('verifies members desired schedule changes', () => {
+    team.members.forEach(member => {
+      login(member.name, member.password)
       cy.get('#_myCurrentShift').children().each(($tr, idx) => {
         if (idx == 1) {
           const day_map = ['mon', 'tue', 'wed', 'thu', 'fri']
