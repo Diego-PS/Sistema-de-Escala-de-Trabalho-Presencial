@@ -36,6 +36,7 @@ describe('Testing bossService', () => {
         })
         await bossServices.create(boss_to_be_created)
         const created_boss = await bossServices.getByUsername('TestBoss')
+        
         bossServices.update(created_boss.id, { name: 'NewTestBoss'})
         const updated_boss = await bossServices.getByUsername('TestBoss')
         expect(updated_boss.name).toBe('NewTestBoss')
