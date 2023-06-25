@@ -4,7 +4,7 @@
   "description": "Projeto em desenvolvimento para a disciplina Prática em Desenvolvimento de Software - DCC/UFMG.",
   "main": "index.js",
   "scripts": {
-    "tests-integration": "jest --detectOpenHandles",
+    "tests-integration": "jest",
     "tests-e2e": "start-server-and-test start-server 4000 test-script",
     "coverage": "jest --coverage",
     "dev": "nodemon -L ./src/server.ts && tsc -w",
