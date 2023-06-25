@@ -9,7 +9,7 @@
     "coverage": "jest --coverage",
     "dev": "nodemon -L ./src/server.ts && tsc -w",
     "start-server": "ts-node ./src/server.ts",
-    "test-script": "npx cypress run"
+    "test-script": "npx cypress run --browser edge"
   },
   "keywords": [],
   "author": "",
