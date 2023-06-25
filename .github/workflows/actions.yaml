@@ -31,5 +31,8 @@ jobs:
       - name: Install dependencies
         run: npm install
         
-      - name: Run Tests
-        run: npm test
+      - name: Run Integration Tests
+        run: npm run tests-integration
+
+      - name: Run End-to-end Tests
+        run: npm run tests-e2e

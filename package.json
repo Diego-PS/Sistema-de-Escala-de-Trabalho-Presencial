@@ -4,11 +4,12 @@
   "description": "Projeto em desenvolvimento para a disciplina Prática em Desenvolvimento de Software - DCC/UFMG.",
   "main": "index.js",
   "scripts": {
-    "test": "start-server-and-test start-server 4000 test-script",
+    "tests-integration": "jest --detectOpenHandles",
+    "tests-e2e": "start-server-and-test start-server 4000 test-script",
     "coverage": "jest --coverage",
     "dev": "nodemon -L ./src/server.ts && tsc -w",
     "start-server": "ts-node ./src/server.ts",
-    "test-script": "jest && npx cypress run"
+    "test-script": "npx cypress run"
   },
   "keywords": [],
   "author": "",
