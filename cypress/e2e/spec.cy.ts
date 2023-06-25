@@ -129,6 +129,8 @@ describe('Team Leader Stories', () => {
     login(team.leader_username, team.password)
     cy.get('a[href*="visualizacao.html"]').click({timeout: 5000000})
     cy.reload({timeout: 5000000})
+    login(team.leader_username, team.password)
+    cy.get('a[href*="visualizacao.html"]').click({timeout: 5000000})
     cy.get('#matrix1').children().each(($tr, idx) => {
       const member = team.members[idx]
       const day_map = ['mon', 'tue', 'wed', 'thu', 'fri']
