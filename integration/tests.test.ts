@@ -1,8 +1,8 @@
-import { BossTests, TeamLeaderTests, MemberTests } from "./tests"
+import { BossTestsDemo, MemberTestsDemo, TeamLeaderTestsDemo } from "./tests"
 
 
 describe('All tests', () => {
-    BossTests()
-    TeamLeaderTests()
-    MemberTests()
+    BossTestsDemo()
+    TeamLeaderTestsDemo()
+    MemberTestsDemo()
 })

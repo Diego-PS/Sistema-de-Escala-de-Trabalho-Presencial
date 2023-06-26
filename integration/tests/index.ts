@@ -1,6 +1,6 @@
-import { BossTests } from "./Boss.";
-import { MemberTests } from "./Member";
-import { TeamLeaderTests } from "./TeamLeader";
+import { BossTests, BossTestsDemo } from "./Boss.";
+import { MemberTests, MemberTestsDemo } from "./Member";
+import { TeamLeaderTests, TeamLeaderTestsDemo } from "./TeamLeader";
 
 
-export { BossTests, TeamLeaderTests, MemberTests }
+export { BossTests, TeamLeaderTests, MemberTests, BossTestsDemo, TeamLeaderTestsDemo, MemberTestsDemo }

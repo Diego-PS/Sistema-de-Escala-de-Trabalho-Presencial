@@ -108,3 +108,23 @@ export const MemberTests = () => describe('Testing Member functions', () => {
         expect((await Member.getAll()).length).toBe(0)
     })
 })
+
+export const MemberTestsDemo = () => describe('Testing Member functions', () => {
+
+    beforeEach(async () => {
+        await connectDB()
+    })
+    
+    afterEach(async () => {
+        await cleanDB()
+        await disconnectDB()
+    })
+
+    test('Should create a member', () => {})
+
+    test('Should change member name', () => {})
+
+    test('Should change desired schedule', () => {})
+
+    test('Should delete member', () => {})
+})

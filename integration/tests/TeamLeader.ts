@@ -31,7 +31,6 @@ const updated_team_leader_props = {
     }
 }
 
-
 export const TeamLeaderTests = () => describe('Testing Team Leader functions', () => {
 
     beforeEach(async () => {
@@ -96,4 +95,26 @@ export const TeamLeaderTests = () => describe('Testing Team Leader functions', (
         await created_team_leader.delete()
         expect((await TeamLeader.getAll).length).toBe(0)
     })
+})
+
+export const TeamLeaderTestsDemo = () => describe('Testing Team Leader functions', () => {
+
+    beforeEach(async () => {
+        await connectDB()
+    })
+    
+    afterEach(async () => {
+        await cleanDB()
+        await disconnectDB()
+    })
+
+    test('Should create a team leader', () => {})
+
+    test('Should change team leader name', () => {})
+
+    test('Should change team rules', () => {})
+
+    test('Should get team members', () => {})
+
+    test('Should delete the team', () => {})
 })
