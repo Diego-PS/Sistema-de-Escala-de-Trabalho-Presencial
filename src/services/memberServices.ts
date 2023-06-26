@@ -42,9 +42,9 @@ export class MemberServices implements IMemberServices
         const map_to_ex_params_interface = members_ex_params_interface.reduce((acc, ex_params_interface) => { acc[ex_params_interface.id] = ex_params_interface; return acc }, {})
         const member_ids = members_ex_params_interface.map(member_ex_params_interface => member_ex_params_interface.id)
         const users = await userServices.getByIds(member_ids)
-        const map_to_users = users.reduce((acc, user) => { acc[user.id] = user; return acc }, {})
+        const map_to_users = users.reduce((acc, user) => { acc[user.id] = user; return acc }, {} as { [id: number] : User })
         const members = member_ids.map((id) => Member.fromInterface({ 
-            ...map_to_users[id].toInterface(), 
+            ...(map_to_users[id]?.toInterface()), 
             team_leader_id: map_to_ex_params_interface[id].team_leader_id,
             desired_schedule: map_to_ex_params_interface[id].desired_schedule,
             actual_schedule: map_to_ex_params_interface[id].actual_schedule

@@ -8,7 +8,7 @@
     "skipLibCheck": true                               
   },
   "exclude": ["node_modules"],
-  "include": ["./src", "./cypress"],
+  "include": ["./src", "./cypress", "integration"],
   "isolatedModules": false,
   "types": ["node", "cypress"]
 }

@@ -43,9 +43,9 @@ export class BossServices implements IBossServices
         const map_to_ex_params_interface = bosses_ex_params_interface.reduce((acc, ex_params_interface) => { acc[ex_params_interface.id] = ex_params_interface; return acc }, {})
         const boss_ids = bosses_ex_params_interface.map(boss_ex_params_interface => boss_ex_params_interface.id)
         const users = await userServices.getByIds(boss_ids)
-        const map_to_users = users.reduce((acc, user) => { acc[user.id] = user; return acc }, {})
+        const map_to_users = users.reduce((acc, user) => { acc[user.id] = user; return acc }, {} as { [id: number] : User })
         const bosses = boss_ids.map((id) => Boss.fromInterface({ 
-            ...map_to_users[id].toInterface(), 
+            ...(map_to_users[id]?.toInterface()), 
             organization_name: map_to_ex_params_interface[id].organization_name,
             organization_rules: map_to_ex_params_interface[id].organization_rules,
         }))

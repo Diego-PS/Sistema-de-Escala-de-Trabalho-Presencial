@@ -50,9 +50,9 @@ export class TeamLeaderServices implements ITeamLeaderServices
         const map_to_ex_params_interface = team_leaders_ex_params_interface.reduce((acc, ex_params_interface) => { acc[ex_params_interface.id] = ex_params_interface; return acc }, {})
         const team_leader_ids = team_leaders_ex_params_interface.map(team_leader_ex_params_interface => team_leader_ex_params_interface.id)
         const users = await userServices.getByIds(team_leader_ids)
-        const map_to_users = users.reduce((acc, user) => { acc[user.id] = user; return acc }, {})
+        const map_to_users = users.reduce((acc, user) => { acc[user.id] = user; return acc }, {} as { [id: number] : User })
         const team_leaders = team_leader_ids.map((id) => TeamLeader.fromInterface({ 
-            ...map_to_users[id].toInterface(), 
+            ...(map_to_users[id]?.toInterface()), 
             boss_id: map_to_ex_params_interface[id].boss_id,
             team_name: map_to_ex_params_interface[id].team_name,
             team_rules: map_to_ex_params_interface[id].team_rules
