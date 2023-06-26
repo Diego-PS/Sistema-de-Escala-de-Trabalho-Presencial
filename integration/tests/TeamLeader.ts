@@ -2,6 +2,8 @@ import { expect } from '@jest/globals';
 import { cleanDB, connectDB, disconnectDB } from '../../src/connectDB';
 import { Boss } from '../../src/entities/Boss';
 import { TeamLeader } from '../../src/entities/TeamLeader';
+import { TeamSchedule } from '../../src/abstractions/TeamSchedule';
+import { Rules } from '../../src/abstractions/Rules';
 
 const file = 'TeamLeader'
 
@@ -95,26 +97,13 @@ export const TeamLeaderTests = () => describe('Testing Team Leader functions', (
         await created_team_leader.delete()
         expect((await TeamLeader.getAll).length).toBe(0)
     })
-})
 
-export const TeamLeaderTestsDemo = () => describe('Testing Team Leader functions', () => {
-
-    beforeEach(async () => {
-        await connectDB()
+    test('TeamSchedule', async () => {
+        const schedule = new TeamSchedule({
+            1: { mon: true, tue: true, wed: true, thu: false, fri: false },
+            2: { mon: false, tue: false, wed: true, thu: true, fri: true }
+        })
+        const rules = new Rules({ moa: 3, mpw: 50 })
+        expect(schedule.satisfies(rules)).toBe(true)
     })
-    
-    afterEach(async () => {
-        await cleanDB()
-        await disconnectDB()
-    })
-
-    test('Should create a team leader', () => {})
-
-    test('Should change team leader name', () => {})
-
-    test('Should change team rules', () => {})
-
-    test('Should get team members', () => {})
-
-    test('Should delete the team', () => {})
 })

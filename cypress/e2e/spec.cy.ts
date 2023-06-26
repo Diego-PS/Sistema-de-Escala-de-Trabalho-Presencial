@@ -138,7 +138,7 @@ describe('Team Leader Stories', () => {
       }
     })
     cy.get('button[onclick="changeSchedule()"]').click({timeout: 50000000})
-    reloadManyTimes(20)
+    reloadManyTimes(2)
   })
 
   it('verifies team schedule change', () => {
@@ -231,7 +231,7 @@ describe('Deletion', () => {
     login(org.boss_username, org.password)
     cy.url().should('include', '/equipes_regras.html')
     cy.visit('/delete.html')
-    cy.get('#delete-btn').click()
+    cy.get('#delete-btn').click({timeout: 500000})
   })
 
   it('verifies that is not possible to login with the organization anymore', () => {

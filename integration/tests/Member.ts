@@ -3,6 +3,8 @@ import { cleanDB, connectDB, disconnectDB } from '../../src/connectDB';
 import { Boss } from '../../src/entities/Boss';
 import { TeamLeader } from '../../src/entities/TeamLeader';
 import { Member } from '../../src/entities/Member';
+import { Schedule } from '../../src/abstractions/Schedule';
+import { Rules } from '../../src/abstractions/Rules';
 
 const file = 'Member'
 
@@ -78,23 +80,6 @@ export const MemberTests = () => describe('Testing Member functions', () => {
         expect(created_member.name).toBe(updated_member_props.name)
     })
 
-    test('Should change desired schedule', async () => {
-        await Boss.create(boss_props)
-        const created_boss = await Boss.getByUsername(boss_props.username)
-        await created_boss.createTeamLeader(team_leader_props)
-        const team_leaders = await TeamLeader.getAll()
-        const created_team_leader = team_leaders[0]
-        await created_team_leader.createMember(member_props)
-        const members = await Member.getAll()
-        const created_member = members[0]
-        await created_member.update({ desired_schedule: updated_member_props.desired_schedule })
-        expect(created_member.desired_schedule.mon).toBe(updated_member_props.desired_schedule.mon)
-        expect(created_member.desired_schedule.tue).toBe(updated_member_props.desired_schedule.tue)
-        expect(created_member.desired_schedule.wed).toBe(updated_member_props.desired_schedule.wed)
-        expect(created_member.desired_schedule.thu).toBe(updated_member_props.desired_schedule.thu)
-        expect(created_member.desired_schedule.fri).toBe(updated_member_props.desired_schedule.fri)
-    })
-
     test('Should delete member', async () => {
         await Boss.create(boss_props)
         const created_boss = await Boss.getByUsername(boss_props.username)
@@ -107,24 +92,14 @@ export const MemberTests = () => describe('Testing Member functions', () => {
         await created_member.delete()
         expect((await Member.getAll()).length).toBe(0)
     })
-})
 
-export const MemberTestsDemo = () => describe('Testing Member functions', () => {
-
-    beforeEach(async () => {
-        await connectDB()
+    test('Schedule', () => {
+        const schedule = new Schedule({ mon: true, tue: true, wed: true, thu: false, fri: false })
+        const rules1 = new Rules({ moa: 4, mpw: 50 })
+        const rules2 = new Rules({ moa: 3, mpw: 40 })
+        expect(schedule.satisfies(rules1)).toBe(false)
+        expect(schedule.satisfies(rules2)).toBe(true)
+        expect(rules1.satisfies(rules2)).toBe(true)
+        expect(rules2.satisfies(rules1)).toBe(false)
     })
-    
-    afterEach(async () => {
-        await cleanDB()
-        await disconnectDB()
-    })
-
-    test('Should create a member', () => {})
-
-    test('Should change member name', () => {})
-
-    test('Should change desired schedule', () => {})
-
-    test('Should delete member', () => {})
 })

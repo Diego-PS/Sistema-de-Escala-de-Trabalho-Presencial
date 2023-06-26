@@ -76,25 +76,3 @@ export const BossTests = () => describe('Testing Boss functions', () => {
         expect((await Boss.getAll()).length).toBe(0)
     })
 })
-
-export const BossTestsDemo = () => describe('Testing Boss functions', () => {
-
-    beforeEach(async () => {
-        await connectDB()
-    })
-    
-    afterEach(async () => {
-        await cleanDB()
-        await disconnectDB()
-    })
-
-    test('Should create a boss', () => {})
-
-    test('Should change boss name', () => {})
-
-    test('Should change organization rules', () => {})
-
-    test('Should get team leaders', () => {})
-
-    test('Should delete the boss', () => {})
-})
